@@ -314,7 +314,8 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
     const banners=bannerImages();
     const featured=visible.filter(product=>product.homeFeatured===true||(product.homeFeatured==null&&/^product-\d+/.test(product.id||"")));
     const popular=[...new Map([...featured,...visible.filter(product=>product.category==="popular"),...visible].map(product=>[product.id,product])).values()];
-    const pro=[...new Map([...visible.filter(p=>p.category==="professional"),...visible].map(product=>[product.id,product])).values()];
+    const professionalSeed=[...new Map([...visible.filter(p=>p.category==="professional"),...visible].map(product=>[product.id,product])).values()];
+    const pro=professionalSeed.length>5?professionalSeed.slice(5).concat(professionalSeed.slice(0,5)):professionalSeed.slice().reverse();
     const custom=productsForCollection("halfzip");
     const kitSlides=teamKitSlides();
     app.innerHTML=`<header class="head"><div class="top"><div class="top-track">${data.topNotice}</div></div><div class="util"><a href="pages/kakao/index.html">카카오톡 상담</a><a href="pages/login/index.html">로그인</a><a href="pages/signup/index.html">회원가입</a><a href="pages/orders/index.html">주문서확인</a><a href="pages/language/index.html">한국어</a></div><div class="nav">${mobileCategoryMenu()}<a class="brand" onclick="showHome()">${data.brand}</a><nav class="menu" aria-label="상품 카테고리">${navigationMenu()}</nav><div class="nav-actions"><form class="site-search" role="search" onsubmit="event.preventDefault();const first=document.querySelector('#searchResults .menu-product');if(first)first.click()"><span class="search-symbol" aria-hidden="true">⌕</span><input type="search" aria-label="상품 검색" placeholder="상품명 또는 품번 검색" oninput="searchProducts(this.value)" autocomplete="off"></form></div><div class="search-results" id="searchResults" hidden></div></div></header>
