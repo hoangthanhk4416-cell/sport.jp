@@ -2,9 +2,9 @@
 .contact-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;text-decoration:none;box-shadow:0 5px 16px rgba(0,0,0,.18);transition:transform .2s}
 .contact-icon:hover{transform:translateY(-2px)}
 .contact-icon:focus-visible{outline:3px solid #315bff;outline-offset:3px}
-.kakao-icon{background:#fee500;color:#3c1e1e}
-.talk-icon{font-size:11px;font-weight:1000;letter-spacing:-1px;border:2px solid currentColor;border-radius:50%;padding:6px 4px;position:relative}
-.talk-icon:after{content:"";position:absolute;left:7px;bottom:-5px;border-width:5px 5px 0 0;border-style:solid;border-color:currentColor transparent transparent transparent}
+.line-icon{background:#06c755;color:#fff}
+.line-icon-mark{font-size:11px;font-weight:1000;letter-spacing:-1px;border:2px solid currentColor;border-radius:50%;padding:6px 4px;position:relative}
+.line-icon-mark:after{content:"";position:absolute;left:7px;bottom:-5px;border-width:5px 5px 0 0;border-style:solid;border-color:currentColor transparent transparent transparent}
 .instagram-icon{background:linear-gradient(145deg,#833ab4,#fd1d1d 55%,#fcb045)}
 .ig-icon{width:29px;height:29px;border:3px solid #fff;border-radius:9px;position:relative}
 .ig-icon:before{content:"";position:absolute;width:8px;height:8px;border:3px solid #fff;border-radius:50%;left:7px;top:7px}

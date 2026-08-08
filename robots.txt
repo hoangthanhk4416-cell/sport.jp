@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://teamspirit.co.kr/sitemap.xml
+Sitemap: https://teamspiritsport.jp/sitemap.xml
