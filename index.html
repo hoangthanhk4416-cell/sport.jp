@@ -161,6 +161,41 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  .footer{margin-top:22px}
 }
 @media(max-width:720px){
+ .floating-tools{
+  position:fixed!important;
+  z-index:9999!important;
+  inset-inline-end:max(12px,env(safe-area-inset-right))!important;
+  left:auto!important;
+  top:clamp(132px,50dvh,calc(100dvh - 230px))!important;
+  bottom:auto!important;
+  width:42px!important;
+  max-width:calc(100vw - 24px)!important;
+  transform:translateY(-50%)!important;
+  grid-template-columns:42px!important;
+  gap:9px!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:visible!important;
+  opacity:1!important;
+  visibility:visible!important;
+ }
+ .floating-tool,
+ .floating-tool.order-lookup{
+  width:42px!important;
+  min-width:42px!important;
+  height:42px!important;
+  min-height:42px!important;
+  margin:0!important;
+  justify-self:stretch!important;
+  box-sizing:border-box!important;
+  overflow:visible!important;
+ }
+ .floating-toast{
+  right:max(66px,calc(env(safe-area-inset-right) + 56px))!important;
+  top:clamp(132px,50dvh,calc(100dvh - 230px))!important;
+ }
+}
+@media(max-width:720px){
  html[data-theme="day"] body{background:#fff;color:#111}
  html[data-theme="day"] .head{background:#fff;border-bottom:1px solid #eee;box-shadow:0 8px 24px rgba(0,0,0,.06)}
  html[data-theme="day"] .brand{background:none;-webkit-background-clip:initial;background-clip:initial;color:#111}
