@@ -167,6 +167,19 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  .floating-tool.cart svg{width:22px;height:22px}
  .footer{margin-top:22px}
 }
+/* Keep the homepage benefit icons constrained on desktop too. The original
+   rules above live inside the mobile media query, which lets inline SVGs
+   expand to the full content width on larger screens. */
+@media(min-width:721px){
+ .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+ .benefits-strip{box-sizing:border-box;width:min(1180px,100%);margin:-28px auto 26px;padding:0 18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+ .benefit-card{box-sizing:border-box;min-width:0;min-height:86px;display:flex;align-items:center;gap:14px;padding:15px;background:#f7f7f7;border:1px solid #f0f0f0;border-radius:4px;color:#111;text-align:left}
+ .benefit-icon{display:block;width:42px;height:42px;flex:0 0 42px}
+ .benefit-icon svg{display:block;width:42px;height:42px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .benefit-copy{min-width:0}
+ .benefit-copy strong{display:block;margin:0 0 3px;font-size:16px;line-height:1.25;white-space:nowrap}
+ .benefit-copy p{margin:0;color:#333;font-size:11px;line-height:1.45}
+}
 @media(max-width:720px){
  .floating-tools{
    position:fixed!important;
