@@ -376,7 +376,8 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  window.openCategory=function(slug){if(slug==="about"){location.href="/about/";return}location.href="/collections/"+(slug==="products"?"all-products":seoSlug(slug))+"/"}
  window.showHome=function(){location.hash="";render()}
 function home(){
- document.querySelectorAll("body > .floating-tools, body > .floating-toast").forEach(element=>element.remove());
+ const persistentFloatingTools=document.querySelector("body > .floating-tools");
+ const persistentFloatingToast=document.querySelector("body > .floating-toast");
  updateSeo("オーダーサッカーユニフォーム・チームウェア | TEAMSPIRIT-jp","TEAMSPIRIT-jp サッカー ユニフォーム, 団体 チームウェア カスタム 制作. デザイン・カラー・フォントのご相談からご注文まで、LINEまたはInstagramでお気軽にお問い合わせください。");
  const visible=data.products.filter(isPublicProduct);
  const banners=bannerImages();
@@ -396,7 +397,7 @@ function home(){
  <section class="wrap section"><div class="section-head"><h2>チームカスタムデザイン新着🔥</h2><div class="tabs">${productCollections.map(([slug,label],index)=>`<button class="tab ${index===1?'active':''}" type="button" onclick="showCustomCollection('${slug}',this)">${label}</button>`).join("")}</div></div><div class="custom-row" data-product-section="custom">${productSectionSlice("custom",custom).map(p=>card(p)).join("")}</div>${productSectionPager("custom")}</section>
  <section class="teamkits"><div class="wrap"><h2>チームウェア👕🎽</h2><div class="kit-carousel"><div class="kit-track">${kitSlides.map(slide=>`<div class="kit-slide"><div class="kit-box"><div class="kit-photo" style="background-image:url('${attr(slide.image||data.heroImage)}')"><span>${attr(slide.title||'チームウェア')}</span></div><div class="kit-products">${(slide.productIds||[]).slice(0,3).map(kitProductRow).join("")}</div></div></div>`).join("")}</div></div><div class="kit-controls"><button type="button" onclick="moveKitSlide(-1)" aria-label="Previous チームウェア slide">‹</button><div class="kit-dots">${kitSlides.map((slide,index)=>`<button class="kit-dot ${index===0?'active':''}" type="button" onclick="showKitSlide(${index})" aria-label="チームウェア slide ${index+1}"></button>`).join("")}</div><button type="button" onclick="moveKitSlide(1)" aria-label="Next チームウェア slide">›</button></div></div></section>
  ${data.youtubeUrl?`<section class="wrap video-sec"><h2>Highlight🎥</h2><div class="video"><iframe src="${data.youtubeUrl}" title="teamspirit Highlight" allowfullscreen></iframe></div></section>`:""}</main>${footer()}`;
- const floatingTools=app.querySelector(".floating-tools");const floatingToast=app.querySelector(".floating-toast");if(floatingTools)document.body.appendChild(floatingTools);if(floatingToast)document.body.appendChild(floatingToast);
+ const floatingTools=app.querySelector(".floating-tools");const floatingToast=app.querySelector(".floating-toast");if(persistentFloatingTools){if(floatingTools)floatingTools.remove()}else if(floatingTools)document.body.appendChild(floatingTools);if(persistentFloatingToast){if(floatingToast)floatingToast.remove()}else if(floatingToast)document.body.appendChild(floatingToast);
  const galleryShortcut=document.querySelector(".shortcuts .shortcut:nth-child(4)");if(galleryShortcut){galleryShortcut.classList.add("shortcut-action");galleryShortcut.setAttribute("role","link");galleryShortcut.tabIndex=0;galleryShortcut.onclick=()=>openCategory("products");galleryShortcut.onkeydown=event=>{if(event.key==="Enter")openCategory("products")};}const faqShortcut=document.querySelector(".shortcuts .shortcut:nth-child(8)");if(faqShortcut){faqShortcut.classList.add("shortcut-action");faqShortcut.setAttribute("role","link");faqShortcut.tabIndex=0;faqShortcut.onclick=()=>location.href="/pages/team-custom-faq/";faqShortcut.onkeydown=event=>{if(event.key==="Enter")location.href="/pages/team-custom-faq/"};}
  startHeroCarousel(banners);
  startKitCarousel(kitSlides);
@@ -465,5 +466,5 @@ function home(){
  }
 })();
 </script>
-<link rel="stylesheet" href="/assets/support-chat.css?v=20260815-10"><script src="/assets/support-chat-config.js?v=20260815-9"></script><script src="/assets/support-chat.js?v=20260815-13" defer></script><script src="/assets/order-config.js"></script><script src="/assets/order-flow.js?v=20260724-8" defer></script></body>
+<link rel="stylesheet" href="/assets/support-chat.css?v=20260815-11"><script src="/assets/support-chat-config.js?v=20260815-9"></script><script src="/assets/support-chat.js?v=20260815-14" defer></script><script src="/assets/order-config.js"></script><script src="/assets/order-flow.js?v=20260724-8" defer></script></body>
 </html>
