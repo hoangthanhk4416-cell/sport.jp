@@ -134,7 +134,7 @@
         const recent=history.filter(item=>item.text!=="回答を作成しています…").slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,600)}));
         const contextText=recent.slice(-4).map(item=>`${item.role==="assistant"?"サポート":"お客様"}: ${item.content}`).join("\n");
         const contextualQuestion=`${contextText?`直前の会話:\n${contextText}\n`:""}現在の質問: ${question}`.slice(-500);
-        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question:contextualQuestion,history:recent,context:currentPublicPageContext()})});
+        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question,latestQuestion:question,history:recent,conversationContext:contextualQuestion,context:currentPublicPageContext()})});
         const data=await response.json();history.pop();if(!response.ok||!data.ok||!data.answer)throw new Error(data.error||"AI response error");localStorage.setItem(key,String(used+1));add("assistant",data.answer);
       } catch(_){if(history.at(-1)?.text==="回答を作成しています…"||history.at(-1)?.text==="注文情報を確認しています…")history.pop();add("assistant","接続できませんでした。入力内容をご確認いただくか、LINEまたはInstagramからお問い合わせください。");}
       finally{send.disabled=false;input.focus();}

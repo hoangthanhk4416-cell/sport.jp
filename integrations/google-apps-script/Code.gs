@@ -155,7 +155,8 @@ function handleSupportChat_(payload) {
     const model = properties.getProperty("CHATANYWHERE_MODEL") || "gpt-4o-mini";
     const context = payload.context || {};
     const storeContext = loadBotStoreContext_(question, context);
-    const responseLanguage = detectSupportLanguage_(question);
+    const latestQuestion = String(payload.latestQuestion || question).trim().slice(0, 500);
+    const responseLanguage = detectSupportLanguage_(latestQuestion);
     const recentHistory = Array.isArray(payload.history) ? payload.history.slice(-8).map(item => ({
       role: item && item.role === "assistant" ? "assistant" : "user",
       content: String(item && item.content || "").slice(0, 600),
