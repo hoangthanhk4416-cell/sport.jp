@@ -19,6 +19,12 @@
     contact: "担当者への個別相談は、下のLINEまたはInstagramをご利用ください。"
   };
   const esc = value => String(value || "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  function questionLanguage(value) {
+    const text=String(value||"").normalize("NFKC");
+    if (/[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text) || /\b(?:bao nhiêu|đặt hàng|mẫu|còn hàng|chất liệu|tư vấn|số điện thoại)\b/i.test(text)) return "vi";
+    if (/\b(?:how|what|price|order|sample|fabric|stock|available|shipping)\b/i.test(text)) return "en";
+    return "ja";
+  }
   const loadHistory = () => { try { const value = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); return Array.isArray(value) ? value.slice(-30) : []; } catch (_) { return []; } };
   let history = loadHistory();
 
@@ -37,15 +43,27 @@
   function priceAnswer(question) {
     const quantity = quantityFrom(question); if (!quantity) return "";
     const unit = currentUnitPrice(), total = unit * quantity, format = value => new Intl.NumberFormat("ja-JP").format(value);
+    const lang=questionLanguage(question);
+    if(lang==="vi") return `${quantity} áo × ¥${format(unit)} = ¥${format(total)}.\nĐây là giá sản phẩm tạm tính theo đơn giá hiển thị. Giá cuối cùng, nội dung thiết kế và phí giao hàng sẽ được nhân viên xác nhận trước khi sản xuất. Bạn có thể bấm “Đặt hàng/Mẫu thử miễn phí” hoặc liên hệ LINE để được tư vấn chi tiết nhé.`;
+    if(lang==="en") return `${quantity} items × ¥${format(unit)} = ¥${format(total)}.\nThis is an estimate based on the displayed unit price. Staff will confirm customization, shipping and the final total before production. Please use the Order/Free Sample button or contact us on LINE for details.`;
     return `${quantity}枚 × ¥${format(unit)} = ¥${format(total)}です。\nこれは表示単価による商品代の概算です。カスタム内容・送料などを含む最終金額は、製作前に担当者が確認します。`;
   }
   function guidedSalesAnswer(question) {
     const text = String(question || "").normalize("NFKC");
+    const lang=questionLanguage(text);
     if (/(?:在庫|在庫あり|在庫切れ|品切れ|売り切れ|(?:商品|製品|TEAMSPIRIT-[A-Z0-9-]+).*(?:ある|あります|ございます|扱い)|モデル|デザイン|mẫu|mau|còn hàng|con hang|hết hàng|het hang)/i.test(text)) {
+      if(lang==="vi") return "Website hiện vẫn có đầy đủ nhiều mẫu sản phẩm để bạn lựa chọn. Ngoài các mẫu đang hiển thị, chúng tôi còn nhận thiết kế riêng theo yêu cầu, có nhiều loại vải cao cấp và sử dụng công nghệ in tiên tiến. Bạn có thể bấm nút “Đặt hàng/Mẫu thử miễn phí” hoặc liên hệ LINE để được tư vấn chi tiết nhé.";
+      if(lang==="en") return "The website currently offers a wide selection of product models. You can also request a custom design made with high-quality fabrics and advanced printing technology. Please use the Order/Free Sample button or contact us on LINE for detailed advice.";
       return "ウェブサイトには現在も豊富な商品モデルをご用意しています。掲載モデルから選べるほか、ご希望に合わせたオリジナルデザインも承ります。高品質な生地を幅広く取り揃え、先進的なプリント技術で製作します。「注文・無料サンプル」ボタン、または下のLINEからお気軽にご相談ください。";
     }
-    if (/(?:注文方法|注文したい|購入したい|申し込み|申込み|無料サンプル|発注|đặt hàng|dat hang|đăng ký|dang ky|mua hàng|mua hang)/i.test(text)) return answers.order;
+    if (/(?:注文方法|注文したい|購入したい|申し込み|申込み|無料サンプル|発注|đặt hàng|dat hang|đăng ký|dang ky|mua hàng|mua hang)/i.test(text)) {
+      if(lang==="vi") return "Bạn có thể bấm nút “Đặt hàng/Mẫu thử miễn phí” trên trang sản phẩm hoặc danh sách sản phẩm, sau đó nhập kích cỡ, màu sắc, số lượng, số áo, tên in và thông tin giao hàng. Nếu cần hỗ trợ chi tiết, hãy liên hệ với chúng tôi qua LINE nhé.";
+      if(lang==="en") return "Use the Order/Free Sample button on a product page or product list, then enter the size, color, quantity, number, printed name and delivery information. Please contact us on LINE if you need detailed assistance.";
+      return answers.order;
+    }
     if (/(?:生地|素材|布|プリント|印刷|昇華|刺繍|fabric|vải|vai|chất liệu|chat lieu|in ấn|in an)/i.test(text)) {
+      if(lang==="vi") return "Chúng tôi có nhiều loại vải cao cấp phù hợp với từng mục đích sử dụng và có thể in logo, số áo, chữ, màu sắc bằng công nghệ in tiên tiến. Bạn hãy bấm “Đặt hàng/Mẫu thử miễn phí” để gửi yêu cầu hoặc liên hệ LINE để được tư vấn chi tiết nhé.";
+      if(lang==="en") return "We offer a range of high-quality fabrics and can produce logos, numbers, lettering and colors using advanced printing technology. Send your request through the Order/Free Sample button or contact us on LINE for details.";
       return "用途やご希望に合わせて、高品質な生地を幅広くご用意しています。ロゴ・番号・文字・カラーは、先進的なプリント技術を使って製作できます。「注文・無料サンプル」ボタンからご要望を送るか、下のLINEから詳しくご相談ください。";
     }
     return "";
@@ -83,7 +101,7 @@
 
   function mount() {
     if (document.getElementById("tsSupportLauncher")) return;
-    document.body.insertAdjacentHTML("beforeend", `<button id="tsSupportLauncher" class="ts-support-launcher" type="button" aria-label="サポートを開く" aria-expanded="false" aria-controls="tsSupportPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 12h5"/></svg></button><section id="tsSupportPanel" class="ts-support-panel" role="dialog" aria-modal="false" aria-labelledby="tsSupportTitle" hidden><header class="ts-support-head"><strong id="tsSupportTitle">TEAMSPIRIT-JP サポート</strong><button class="ts-support-reset" type="button">履歴を消去</button><button class="ts-support-close" type="button" aria-label="閉じる">×</button></header><div class="ts-support-body"><p class="ts-support-intro">ご質問を選択するか、下に入力してください。</p><div class="ts-support-questions">${questions.map(([key,label]) => `<button class="ts-support-question" type="button" data-support-question="${key}">${label}</button>`).join("")}</div><div id="tsSupportMessages" class="ts-support-messages" role="log" aria-live="polite"></div><p class="ts-support-api-note">その他のご質問・注文照会</p><form id="tsSupportForm" class="ts-support-form"><input id="tsSupportInput" class="ts-support-input" maxlength="500" placeholder="質問・注文番号・電話番号" aria-label="その他の質問"><button class="ts-support-send" type="submit">送信</button></form><div class="ts-support-links"><a class="ts-support-line" href="${esc(cfg.lineUrl)}" target="_blank" rel="noopener">LINE</a><a class="ts-support-instagram" href="${esc(cfg.instagramUrl)}" target="_blank" rel="noopener">Instagram</a></div></div></section>`);
+    document.body.insertAdjacentHTML("beforeend", `<button id="tsSupportLauncher" class="ts-support-launcher" type="button" aria-label="サポートを開く" aria-expanded="false" aria-controls="tsSupportPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 12h5"/></svg></button><section id="tsSupportPanel" class="ts-support-panel" role="dialog" aria-modal="false" aria-labelledby="tsSupportTitle" hidden><header class="ts-support-head"><strong id="tsSupportTitle">TEAMSPIRIT-JP サポート</strong><button class="ts-support-reset" type="button">履歴を消去</button><button class="ts-support-close" type="button" aria-label="閉じる">×</button></header><div class="ts-support-body"><p class="ts-support-intro">ご質問を選択するか、下に入力してください。</p><div class="ts-support-questions">${questions.map(([key,label]) => `<button class="ts-support-question" type="button" data-support-question="${key}">${label}</button>`).join("")}</div><div id="tsSupportMessages" class="ts-support-messages" role="log" aria-live="polite"></div><div class="ts-support-controls"><p class="ts-support-api-note">その他のご質問・注文照会</p><form id="tsSupportForm" class="ts-support-form"><input id="tsSupportInput" class="ts-support-input" maxlength="500" placeholder="質問・注文番号・電話番号" aria-label="その他の質問"><button class="ts-support-send" type="submit">送信</button></form><div class="ts-support-links"><a class="ts-support-line" href="${esc(cfg.lineUrl)}" target="_blank" rel="noopener">LINE</a><a class="ts-support-instagram" href="${esc(cfg.instagramUrl)}" target="_blank" rel="noopener">Instagram</a></div></div></div></section>`);
     const launcher=document.getElementById("tsSupportLauncher"), panel=document.getElementById("tsSupportPanel"), messages=document.getElementById("tsSupportMessages"), form=document.getElementById("tsSupportForm"), input=document.getElementById("tsSupportInput"), send=form.querySelector("button");
     function render() { messages.innerHTML=history.map(item=>`<div class="ts-support-message ${item.role}"><small>${item.role === "user" ? "お客様" : "サポート"}</small><p>${esc(item.text)}</p></div>`).join(""); messages.scrollTop=messages.scrollHeight; }
     function add(role,text) { history.push({role,text:String(text),at:Date.now()}); history=history.slice(-30); localStorage.setItem(HISTORY_KEY,JSON.stringify(history)); render(); }
