@@ -155,6 +155,7 @@ function handleSupportChat_(payload) {
     const model = properties.getProperty("CHATANYWHERE_MODEL") || "gpt-4o-mini";
     const context = payload.context || {};
     const storeContext = loadBotStoreContext_(question, context);
+    const responseLanguage = detectSupportLanguage_(question);
     const recentHistory = Array.isArray(payload.history) ? payload.history.slice(-8).map(item => ({
       role: item && item.role === "assistant" ? "assistant" : "user",
       content: String(item && item.content || "").slice(0, 600),
@@ -164,7 +165,7 @@ function handleSupportChat_(payload) {
       temperature: 0.2,
       max_tokens: 600,
       messages: [
-        { role: "system", content: supportChatSystemPrompt_(storeContext) },
+        { role: "system", content: supportChatSystemPrompt_(storeContext, responseLanguage) },
         ...recentHistory,
         { role: "user", content: `Page: ${String(context.title || "").slice(0, 150)}\nURL: ${String(context.url || "").slice(0, 300)}\nProduct ID: ${String(context.productId || "").slice(0, 80)}\nDisplayed price: ${String(context.unitPrice || "").slice(0, 30)}\nPage description: ${String(context.description || "").slice(0, 500)}\nPublic page text: ${String(context.pageExcerpt || "").slice(0, 2500)}\nQuestion: ${question}` },
       ],
@@ -204,10 +205,19 @@ function authorizeSupportChat() {
   return "OK";
 }
 
-function supportChatSystemPrompt_(storeContext) {
+function detectSupportLanguage_(question) {
+  const text = String(question || "");
+  if (/[\u3040-\u30ff\u3400-\u9fff]/.test(text)) return "Japanese";
+  if (/[ăâđêôơưĂÂĐÊÔƠƯáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(text)) return "Vietnamese";
+  if (/[A-Za-z]/.test(text)) return "English";
+  return "the language used in the customer's latest question";
+}
+
+function supportChatSystemPrompt_(storeContext, responseLanguage) {
   return [
     "You are the multilingual customer support assistant for TEAMSPIRIT-JP.",
-    "Detect the language of the customer's latest question and reply in that same language. Use concise, polite, natural wording. Only answer questions about products, sizing, custom uniforms, ordering, samples, shipping, returns, and contacting TEAMSPIRIT-JP.",
+    `REQUIRED RESPONSE LANGUAGE: ${responseLanguage}. Reply entirely in this language even when the store reference is written in another language.`,
+    "Use concise, polite, natural wording. Only answer questions about products, sizing, custom uniforms, ordering, samples, shipping, returns, and contacting TEAMSPIRIT-JP.",
     "Known facts: prices are displayed in Japanese yen; many uniforms currently show ¥4,500; common top sizes are 90(S), 95(M), 100(L), 105(XL), 110(2XL), 115(3XL), 120(4XL); the website has a wide selection of product models and also accepts original design requests; TEAMSPIRIT-JP offers a broad selection of high-quality fabrics and uses advanced printing technology; customers can request team logos, colors, player names and numbers; the website order button is 注文・無料サンプル; production and delivery guidance is approximately 3 to 9 days after design and order confirmation but the final schedule is confirmed by staff.",
     "For sales, product, fabric, printing, customization, sample, and ordering questions, end with a natural invitation to use the 注文・無料サンプル button or contact TEAMSPIRIT-JP through LINE for detailed advice.",
     "For arithmetic, calculate explicitly and show the formula, for example 45 items x ¥4,500 = ¥202,500. Never invent stock, discounts, delivery guarantees, payment confirmation, or order status.",
