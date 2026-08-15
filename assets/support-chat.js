@@ -1,47 +1,101 @@
 (() => {
   "use strict";
   const cfg = Object.assign({ aiEndpoint: "", aiEnabled: false, maxAiRequestsPerDay: 10, lineUrl: "https://lin.ee/qE1TJJ5", instagramUrl: "https://www.instagram.com/teamspirit.jp/" }, window.TEAMSPIRIT_SUPPORT_CONFIG || {});
+  const HISTORY_KEY = "ts-support-history-v2";
   const questions = [
-    ["price", "商品の価格を教えてください"],
-    ["size", "サイズの選び方を教えてください"],
-    ["order", "注文方法を教えてください"],
-    ["sample", "無料サンプルを申し込みたい"],
-    ["delivery", "製作・配送には何日かかりますか？"],
-    ["custom", "ロゴ・背番号・カラーは変更できますか？"],
-    ["contact", "担当者に相談したい"]
+    ["price", "商品の価格を教えてください"], ["size", "サイズの選び方を教えてください"],
+    ["order", "注文方法を教えてください"], ["sample", "無料サンプルを申し込みたい"],
+    ["delivery", "製作・配送には何日かかりますか？"], ["custom", "ロゴ・背番号・カラーは変更できますか？"],
+    ["tracking", "注文・配送状況を確認したい"], ["contact", "担当者に相談したい"]
   ];
   const answers = {
-    price: "商品価格は各商品ページに ¥ で表示しています。現在、多くのユニフォームは ¥4,500 です。数量やカスタム内容によって最終金額が変わる場合があるため、製作前に担当者が確認します。",
-    size: "上着は 90(S)〜120(4XL) を目安にお選びいただけます。商品ページの画像2と下部のサイズ表で、着丈・身幅・肩幅・袖丈・身長・体重の目安をご確認ください。ゆったり着たい場合は1サイズ上がおすすめです。",
-    order: "商品を選び、商品ページの「注文・無料サンプル」を押してください。サイズ、カラー、数量、背番号、マーキング名、ご要望を入力し、次に配送情報を入力すると注文を送信できます。",
-    sample: "商品ページまたは商品一覧の「注文・無料サンプル」からお申し込みください。商品・サイズ・ご要望を入力後、担当者がサンプル条件と製作内容を確認してご連絡します。",
-    delivery: "デザインと注文内容の確定後、製作・処理・配送の目安は約3〜9日です。数量やカスタム内容、配送先により変わるため、確定日程は担当者からご案内します。",
-    custom: "はい。チームロゴ、カラー、背番号、選手名、フォントなどを相談できます。ご希望を注文フォームに記入すると、製作前に担当者がデザインと最終金額を確認します。",
+    price: "商品価格は各商品ページに ¥ で表示しています。現在、多くのユニフォームは1枚 ¥4,500です。枚数を入力すると合計金額を計算できます。例：「45枚はいくら？」",
+    size: "上着は90(S)〜120(4XL)を目安にお選びいただけます。商品ページの画像2と下部のサイズ表で、着丈・身幅・肩幅・袖丈・身長・体重の目安をご確認ください。",
+    order: "商品ページの「注文・無料サンプル」を押し、サイズ、カラー、数量、背番号、マーキング名、ご要望、配送情報を入力してください。",
+    sample: "商品ページまたは商品一覧の「注文・無料サンプル」からお申し込みください。担当者がサンプル条件と製作内容を確認してご連絡します。",
+    delivery: "デザインと注文内容の確定後、製作・処理・配送の目安は約3〜9日です。確定日程は担当者からご案内します。",
+    custom: "はい。チームロゴ、カラー、背番号、選手名、フォントなどを変更できます。製作前に担当者がデザインと最終金額を確認します。",
+    tracking: "注文番号（例：TS-20260815-ABC123）または注文時の電話番号を入力してください。この画面でGoogle Sheetsの最新状況を確認します。",
     contact: "担当者への個別相談は、下のLINEまたはInstagramをご利用ください。"
   };
-  function esc(value) { return String(value || "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
-  function mount() {
-    if (document.getElementById("tsSupportLauncher")) return;
-    document.body.insertAdjacentHTML("beforeend", `<button id="tsSupportLauncher" class="ts-support-launcher" type="button" aria-label="サポートを開く" aria-expanded="false" aria-controls="tsSupportPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 12h5"/></svg></button><section id="tsSupportPanel" class="ts-support-panel" role="dialog" aria-modal="false" aria-labelledby="tsSupportTitle" hidden><header class="ts-support-head"><strong id="tsSupportTitle">TEAMSPIRIT-JP サポート</strong><button class="ts-support-close" type="button" aria-label="閉じる">×</button></header><div class="ts-support-body"><p class="ts-support-intro">ご質問を選択してください。よくある質問はすぐにご案内します。</p><div class="ts-support-questions">${questions.map(([key,label]) => `<button class="ts-support-question" type="button" data-support-question="${key}">${label}</button>`).join("")}</div><div id="tsSupportAnswer" class="ts-support-answer" role="status" aria-live="polite" hidden></div><p class="ts-support-api-note">その他のご質問（AI相談）</p><form id="tsSupportForm" class="ts-support-form"><input id="tsSupportInput" class="ts-support-input" maxlength="500" placeholder="質問を入力" aria-label="その他の質問"><button class="ts-support-send" type="submit">送信</button></form><div class="ts-support-links"><a class="ts-support-line" href="${esc(cfg.lineUrl)}" target="_blank" rel="noopener">LINE</a><a class="ts-support-instagram" href="${esc(cfg.instagramUrl)}" target="_blank" rel="noopener">Instagram</a></div></div></section>`);
-    const launcher = document.getElementById("tsSupportLauncher"), panel = document.getElementById("tsSupportPanel"), answer = document.getElementById("tsSupportAnswer"), form = document.getElementById("tsSupportForm"), input = document.getElementById("tsSupportInput"), send = form.querySelector("button");
-    function toggle(force) { const open = typeof force === "boolean" ? force : panel.hidden; panel.hidden = !open; launcher.setAttribute("aria-expanded", String(open)); if (open) panel.querySelector(".ts-support-question")?.focus(); }
-    function show(text) { answer.textContent = text; answer.hidden = false; answer.scrollIntoView({block:"nearest"}); }
-    launcher.addEventListener("click", () => toggle()); panel.querySelector(".ts-support-close").addEventListener("click", () => toggle(false));
-    panel.addEventListener("click", event => { const button = event.target.closest("[data-support-question]"); if (button) show(answers[button.dataset.supportQuestion]); });
-    document.addEventListener("keydown", event => { if (event.key === "Escape" && !panel.hidden) toggle(false); });
-    form.addEventListener("submit", async event => {
-      event.preventDefault(); const question = input.value.trim(); if (!question) return;
-      if (!cfg.aiEnabled || !cfg.aiEndpoint) { show("AI相談は現在テスト設定中です。よくある質問を選ぶか、LINEまたはInstagramからお問い合わせください。"); return; }
-      const day = new Date().toISOString().slice(0,10), key = `ts-support-ai-${day}`, used = Number(localStorage.getItem(key) || 0);
-      if (used >= Number(cfg.maxAiRequestsPerDay || 10)) { show("本日のAI相談回数に達しました。LINEまたはInstagramからお問い合わせください。"); return; }
-      send.disabled = true; show("回答を作成しています…");
-      try {
-        const response = await fetch(cfg.aiEndpoint, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify({ action:"support_chat", question, context:{ title:document.title, url:location.href, productId:document.body.dataset.productId || "" }}) });
-        const data = await response.json(); if (!response.ok || !data.ok || !data.answer) throw new Error(data.error || "AI response error");
-        localStorage.setItem(key, String(used + 1)); show(data.answer); input.value = "";
-      } catch (_) { show("AI相談に接続できませんでした。LINEまたはInstagramからお問い合わせください。"); }
-      finally { send.disabled = false; }
+  const esc = value => String(value || "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const loadHistory = () => { try { const value = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); return Array.isArray(value) ? value.slice(-30) : []; } catch (_) { return []; } };
+  let history = loadHistory();
+
+  function currentUnitPrice() {
+    const visible = document.querySelector(".current-price,.big-price,.product-info .price")?.textContent || "";
+    const digits = visible.replace(/[^\d]/g, "");
+    return digits ? Number(digits) : 4500;
+  }
+  function quantityFrom(question) {
+    const text = String(question || "").normalize("NFKC");
+    const patterns = [/(\d{1,4})\s*(?:枚|着|個|点|セット)/, /(\d{1,4})\s*(?:áo|ao|cái|cai|bộ|bo)\b/i, /(?:数量|số lượng|so luong)\s*[:：]?\s*(\d{1,4})/i];
+    for (const pattern of patterns) { const match = text.match(pattern); if (match) return Number(match[1]); }
+    if (/(?:いくら|価格|値段|合計|bao nhiêu|bao nhieu|giá|gia)/i.test(text)) { const match = text.match(/\b(\d{1,4})\b/); if (match) return Number(match[1]); }
+    return 0;
+  }
+  function priceAnswer(question) {
+    const quantity = quantityFrom(question); if (!quantity) return "";
+    const unit = currentUnitPrice(), total = unit * quantity, format = value => new Intl.NumberFormat("ja-JP").format(value);
+    return `${quantity}枚 × ¥${format(unit)} = ¥${format(total)}です。\nこれは表示単価による商品代の概算です。カスタム内容・送料などを含む最終金額は、製作前に担当者が確認します。`;
+  }
+  function lookupParameters(question) {
+    const order = String(question || "").toUpperCase().match(/TS-\d{8}-[A-Z0-9]{1,10}/)?.[0];
+    if (order) return { orderId: order };
+    const trackingIntent = /注文|配送|状況|追跡|伝票|電話|運送|order|tracking|mã|ma don|vận đơn|van don|số điện thoại|so dien thoai/i.test(question);
+    let phone = String(question || "").replace(/\D/g, "");
+    if (/^82\d{9,10}$/.test(phone)) phone = `0${phone.slice(2)}`;
+    if (!phone.startsWith("0") && /^\d{9,10}$/.test(phone)) phone = `0${phone}`;
+    return trackingIntent && /^0\d{8,10}$/.test(phone) ? { phone } : {};
+  }
+  function trackingRequest(parameters) {
+    return new Promise((resolve, reject) => {
+      if (!/^https:\/\/script\.google\.com\//.test(cfg.aiEndpoint)) return reject(new Error("注文照会サービスは接続されていません。"));
+      const callback = `__tsSupportLookup_${Date.now()}_${Math.random().toString(36).slice(2)}`, script = document.createElement("script"), url = new URL(cfg.aiEndpoint);
+      url.searchParams.set("mode", "lookup"); url.searchParams.set("callback", callback); Object.entries(parameters).forEach(([key,value]) => url.searchParams.set(key,value));
+      const cleanup = () => { delete window[callback]; script.remove(); clearTimeout(timer); };
+      const timer = setTimeout(() => { cleanup(); reject(new Error("注文照会がタイムアウトしました。")); }, 15000);
+      window[callback] = data => { cleanup(); resolve(data); }; script.onerror = () => { cleanup(); reject(new Error("注文照会サービスに接続できません。")); };
+      script.src = url.toString(); document.head.appendChild(script);
     });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount); else mount();
+  function trackingAnswer(data) {
+    if (!data?.ok) throw new Error(data?.error || "注文を照会できませんでした。");
+    if (!Array.isArray(data.orders) || !data.orders.length) return "一致する注文が見つかりません。注文番号または電話番号をご確認ください。";
+    const statuses={NEW:"受付済み",CONFIRMED:"注文確認",DESIGNING:"デザイン作業中",PRODUCTION:"制作中",SHIPPING:"配送中",COMPLETED:"完了",CANCELLED:"キャンセル"};
+    const summary=value=>String(value||"-").replace(/기존 디자인 유지/g,"既存デザインのまま").replace(/컬러 변경/g,"カラー変更を希望");
+    return data.orders.slice(0,3).map(order => {
+      const total = new Intl.NumberFormat("ja-JP").format(Number(order.totalPrice || 0));
+      return `注文番号：${order.orderId}\n状況：${statuses[order.statusKey] || order.status || "確認中"}\n注文日時：${order.placedAt || "-"}\n数量：${Number(order.totalQuantity || 0)}\n金額：¥${total}\n商品：${summary(order.summary)}${order.customerMessage ? `\nお知らせ：${order.customerMessage}` : ""}`;
+    }).join("\n\n");
+  }
+
+  function mount() {
+    if (document.getElementById("tsSupportLauncher")) return;
+    document.body.insertAdjacentHTML("beforeend", `<button id="tsSupportLauncher" class="ts-support-launcher" type="button" aria-label="サポートを開く" aria-expanded="false" aria-controls="tsSupportPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4v-4.5A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 12h5"/></svg></button><section id="tsSupportPanel" class="ts-support-panel" role="dialog" aria-modal="false" aria-labelledby="tsSupportTitle" hidden><header class="ts-support-head"><strong id="tsSupportTitle">TEAMSPIRIT-JP サポート</strong><button class="ts-support-reset" type="button">履歴を消去</button><button class="ts-support-close" type="button" aria-label="閉じる">×</button></header><div class="ts-support-body"><p class="ts-support-intro">ご質問を選択するか、下に入力してください。</p><div class="ts-support-questions">${questions.map(([key,label]) => `<button class="ts-support-question" type="button" data-support-question="${key}">${label}</button>`).join("")}</div><div id="tsSupportMessages" class="ts-support-messages" role="log" aria-live="polite"></div><p class="ts-support-api-note">その他のご質問・注文照会</p><form id="tsSupportForm" class="ts-support-form"><input id="tsSupportInput" class="ts-support-input" maxlength="500" placeholder="質問・注文番号・電話番号" aria-label="その他の質問"><button class="ts-support-send" type="submit">送信</button></form><div class="ts-support-links"><a class="ts-support-line" href="${esc(cfg.lineUrl)}" target="_blank" rel="noopener">LINE</a><a class="ts-support-instagram" href="${esc(cfg.instagramUrl)}" target="_blank" rel="noopener">Instagram</a></div></div></section>`);
+    const launcher=document.getElementById("tsSupportLauncher"), panel=document.getElementById("tsSupportPanel"), messages=document.getElementById("tsSupportMessages"), form=document.getElementById("tsSupportForm"), input=document.getElementById("tsSupportInput"), send=form.querySelector("button");
+    function render() { messages.innerHTML=history.map(item=>`<div class="ts-support-message ${item.role}"><small>${item.role === "user" ? "お客様" : "サポート"}</small><p>${esc(item.text)}</p></div>`).join(""); messages.scrollTop=messages.scrollHeight; }
+    function add(role,text) { history.push({role,text:String(text),at:Date.now()}); history=history.slice(-30); localStorage.setItem(HISTORY_KEY,JSON.stringify(history)); render(); }
+    function toggle(force){const open=typeof force==="boolean"?force:panel.hidden;panel.hidden=!open;launcher.setAttribute("aria-expanded",String(open));if(open){render();input.focus();}}
+    render(); launcher.addEventListener("click",()=>toggle()); panel.querySelector(".ts-support-close").addEventListener("click",()=>toggle(false));
+    panel.querySelector(".ts-support-reset").addEventListener("click",()=>{history=[];localStorage.removeItem(HISTORY_KEY);render();add("assistant","会話履歴を削除しました。新しいご質問をどうぞ。");});
+    panel.addEventListener("click",event=>{const button=event.target.closest("[data-support-question]");if(!button)return;const key=button.dataset.supportQuestion,label=questions.find(item=>item[0]===key)?.[1]||"";add("user",label);add("assistant",answers[key]);if(key==="tracking")input.focus();});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!panel.hidden)toggle(false);});
+    form.addEventListener("submit",async event=>{
+      event.preventDefault();const question=input.value.trim();if(!question)return;input.value="";add("user",question);send.disabled=true;
+      try {
+        const calculated=priceAnswer(question); if(calculated){add("assistant",calculated);return;}
+        const lookup=lookupParameters(question); if(lookup.orderId||lookup.phone){add("assistant","注文情報を確認しています…");const data=await trackingRequest(lookup);history.pop();add("assistant",trackingAnswer(data));return;}
+        if (/注文|配送|状況|追跡|伝票|運送|mã|van don|vận đơn|số điện thoại|so dien thoai/i.test(question) && !lookup.orderId && !lookup.phone){add("assistant",answers.tracking);return;}
+        if(!cfg.aiEnabled||!cfg.aiEndpoint){add("assistant","AI相談は現在利用できません。LINEまたはInstagramからお問い合わせください。");return;}
+        const day=new Date().toISOString().slice(0,10),key=`ts-support-ai-${day}`,used=Number(localStorage.getItem(key)||0);if(used>=Number(cfg.maxAiRequestsPerDay||10)){add("assistant","本日のAI相談回数に達しました。LINEまたはInstagramからお問い合わせください。");return;}
+        add("assistant","回答を作成しています…");
+        const recent=history.filter(item=>item.text!=="回答を作成しています…").slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,600)}));
+        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question,history:recent,context:{title:document.title,url:location.href,productId:location.pathname.match(/\/products\/([^/]+)/)?.[1]||"",unitPrice:currentUnitPrice()}})});
+        const data=await response.json();history.pop();if(!response.ok||!data.ok||!data.answer)throw new Error(data.error||"AI response error");localStorage.setItem(key,String(used+1));add("assistant",data.answer);
+      } catch(_){if(history.at(-1)?.text==="回答を作成しています…"||history.at(-1)?.text==="注文情報を確認しています…")history.pop();add("assistant","接続できませんでした。入力内容をご確認いただくか、LINEまたはInstagramからお問い合わせください。");}
+      finally{send.disabled=false;input.focus();}
+    });
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 })();
