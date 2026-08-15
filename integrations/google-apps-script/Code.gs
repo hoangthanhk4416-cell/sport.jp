@@ -180,6 +180,21 @@ function handleSupportChat_(payload) {
   }
 }
 
+function authorizeSupportChat() {
+  const properties = PropertiesService.getScriptProperties();
+  const apiKey = properties.getProperty("CHATANYWHERE_API_KEY");
+  if (!apiKey) throw new Error("CHATANYWHERE_API_KEY is not configured");
+  const response = UrlFetchApp.fetch("https://api.chatanywhere.org/v1/models", {
+    method: "get",
+    headers: { Authorization: `Bearer ${apiKey}` },
+    muteHttpExceptions: true,
+  });
+  const status = response.getResponseCode();
+  if (status < 200 || status >= 300) throw new Error(`ChatAnywhere authorization test failed: HTTP ${status}`);
+  console.log("TEAMSPIRIT-JP support chat authorization: OK");
+  return "OK";
+}
+
 function supportChatSystemPrompt_() {
   return [
     "You are the Japanese customer support assistant for TEAMSPIRIT-JP.",
