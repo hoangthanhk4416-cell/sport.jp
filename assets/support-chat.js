@@ -91,7 +91,9 @@
         const day=new Date().toISOString().slice(0,10),key=`ts-support-ai-${day}`,used=Number(localStorage.getItem(key)||0);if(used>=Number(cfg.maxAiRequestsPerDay||10)){add("assistant","本日のAI相談回数に達しました。LINEまたはInstagramからお問い合わせください。");return;}
         add("assistant","回答を作成しています…");
         const recent=history.filter(item=>item.text!=="回答を作成しています…").slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,600)}));
-        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question,history:recent,context:{title:document.title,url:location.href,productId:location.pathname.match(/\/products\/([^/]+)/)?.[1]||"",unitPrice:currentUnitPrice()}})});
+        const contextText=recent.slice(-4).map(item=>`${item.role==="assistant"?"サポート":"お客様"}: ${item.content}`).join("\n");
+        const contextualQuestion=`${contextText?`直前の会話:\n${contextText}\n`:""}現在の質問: ${question}`.slice(-500);
+        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question:contextualQuestion,history:recent,context:{title:document.title,url:location.href,productId:location.pathname.match(/\/products\/([^/]+)/)?.[1]||"",unitPrice:currentUnitPrice()}})});
         const data=await response.json();history.pop();if(!response.ok||!data.ok||!data.answer)throw new Error(data.error||"AI response error");localStorage.setItem(key,String(used+1));add("assistant",data.answer);
       } catch(_){if(history.at(-1)?.text==="回答を作成しています…"||history.at(-1)?.text==="注文情報を確認しています…")history.pop();add("assistant","接続できませんでした。入力内容をご確認いただくか、LINEまたはInstagramからお問い合わせください。");}
       finally{send.disabled=false;input.focus();}
