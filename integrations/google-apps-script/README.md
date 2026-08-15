@@ -36,3 +36,15 @@ In **Project Settings > Script Properties**, keep `SHEET_LAYOUT_VERSION` and add
 - `CHATANYWHERE_MODEL`: `gpt-4o-mini`.
 
 After replacing `Code.gs`, update the existing Web App deployment with a new version. Do not create a second order endpoint.
+
+## Multilingual store knowledge for the support bot
+
+After installing this version, run `setupBotKnowledgeSheets` once. It creates and seeds three editable tabs:
+
+- `BOT_KNOWLEDGE`: public store facts and policies.
+- `PRODUCTS`: public product facts, prices, sizes, fabrics, printing and URLs.
+- `BOT_FAQ`: approved answers and matching keywords.
+
+Only rows whose final `Bật` checkbox is selected are eligible for AI context. The script ranks rows against the current question and sends only a small relevant subset to the AI. It never sends `Đơn hàng`, `Chi tiết sản phẩm`, `Tra cứu vận đơn`, customer names, phone numbers or addresses to the AI.
+
+The website also sends the public title, meta description and a limited excerpt from the page currently being viewed. The assistant detects the customer's latest language and answers in that language. Staff can update the three bot tabs without changing website code or redeploying the Web App.

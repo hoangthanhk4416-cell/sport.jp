@@ -33,6 +33,12 @@
     const digits = visible.replace(/[^\d]/g, "");
     return digits ? Number(digits) : 4500;
   }
+  function currentPublicPageContext() {
+    const description=document.querySelector('meta[name="description"]')?.content||"";
+    const main=document.querySelector("main");
+    const pageExcerpt=String(main?.innerText||"").replace(/\s+/g," ").trim().slice(0,2500);
+    return {title:document.title,url:location.href,productId:location.pathname.match(/\/products\/([^/]+)/)?.[1]||"",unitPrice:currentUnitPrice(),description:description.slice(0,500),pageExcerpt};
+  }
   function quantityFrom(question) {
     const text = String(question || "").normalize("NFKC");
     const patterns = [/(\d{1,4})\s*(?:枚|着|個|点|セット)/, /(\d{1,4})\s*(?:áo|ao|cái|cai|bộ|bo)\b/i, /(?:数量|số lượng|so luong)\s*[:：]?\s*(\d{1,4})/i];
@@ -128,7 +134,7 @@
         const recent=history.filter(item=>item.text!=="回答を作成しています…").slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,600)}));
         const contextText=recent.slice(-4).map(item=>`${item.role==="assistant"?"サポート":"お客様"}: ${item.content}`).join("\n");
         const contextualQuestion=`${contextText?`直前の会話:\n${contextText}\n`:""}現在の質問: ${question}`.slice(-500);
-        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question:contextualQuestion,history:recent,context:{title:document.title,url:location.href,productId:location.pathname.match(/\/products\/([^/]+)/)?.[1]||"",unitPrice:currentUnitPrice()}})});
+        const response=await fetch(cfg.aiEndpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"support_chat",question:contextualQuestion,history:recent,context:currentPublicPageContext()})});
         const data=await response.json();history.pop();if(!response.ok||!data.ok||!data.answer)throw new Error(data.error||"AI response error");localStorage.setItem(key,String(used+1));add("assistant",data.answer);
       } catch(_){if(history.at(-1)?.text==="回答を作成しています…"||history.at(-1)?.text==="注文情報を確認しています…")history.pop();add("assistant","接続できませんでした。入力内容をご確認いただくか、LINEまたはInstagramからお問い合わせください。");}
       finally{send.disabled=false;input.focus();}
