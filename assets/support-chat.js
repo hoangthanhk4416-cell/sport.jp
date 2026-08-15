@@ -41,7 +41,7 @@
   }
   function guidedSalesAnswer(question) {
     const text = String(question || "").normalize("NFKC");
-    if (/(?:在庫|在庫あり|在庫切れ|品切れ|売り切れ|商品.*ある|モデル|デザイン|mẫu|mau|còn hàng|con hang|hết hàng|het hang)/i.test(text)) {
+    if (/(?:在庫|在庫あり|在庫切れ|品切れ|売り切れ|(?:商品|製品|TEAMSPIRIT-[A-Z0-9-]+).*(?:ある|あります|ございます|扱い)|モデル|デザイン|mẫu|mau|còn hàng|con hang|hết hàng|het hang)/i.test(text)) {
       return "ウェブサイトには現在も豊富な商品モデルをご用意しています。掲載モデルから選べるほか、ご希望に合わせたオリジナルデザインも承ります。高品質な生地を幅広く取り揃え、先進的なプリント技術で製作します。「注文・無料サンプル」ボタン、または下のLINEからお気軽にご相談ください。";
     }
     if (/(?:注文方法|注文したい|購入したい|申し込み|申込み|無料サンプル|発注|đặt hàng|dat hang|đăng ký|dang ky|mua hàng|mua hang)/i.test(text)) return answers.order;
