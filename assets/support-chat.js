@@ -134,7 +134,7 @@
         if (/(?:注文|配送).*(?:状況|確認|追跡)|追跡|伝票|運送状況|mã đơn|ma don|van don|vận đơn|số điện thoại|so dien thoai/i.test(question) && !lookup.orderId && !lookup.phone){add("assistant",answers.tracking);return;}
         const guided=guidedSalesAnswer(question); if(guided){add("assistant",guided);return;}
         if(!cfg.aiEnabled||!cfg.aiEndpoint){add("assistant","AI相談は現在利用できません。LINEまたはInstagramからお問い合わせください。");return;}
-        const day=new Date().toISOString().slice(0,10),key=`ts-support-ai-${day}`,used=Number(localStorage.getItem(key)||0);if(used>=Number(cfg.maxAiRequestsPerDay||10)){add("assistant","本日のAI相談回数に達しました。LINEまたはInstagramからお問い合わせください。");return;}
+        const day=new Date().toISOString().slice(0,10),key=`ts-support-ai-${day}`,used=Number(localStorage.getItem(key)||0);
         add("assistant","回答を作成しています…");
         const recent=history.filter(item=>item.text!=="回答を作成しています…").slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,600)}));
         const contextText=recent.slice(-4).map(item=>`${item.role==="assistant"?"サポート":"お客様"}: ${item.content}`).join("\n");

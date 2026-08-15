@@ -297,7 +297,8 @@ function consumeSupportChatQuota_() {
     const key = `SUPPORT_CHAT_COUNT_${day}`;
     const properties = PropertiesService.getScriptProperties();
     const count = Number(properties.getProperty(key) || 0);
-    if (count >= 100) throw new Error("Daily AI support limit reached");
+    const configuredLimit = Number(properties.getProperty("SUPPORT_CHAT_DAILY_LIMIT") || 1000);
+    if (count >= configuredLimit) throw new Error("Daily AI support limit reached");
     properties.setProperty(key, String(count + 1));
   } finally {
     lock.releaseLock();
