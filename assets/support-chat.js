@@ -11,10 +11,10 @@
   const answers = {
     price: "商品価格は各商品ページに ¥ で表示しています。現在、多くのユニフォームは1枚 ¥4,500です。枚数を入力すると合計金額を計算できます。例：「45枚はいくら？」",
     size: "上着は90(S)〜120(4XL)を目安にお選びいただけます。商品ページの画像2と下部のサイズ表で、着丈・身幅・肩幅・袖丈・身長・体重の目安をご確認ください。",
-    order: "商品ページの「注文・無料サンプル」を押し、サイズ、カラー、数量、背番号、マーキング名、ご要望、配送情報を入力してください。",
-    sample: "商品ページまたは商品一覧の「注文・無料サンプル」からお申し込みください。担当者がサンプル条件と製作内容を確認してご連絡します。",
+    order: "商品ページまたは商品一覧の「注文・無料サンプル」ボタンから、サイズ、カラー、数量、背番号、マーキング名、ご要望、配送情報を入力してご注文いただけます。詳しいご相談は、下のLINEからお気軽にお問い合わせください。",
+    sample: "商品ページまたは商品一覧の「注文・無料サンプル」ボタンからお申し込みいただけます。担当者がサンプル条件と製作内容を確認します。詳しいご相談は、下のLINEからお気軽にお問い合わせください。",
     delivery: "デザインと注文内容の確定後、製作・処理・配送の目安は約3〜9日です。確定日程は担当者からご案内します。",
-    custom: "はい。チームロゴ、カラー、背番号、選手名、フォントなどを変更できます。製作前に担当者がデザインと最終金額を確認します。",
+    custom: "はい。チームロゴ、カラー、背番号、選手名、フォントなどを変更でき、ご希望に合わせたオリジナルデザインも承ります。高品質な生地を幅広くご用意し、先進的なプリント技術で製作します。「注文・無料サンプル」ボタン、または下のLINEからお気軽にご相談ください。",
     tracking: "注文番号（例：TS-20260815-ABC123）または注文時の電話番号を入力してください。この画面でGoogle Sheetsの最新状況を確認します。",
     contact: "担当者への個別相談は、下のLINEまたはInstagramをご利用ください。"
   };
@@ -38,6 +38,17 @@
     const quantity = quantityFrom(question); if (!quantity) return "";
     const unit = currentUnitPrice(), total = unit * quantity, format = value => new Intl.NumberFormat("ja-JP").format(value);
     return `${quantity}枚 × ¥${format(unit)} = ¥${format(total)}です。\nこれは表示単価による商品代の概算です。カスタム内容・送料などを含む最終金額は、製作前に担当者が確認します。`;
+  }
+  function guidedSalesAnswer(question) {
+    const text = String(question || "").normalize("NFKC");
+    if (/(?:在庫|在庫あり|在庫切れ|品切れ|売り切れ|商品.*ある|モデル|デザイン|mẫu|mau|còn hàng|con hang|hết hàng|het hang)/i.test(text)) {
+      return "ウェブサイトには現在も豊富な商品モデルをご用意しています。掲載モデルから選べるほか、ご希望に合わせたオリジナルデザインも承ります。高品質な生地を幅広く取り揃え、先進的なプリント技術で製作します。「注文・無料サンプル」ボタン、または下のLINEからお気軽にご相談ください。";
+    }
+    if (/(?:注文方法|注文したい|購入したい|申し込み|申込み|無料サンプル|発注|đặt hàng|dat hang|đăng ký|dang ky|mua hàng|mua hang)/i.test(text)) return answers.order;
+    if (/(?:生地|素材|布|プリント|印刷|昇華|刺繍|fabric|vải|vai|chất liệu|chat lieu|in ấn|in an)/i.test(text)) {
+      return "用途やご希望に合わせて、高品質な生地を幅広くご用意しています。ロゴ・番号・文字・カラーは、先進的なプリント技術を使って製作できます。「注文・無料サンプル」ボタンからご要望を送るか、下のLINEから詳しくご相談ください。";
+    }
+    return "";
   }
   function lookupParameters(question) {
     const order = String(question || "").toUpperCase().match(/TS-\d{8}-[A-Z0-9]{1,10}/)?.[0];
@@ -86,7 +97,8 @@
       try {
         const calculated=priceAnswer(question); if(calculated){add("assistant",calculated);return;}
         const lookup=lookupParameters(question); if(lookup.orderId||lookup.phone){add("assistant","注文情報を確認しています…");const data=await trackingRequest(lookup);history.pop();add("assistant",trackingAnswer(data));return;}
-        if (/注文|配送|状況|追跡|伝票|運送|mã|van don|vận đơn|số điện thoại|so dien thoai/i.test(question) && !lookup.orderId && !lookup.phone){add("assistant",answers.tracking);return;}
+        if (/(?:注文|配送).*(?:状況|確認|追跡)|追跡|伝票|運送状況|mã đơn|ma don|van don|vận đơn|số điện thoại|so dien thoai/i.test(question) && !lookup.orderId && !lookup.phone){add("assistant",answers.tracking);return;}
+        const guided=guidedSalesAnswer(question); if(guided){add("assistant",guided);return;}
         if(!cfg.aiEnabled||!cfg.aiEndpoint){add("assistant","AI相談は現在利用できません。LINEまたはInstagramからお問い合わせください。");return;}
         const day=new Date().toISOString().slice(0,10),key=`ts-support-ai-${day}`,used=Number(localStorage.getItem(key)||0);if(used>=Number(cfg.maxAiRequestsPerDay||10)){add("assistant","本日のAI相談回数に達しました。LINEまたはInstagramからお問い合わせください。");return;}
         add("assistant","回答を作成しています…");
