@@ -57,6 +57,11 @@
   function guidedSalesAnswer(question) {
     const text = String(question || "").normalize("NFKC");
     const lang=questionLanguage(text);
+    if (/(?:giao hàng|giao hang|vận chuyển|van chuyen|ship|shipping|delivery|international|quốc tế|quoc te|việt nam|viet nam|海外配送|国際配送|発送|届け)/i.test(text)) {
+      if(lang==="vi") return "Có nhé. TEAMSPIRIT-JP nhận giao hàng quốc tế, bao gồm Việt Nam, đối với các đơn hàng số lượng lớn. Chi phí, phương thức vận chuyển và thời gian giao hàng sẽ được nhân viên xác nhận theo quốc gia, địa chỉ và số lượng đặt hàng. Bạn hãy bấm nút “Đặt hàng/Mẫu thử miễn phí” hoặc liên hệ LINE để được báo chi tiết nhé.";
+      if(lang==="en") return "Yes. TEAMSPIRIT-JP offers international delivery, including delivery to Vietnam, for large-quantity orders. Shipping cost, method and delivery time are confirmed according to the destination, address and order quantity. Please use the Order/Free Sample button or contact us on LINE for details.";
+      return "はい。TEAMSPIRIT-JPでは、大口注文を対象にベトナムを含む海外配送に対応しています。送料・配送方法・お届け日数は、配送先の国・住所・注文数量に応じて担当者が確認します。「注文・無料サンプル」ボタン、またはLINEから詳細をご相談ください。";
+    }
     if (/^(?:xin chào|chào|hello|hi|hey|こんにちは|こんばんは|おはよう)(?:[!！,.。\s]|$)/i.test(text)) {
       if(lang==="vi") return "Xin chào! TEAMSPIRIT-JP rất vui được hỗ trợ bạn. Bạn muốn tìm mẫu sản phẩm, xem giá, chọn kích cỡ, đặt hàng hay yêu cầu thiết kế riêng? Bạn cũng có thể bấm nút “Đặt hàng/Mẫu thử miễn phí” hoặc liên hệ LINE để được tư vấn chi tiết nhé.";
       if(lang==="en") return "Hello! Welcome to TEAMSPIRIT-JP. How can we help you with product models, prices, sizing, ordering or a custom design? You can also use the Order/Free Sample button or contact us on LINE for detailed advice.";
