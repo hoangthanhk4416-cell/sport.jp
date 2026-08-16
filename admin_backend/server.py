@@ -45,9 +45,7 @@ ONLINE_MODE = (
     or bool(os.environ.get("RENDER_SERVICE_ID"))
 )
 ADMIN_ORIGIN = os.environ.get("TEAMSPIRIT_ADMIN_ORIGIN", "https://teamspiritsport.jp").rstrip("/")
-SESSION_TTL = 12 * 60 * 60
-ADMIN_SESSIONS = {}
-ADMIN_SESSION_LOCK = threading.RLock()
+SESSION_TTL = 7 * 24 * 60 * 60
 
 
 def yen_price(value, fallback):
@@ -223,28 +221,40 @@ def save_settings(payload):
 
 
 def create_admin_session(username):
-    token = secrets.token_urlsafe(40)
-    with ADMIN_SESSION_LOCK:
-        now = time.time()
-        expired = [key for key, value in ADMIN_SESSIONS.items() if value[1] <= now]
-        for key in expired:
-            ADMIN_SESSIONS.pop(key, None)
-        ADMIN_SESSIONS[token] = (username, now + SESSION_TTL)
-    return token
+    payload = json.dumps({
+        "sub": str(username),
+        "exp": int(time.time()) + SESSION_TTL,
+        "nonce": secrets.token_urlsafe(12),
+    }, separators=(",", ":")).encode("utf-8")
+    encoded = base64.urlsafe_b64encode(payload).decode("ascii").rstrip("=")
+    signature = hmac.new(admin_session_secret_(), encoded.encode("ascii"), hashlib.sha256).digest()
+    signed = base64.urlsafe_b64encode(signature).decode("ascii").rstrip("=")
+    return f"{encoded}.{signed}"
 
 
 def valid_admin_session(token):
-    with ADMIN_SESSION_LOCK:
-        value = ADMIN_SESSIONS.get(str(token or ""))
-        if not value or value[1] <= time.time():
-            ADMIN_SESSIONS.pop(str(token or ""), None)
+    try:
+        encoded, supplied = str(token or "").split(".", 1)
+        expected = base64.urlsafe_b64encode(
+            hmac.new(admin_session_secret_(), encoded.encode("ascii"), hashlib.sha256).digest()
+        ).decode("ascii").rstrip("=")
+        if not hmac.compare_digest(supplied, expected):
             return False
-        return True
+        payload = json.loads(base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)))
+        return int(payload.get("exp") or 0) > int(time.time()) and hmac.compare_digest(
+            str(payload.get("sub") or ""), os.environ.get("TEAMSPIRIT_ADMIN_USERNAME", "admin")
+        )
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return False
 
 
 def revoke_admin_session(token):
-    with ADMIN_SESSION_LOCK:
-        ADMIN_SESSIONS.pop(str(token or ""), None)
+    return None
+
+
+def admin_session_secret_():
+    secret = os.environ.get("TEAMSPIRIT_SESSION_SECRET") or os.environ.get("TEAMSPIRIT_ADMIN_PASSWORD") or ""
+    return hashlib.sha256(("TEAMSPIRIT-JP:" + secret).encode("utf-8")).digest()
 
 
 SITE_DATA_RE = re.compile(r"<script>window\.SITE_DATA\s*=\s*(\{.*?\});</script>", re.S)
