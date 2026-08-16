@@ -39,7 +39,11 @@ DEFAULT_REPO = {
 TEXT_EXTENSIONS = {".html", ".css", ".js", ".json", ".xml", ".txt", ".md", ".yml", ".yaml"}
 MAX_BODY = 60 * 1024 * 1024
 SIZE_CHART_IMAGE = "/uploads/teamspirit-jp-size-chart.png"
-ONLINE_MODE = os.environ.get("TEAMSPIRIT_ONLINE") == "1"
+ONLINE_MODE = (
+    os.environ.get("TEAMSPIRIT_ONLINE") == "1"
+    or os.environ.get("RENDER", "").lower() == "true"
+    or bool(os.environ.get("RENDER_SERVICE_ID"))
+)
 ADMIN_ORIGIN = os.environ.get("TEAMSPIRIT_ADMIN_ORIGIN", "https://teamspiritsport.jp").rstrip("/")
 SESSION_TTL = 12 * 60 * 60
 ADMIN_SESSIONS = {}
