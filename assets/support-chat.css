@@ -6,7 +6,7 @@
 .ts-support-launcher:focus-visible,.ts-support-panel button:focus-visible,.ts-support-panel input:focus-visible,.ts-support-panel a:focus-visible{outline:3px solid #ffd24d;outline-offset:2px}
 .ts-support-panel{position:fixed;right:20px;bottom:90px;z-index:2147483000;width:min(460px,calc(100vw - 28px));height:min(720px,calc(100vh - 112px));background:#fff;border:1px solid #dce4e2;border-radius:17px;box-shadow:0 18px 55px rgba(0,0,0,.25);overflow:hidden;color:#16201f;font:14px/1.45 Arial,"Noto Sans JP",sans-serif;display:flex;flex-direction:column}
 .ts-support-panel[hidden]{display:none}
-.ts-support-head{display:flex;flex:0 0 auto;align-items:center;justify-content:space-between;padding:13px 15px;background:#0c2522;color:#fff}
+.ts-support-head{display:flex;flex:0 0 auto;align-items:center;justify-content:space-between;width:100%!important;max-width:none!important;min-height:0!important;height:auto!important;margin:0!important;padding:10px 13px;background:#0c2522;color:#fff;box-sizing:border-box}
 .ts-support-head strong{font-size:15px;flex:1}.ts-support-reset{border:0;background:transparent;color:#b9d8d3;font-size:11px;text-decoration:underline;cursor:pointer;margin-right:8px}.ts-support-close{border:0;background:transparent;color:#fff;font-size:25px;line-height:1;cursor:pointer}
 .ts-support-body{padding:12px;min-height:0;flex:1;display:flex;flex-direction:column;overflow:hidden}
 .ts-support-intro{margin:0 0 8px;color:#52605e;font-size:12px}
