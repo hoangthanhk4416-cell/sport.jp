@@ -999,6 +999,12 @@ def choose_port(start=4208, end=4220):
 
 
 if __name__ == "__main__":
+    if ONLINE_MODE:
+        try:
+            synced = sync_site()
+            print(f"TEAMSPIRIT-JP startup sync: {synced.get('mode', 'ok')}")
+        except Exception as sync_error:
+            print(f"TEAMSPIRIT-JP startup sync warning: {sync_error}")
     port = int(os.environ.get("PORT") or os.environ.get("TEAMSPIRIT_PORT") or choose_port())
     url = f"http://127.0.0.1:{port}/editor/"
     if sys.stdout:
