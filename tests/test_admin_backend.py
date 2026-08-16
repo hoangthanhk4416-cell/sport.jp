@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import threading
+import tempfile
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -48,6 +49,32 @@ try:
     assert status == 200 and data["authenticated"] is True
     status, data = request("/api/site", token=token)
     assert status == 200 and isinstance(data.get("products"), list)
+    original_root, original_request = server.SITE_ROOT, server.github_request
+    calls = []
+    with tempfile.TemporaryDirectory() as folder:
+        server.SITE_ROOT = Path(folder)
+        (server.SITE_ROOT / "index.html").write_text("<h1>atomic publish</h1>", encoding="utf-8")
+        def fake_github_request(_settings, method, path, payload=None):
+            calls.append((method, path, payload))
+            if method == "GET" and "/git/ref/" in path:
+                return {"object": {"sha": "commit-old"}}
+            if method == "GET" and "/git/trees/" in path:
+                return {"tree": []}
+            if method == "POST" and path.endswith("/git/trees"):
+                assert payload["tree"][0]["path"] == "index.html"
+                assert payload["tree"][0]["content"] == "<h1>atomic publish</h1>"
+                return {"sha": "tree-new"}
+            if method == "POST" and path.endswith("/git/commits"):
+                return {"sha": "commit-new"}
+            if method == "PATCH" and "/git/refs/heads/" in path:
+                assert payload == {"sha": "commit-new", "force": False}
+                return {"object": {"sha": "commit-new"}}
+            raise AssertionError((method, path))
+        server.github_request = fake_github_request
+        published = server.publish_api({"owner": "owner", "repo": "repo", "branch": "main", "token": "test"})
+        assert published["uploaded"] == ["index.html"]
+        assert len([item for item in calls if item[0] == "PATCH"]) == 1
+    server.SITE_ROOT, server.github_request = original_root, original_request
     print("test_admin_backend.py: PASS")
 finally:
     httpd.shutdown()

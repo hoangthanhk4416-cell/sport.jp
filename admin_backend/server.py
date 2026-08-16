@@ -657,6 +657,7 @@ def publish_api(settings):
     }
     uploaded = []
     skipped = []
+    tree_items = []
     for path in sorted(SITE_ROOT.rglob("*")):
         if not path.is_file():
             continue
@@ -666,16 +667,32 @@ def publish_api(settings):
         if sha == git_blob_sha(content):
             skipped.append(rel)
             continue
-        api_path = f"/repos/{owner}/{repo}/contents/{urllib.parse.quote(rel)}"
-        payload = {"message": f"Update {rel} from TEAMSPIRIT Editor", "content": base64.b64encode(content).decode("ascii"), "branch": branch}
-        if sha:
-            payload["sha"] = sha
-        github_request(settings, "PUT", api_path, payload)
+        if path.suffix.lower() in TEXT_EXTENSIONS:
+            tree_items.append({"path": rel, "mode": "100644", "type": "blob", "content": content.decode("utf-8")})
+        else:
+            blob = github_request(settings, "POST", f"/repos/{owner}/{repo}/git/blobs", {
+                "content": base64.b64encode(content).decode("ascii"),
+                "encoding": "base64",
+            })
+            tree_items.append({"path": rel, "mode": "100644", "type": "blob", "sha": blob.get("sha")})
         uploaded.append(rel)
     if not uploaded:
         message = f"Không có tệp thay đổi; đã bỏ qua {len(skipped)} tệp không đổi"
     else:
-        message = f"Đã tải nhanh {len(uploaded)} tệp thay đổi/thêm mới; bỏ qua {len(skipped)} tệp không đổi"
+        new_tree = github_request(settings, "POST", f"/repos/{owner}/{repo}/git/trees", {
+            "base_tree": commit_sha,
+            "tree": tree_items,
+        })
+        new_commit = github_request(settings, "POST", f"/repos/{owner}/{repo}/git/commits", {
+            "message": f"Update {len(uploaded)} files from TEAMSPIRIT Editor",
+            "tree": new_tree.get("sha"),
+            "parents": [commit_sha],
+        })
+        github_request(settings, "PATCH", f"/repos/{owner}/{repo}/git/refs/heads/{encoded_branch}", {
+            "sha": new_commit.get("sha"),
+            "force": False,
+        })
+        message = f"Đã đăng {len(uploaded)} tệp trong 1 commit; bỏ qua {len(skipped)} tệp không đổi"
     return {"mode": "api-incremental", "message": message, "uploaded": uploaded, "skipped": skipped}
 
 
