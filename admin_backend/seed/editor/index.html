@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TEAMSPIRIT-JP Workspace</title>
+  <link rel="stylesheet" href="/editor/editor.css">
+  <link rel="stylesheet" href="/editor/reviews.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-block"><span class="brand-mark">JP</span><div><h1>TEAMSPIRIT-JP Editor</h1><p>Quản trị website Nhật cho người dùng thường</p></div></div>
+    <div class="primary-actions">
+      <button class="button success" id="publishButton">Đăng lên website</button>
+      <button class="button" id="saveButton">Lưu thay đổi</button>
+      <button class="button ghost" id="previewButton">Xem trước website</button>
+    </div>
+    <nav id="navigation">
+      <button class="nav-item active" data-panel="dashboard">Tổng quan</button>
+      <button class="nav-item" data-panel="home">Trang chủ & banner</button>
+      <button class="nav-item" data-panel="contacts">Liên hệ & đặt hàng</button>
+      <button class="nav-item" data-panel="products">Sản phẩm</button>
+      <button class="nav-item" data-panel="kits">Team Kits</button>
+      <button class="nav-item" data-panel="articles">Blog & bài viết</button>
+      <button class="nav-item" data-panel="seo">SEO tự động</button>
+      <button class="nav-item" data-panel="github">Xuất bản website</button>
+    </nav>
+    <div class="status" id="status">Đang tải dữ liệu...</div>
+  </aside>
+
+  <main class="workspace">
+    <header class="workspace-header"><div><p class="eyebrow">teamspiritsport.jp</p><h2 id="panelTitle">Tổng quan</h2></div><div class="header-actions"><span id="saveState" class="save-state">Đã lưu</span><button class="button small ghost" id="syncButton">Đồng bộ từ GitHub</button></div></header>
+
+    <section class="panel active" id="dashboard">
+      <div class="stats" id="stats"></div>
+      <div class="card"><h3>Bắt đầu nhanh</h3><div class="quick-grid"><button data-open-panel="home">Thay banner và chữ chạy</button><button data-open-panel="products">Thêm sản phẩm</button><button data-open-panel="articles">Viết bài mới</button><button data-open-panel="github">Đăng website</button></div></div>
+      <div class="card"><h3>Nguyên tắc hoạt động</h3><p>Mọi thay đổi được lưu trong thư mục dữ liệu riêng. Hãy dùng <b>Xem trước website</b> trước, sau đó bấm <b>Đăng lên website</b>. Trước khi đồng bộ từ GitHub, editor tự tạo một bản sao lưu ZIP.</p><p class="muted" id="dataFolder"></p></div>
+    </section>
+
+    <section class="panel" id="home">
+      <div class="card"><h3>Thương hiệu và chữ chạy đầu trang</h3><div class="form-grid"><label>Tên thương hiệu<input data-site="brand"></label><label>Chế độ thông báo<select data-site="noticeMotion"><option value="scroll">Chạy ngang</option><option value="static">Đứng yên</option></select></label><label class="span-2">Nội dung thông báo<textarea data-site="topNotice"></textarea></label><label>Tốc độ chạy (giây)<input data-site="noticeSpeed" type="number" min="5" max="90"></label></div></div>
+      <div class="card"><div class="section-heading"><div><h3>Banner trang chủ</h3><p>Kéo thả hoặc chọn nhiều ảnh; có thể thay đổi thứ tự.</p></div><label class="button small">+ Thêm banner<input id="bannerFiles" type="file" accept="image/*" multiple hidden></label></div><div class="banner-grid" id="bannerList"></div></div>
+      <div class="card"><h3>Nội dung khu vực đầu trang</h3><div class="form-grid"><label>Tiêu đề<input data-site="heroTitle"></label><label>Chữ nút<input data-site="heroButton"></label><label class="span-2">Mô tả<textarea data-site="heroText"></textarea></label></div></div>
+    </section>
+
+    <section class="panel" id="contacts">
+      <div class="card"><h3>Liên kết mặc định</h3><p class="muted">Sản phẩm để trống liên kết riêng sẽ tự dùng liên kết mặc định này.</p><div class="form-grid"><label>LINE mặc định<input data-site="defaultLINELink" placeholder="https://line.me/..."></label><label>Instagram mặc định<input data-site="defaultInstagramLink" placeholder="https://instagram.com/..."></label></div></div>
+      <div class="card"><h3>Thông tin cửa hàng</h3><div class="form-grid"><label>Số điện thoại<input data-site="footerPhone"></label><label>Link YouTube embed<input data-site="youtubeUrl"></label></div></div>
+    </section>
+
+
+    <section class="panel" id="products">
+      <div class="card"><div class="section-heading"><div><h3>Danh sách sản phẩm</h3><p>Thêm sản phẩm riêng cho từng danh mục, ảnh, giá, size và liên hệ.</p></div><button class="button small" id="addProductButton">+ Thêm sản phẩm</button></div><div class="category-tabs" id="productFilters"></div><div id="productList"></div></div>
+    </section>
+
+    <section class="panel" id="kits"><div class="card"><div class="section-heading"><div><h3>Team Kits</h3><p>Mỗi slide gồm ảnh lớn và danh sách ID sản phẩm.</p></div><button class="button small" id="addKitButton">+ Thêm slide</button></div><div id="kitList"></div></div></section>
+
+    <section class="panel" id="articles">
+      <div class="card"><div class="section-heading"><div><h3>Blog và bài viết</h3><p>Tạo bài báo, bài sự kiện, feedback khách hàng hoặc câu chuyện đội bóng. Mục này chỉ quản lý bài viết blog, không hiển thị trang chức năng.</p></div><button class="button small" id="newArticleButton">+ Viết bài mới</button></div><div id="pageList" class="page-list"></div></div>
+    </section>
+
+    <section class="panel" id="seo">
+      <div class="card">
+        <div class="section-heading">
+          <div><h3>Kiểm tra SEO sản phẩm</h3><p>App tự tạo URL sản phẩm, canonical, Product schema, sitemap và robots khi lưu/đăng website. Mục này chỉ báo lỗi cần sửa trước khi gửi Google Search Console.</p></div>
+          <button class="button small" id="refreshSeoButton">Kiểm tra lại</button>
+        </div>
+        <div class="seo-summary" id="seoSummary"></div>
+        <div class="seo-table-wrap"><table class="seo-table"><thead><tr><th>Sản phẩm</th><th>URL</th><th>Trạng thái</th></tr></thead><tbody id="seoRows"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="panel" id="github">
+      <div class="card"><h3>Đăng website</h3><div class="form-grid"><label>Tài khoản GitHub<input data-setting="owner"></label><label>Tên kho website<input data-setting="repo"></label><label>Nhánh đăng website<input data-setting="branch"></label><label>GitHub token<input data-setting="token" type="password" autocomplete="off" placeholder="Dán token mới nếu cần đăng website"></label><label class="span-2">Thư mục website trên máy nếu có<input data-setting="localRepo" placeholder="Có thể để trống"></label><label class="span-2">Địa chỉ website<input data-setting="siteUrl"></label></div><div class="button-row"><button class="button" id="saveSettingsButton">Lưu cấu hình</button><button class="button success" id="publishSettingsButton">Đăng lên website</button><button class="button ghost" id="openLiveButton">Mở website thật</button></div><p class="muted">Token được lưu mã hóa trên máy. Người dùng chỉ cần dán token khi đổi máy hoặc token cũ hết hạn.</p></div>
+      <div class="card"><h3>Sao lưu và đồng bộ</h3><div class="button-row"><button class="button ghost" id="exportButton">Xuất ZIP website</button><button class="button danger" id="syncSettingsButton">Đồng bộ bản mới nhất từ GitHub</button></div></div>
+    </section>
+
+  </main>
+</div>
+
+<dialog id="articleDialog"><form method="dialog" class="dialog-card"><div class="section-heading"><h3>Viết bài mới</h3><button class="icon-button" value="cancel">×</button></div><label>Tiêu đề<input id="articleTitle"></label><label>Đường dẫn<input id="articleSlug" placeholder="huong-dan-moi"></label><label>Mô tả SEO<textarea id="articleDescription"></textarea></label><label>Nội dung bài viết<div class="rich-toolbar"><button type="button" data-command="bold"><b>B</b></button><button type="button" data-command="italic"><i>I</i></button><button type="button" data-command="formatBlock" data-value="h2">H2</button><button type="button" id="insertArticleImage">Ảnh</button></div><div id="articleBody" class="rich-editor" contenteditable="true"></div></label><input id="articleImageFile" type="file" accept="image/*" hidden><div class="button-row"><button value="cancel" class="button ghost">Hủy</button><button type="button" class="button success" id="createArticleButton">Tạo bài viết</button></div></form></dialog>
+
+<script src="/editor/editor.js?v=1.1.3"></script>
+</body>
+</html>

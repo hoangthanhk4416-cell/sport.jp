@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="TeamSpirit Sport">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g fill="#000000">
+    <path d="M66 96h205l-27 54H91z"/>
+    <path d="M112 174h113l-23 46h-67z"/>
+    <path d="M304 96h159l-28 54H334L186 416l-36-59L304 96z"/>
+    <path d="M350 174h132l-28 54H379L252 448l-36-59L350 174z"/>
+  </g>
+</svg>
