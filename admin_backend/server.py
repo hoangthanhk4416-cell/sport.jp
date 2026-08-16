@@ -836,7 +836,14 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError("Đường dẫn không hợp lệ")
                 return self.serve_file(target)
             if path == "/api/health":
-                return self.send_json({"ok": True, "name": APP_NAME, "root": str(ROOT), "sessionMode": "signed-v2"})
+                return self.send_json({
+                    "ok": True,
+                    "name": APP_NAME,
+                    "root": str(ROOT),
+                    "sessionMode": "signed-v2",
+                    "publishMode": "atomic-v2",
+                    "startupSync": ONLINE_MODE,
+                })
             if path == "/api/auth/me":
                 return self.send_json({"ok": True, "authenticated": valid_admin_session(self.bearer_token())})
             if path.startswith("/api/") and not self.require_admin():
