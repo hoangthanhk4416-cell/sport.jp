@@ -1,0 +1,2379 @@
+{
+  "site": "https://teamspiritsport.jp/",
+  "generated": "2026-08-20",
+  "pages": 135,
+  "issue_count": 219,
+  "issues": [
+    {
+      "url": "https://teamspiritsport.jp/",
+      "type": "multiple_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/language/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/line/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/login/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/login/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/orders/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/signup/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/signup/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/away-white/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/away-white/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/away-white/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new32/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new32/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new32/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new32/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new33/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new33/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new33/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new33/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new34/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new34/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new34/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new34/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new35/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new35/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new35/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new35/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new36/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new36/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new36/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new36/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new37/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new37/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new37/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new37/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new38/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new38/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new38/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new38/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new39/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new39/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new39/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new39/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new40/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new40/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new40/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new40/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new41/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new41/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new41/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new41/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new42/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new42/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new42/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new42/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new43/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new43/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new43/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new43/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new44/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new44/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new44/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new44/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new45/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new45/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new45/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new45/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new46/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new46/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new46/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new46/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new47/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new47/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new47/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new47/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new48/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new48/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new48/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new48/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new49/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new49/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new49/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new49/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new50/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new50/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new50/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new50/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new51/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new51/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new51/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new51/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new52/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new52/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new52/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new52/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr01/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr01/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr01/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr01/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr03/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr03/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr03/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr03/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr04/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr04/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr04/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr04/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr05/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr05/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr05/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr05/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr06/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr06/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr06/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr06/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr07/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr07/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr07/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr07/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr08/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr08/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr08/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr08/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr09/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr09/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr09/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr09/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr10/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr10/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr10/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr10/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr11/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr11/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr11/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr11/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr12/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr12/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr12/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr12/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr13/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr13/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr13/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr13/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr14/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr14/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr14/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr14/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr15/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr15/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr15/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr15/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr16/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr16/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr16/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr16/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr17/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr17/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr17/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr17/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr18/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr18/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr18/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr18/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr19/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr19/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr19/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr19/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr20/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr20/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr20/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr20/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr21/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr21/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr21/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr21/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr22/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr22/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr22/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr22/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr23/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr23/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr23/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr23/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr24/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr24/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr24/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr24/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr25/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr25/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr25/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr25/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr26/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr26/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr26/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr26/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr27/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr27/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr27/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr27/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr28/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr28/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr28/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr28/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr29/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr29/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr29/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr29/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr30/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr30/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr30/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr30/",
+      "type": "noindex"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr31/",
+      "type": "missing_meta_description"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr31/",
+      "type": "canonical_mismatch"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr31/",
+      "type": "missing_h1"
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr31/",
+      "type": "noindex"
+    }
+  ],
+  "details": [
+    {
+      "url": "https://teamspiritsport.jp/about/",
+      "title": "TEAMSPIRIT-JPについて | TEAMSPIRIT-JP",
+      "description_length": 49,
+      "canonical": "https://teamspiritsport.jp/about/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/blog/custom-football-uniform/",
+      "title": "カスタムサッカーユニフォームの選び方 | TEAMSPIRIT-JP",
+      "description_length": 27,
+      "canonical": "https://teamspiritsport.jp/blog/custom-football-uniform/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/blog/football-uniform-production/",
+      "title": "サッカーユニフォーム製作ガイド | TEAMSPIRIT-JP",
+      "description_length": 36,
+      "canonical": "https://teamspiritsport.jp/blog/football-uniform-production/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/blog/group-uniform-order/",
+      "title": "団体ユニフォームの注文方法 | TEAMSPIRIT-JP",
+      "description_length": 26,
+      "canonical": "https://teamspiritsport.jp/blog/group-uniform-order/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/blog/",
+      "title": "カスタムユニフォーム製作ガイド | TEAMSPIRIT-JP",
+      "description_length": 32,
+      "canonical": "https://teamspiritsport.jp/blog/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/blog/teamwear-custom-production/",
+      "title": "チームウェア製作チェックリスト | TEAMSPIRIT-JP",
+      "description_length": 21,
+      "canonical": "https://teamspiritsport.jp/blog/teamwear-custom-production/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/accessory/",
+      "title": "アクセサリー | TEAMSPIRIT-JP",
+      "description_length": 29,
+      "canonical": "https://teamspiritsport.jp/collections/accessory/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/all-products/",
+      "title": "全商品 | TEAMSPIRIT-JP",
+      "description_length": 45,
+      "canonical": "https://teamspiritsport.jp/collections/all-products/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/custom/",
+      "title": "カスタムユニフォーム | TEAMSPIRIT-JP",
+      "description_length": 32,
+      "canonical": "https://teamspiritsport.jp/collections/custom/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/football/",
+      "title": "サッカーウェア | TEAMSPIRIT-JP",
+      "description_length": 30,
+      "canonical": "https://teamspiritsport.jp/collections/football/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/halfzip/",
+      "title": "ハーフジップ | TEAMSPIRIT-JP",
+      "description_length": 26,
+      "canonical": "https://teamspiritsport.jp/collections/halfzip/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/paddedvest/",
+      "title": "패딩베스트 | TEAMSPIRIT-JP",
+      "description_length": 22,
+      "canonical": "https://teamspiritsport.jp/collections/paddedvest/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/trackjacket/",
+      "title": "トラックジャケット | TEAMSPIRIT-JP",
+      "description_length": 28,
+      "canonical": "https://teamspiritsport.jp/collections/trackjacket/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/uniform/",
+      "title": "ユニフォーム | TEAMSPIRIT-JP",
+      "description_length": 22,
+      "canonical": "https://teamspiritsport.jp/collections/uniform/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/collections/windbreaker/",
+      "title": "ウィンドブレーカー | TEAMSPIRIT-JP",
+      "description_length": 27,
+      "canonical": "https://teamspiritsport.jp/collections/windbreaker/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/contact/",
+      "title": "お問い合わせ | TEAMSPIRIT-JP",
+      "description_length": 39,
+      "canonical": "https://teamspiritsport.jp/contact/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/",
+      "title": "Teamspirit-JP",
+      "description_length": 103,
+      "canonical": "https://teamspiritsport.jp/",
+      "h1_count": 2,
+      "broken_internal_links": [],
+      "issues": [
+        "multiple_h1"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/color-font-guide/",
+      "title": "ユニフォーム カラー & フォント ガイド | TEAMSPIRIT-jp",
+      "description_length": 44,
+      "canonical": "https://teamspiritsport.jp/pages/color-font-guide/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/custom-uniform-order/",
+      "title": "ユニフォーム 注文 デザイン お問い合わせ 方法 | TEAMSPIRIT-jp",
+      "description_length": 52,
+      "canonical": "https://teamspiritsport.jp/pages/custom-uniform-order/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/language/",
+      "title": "選択 | TEAMSPIRIT-jp",
+      "description_length": 18,
+      "canonical": "https://teamspiritsport.jp/pages/language/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/line/",
+      "title": "LINE 相談 | TEAMSPIRIT-jp",
+      "description_length": 26,
+      "canonical": "https://teamspiritsport.jp/pages/line/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/login/",
+      "title": "ログイン | TEAMSPIRIT-jp",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/pages/login/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/order-form-guide/",
+      "title": "ユニフォーム 注文 作成 方法 | TEAMSPIRIT-jp",
+      "description_length": 50,
+      "canonical": "https://teamspiritsport.jp/pages/order-form-guide/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/orders/",
+      "title": "注文・配送状況 | TEAMSPIRIT-jp",
+      "description_length": 46,
+      "canonical": "https://teamspiritsport.jp/pages/orders/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/signup/",
+      "title": "新規登録 | TEAMSPIRIT-jp",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/pages/signup/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/pages/team-custom-faq/",
+      "title": "TEAMSPIRIT-jp ガイド FAQ",
+      "description_length": 58,
+      "canonical": "https://teamspiritsport.jp/pages/team-custom-faq/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/privacy/",
+      "title": "プライバシーポリシー | TEAMSPIRIT-JP",
+      "description_length": 44,
+      "canonical": "https://teamspiritsport.jp/privacy/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/away-white/",
+      "title": "商品 | TEAMSPIRIT-jp",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new32/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp32/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new33/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp33/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new34/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp34/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new35/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp35/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new36/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp36/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new37/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp37/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new38/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp38/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new39/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp39/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new40/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp40/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new41/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp41/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new42/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp42/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new43/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp43/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new44/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp44/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new45/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp45/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new46/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp46/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new47/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp47/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new48/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp48/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new49/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp49/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new50/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp50/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new51/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp51/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp-new52/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp52/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp01/",
+      "title": "TEAMSPIRIT-JP01 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp01/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp02/",
+      "title": "TEAMSPIRIT-JP02 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp02/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp03/",
+      "title": "TEAMSPIRIT-JP03 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp03/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp04/",
+      "title": "TEAMSPIRIT-JP04 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp04/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp05/",
+      "title": "TEAMSPIRIT-JP05 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp05/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp06/",
+      "title": "TEAMSPIRIT-JP06 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp06/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp07/",
+      "title": "TEAMSPIRIT-JP07 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp07/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp08/",
+      "title": "TEAMSPIRIT-JP08 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp08/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp09/",
+      "title": "TEAMSPIRIT-JP09 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp09/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp10/",
+      "title": "TEAMSPIRIT-JP10 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp10/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp11/",
+      "title": "TEAMSPIRIT-JP11 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp11/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp12/",
+      "title": "TEAMSPIRIT-JP12 | TEAMSPIRIT-JP",
+      "description_length": 90,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp12/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp13/",
+      "title": "TEAMSPIRIT-JP13 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp13/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp14/",
+      "title": "TEAMSPIRIT-JP14 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp14/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp15/",
+      "title": "TEAMSPIRIT-JP15 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp15/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp16/",
+      "title": "TEAMSPIRIT-JP16 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp16/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp17/",
+      "title": "TEAMSPIRIT-JP17 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp17/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp18/",
+      "title": "TEAMSPIRIT-JP18 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp18/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp19/",
+      "title": "TEAMSPIRIT-JP19 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp19/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp20/",
+      "title": "TEAMSPIRIT-JP20 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp20/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp21/",
+      "title": "TEAMSPIRIT-JP21 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp21/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp22/",
+      "title": "TEAMSPIRIT-JP22 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp22/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp23/",
+      "title": "TEAMSPIRIT-JP23 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp23/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp24/",
+      "title": "TEAMSPIRIT-JP24 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp24/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp25/",
+      "title": "TEAMSPIRIT-JP25 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp25/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp26/",
+      "title": "TEAMSPIRIT-JP26 | TEAMSPIRIT-JP",
+      "description_length": 71,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp26/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp27/",
+      "title": "TEAMSPIRIT-JP27 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp27/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp28/",
+      "title": "TEAMSPIRIT-JP28 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp28/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp29/",
+      "title": "TEAMSPIRIT-JP29 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp29/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp30/",
+      "title": "TEAMSPIRIT-JP30 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp30/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp31/",
+      "title": "TEAMSPIRIT-JP31 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp31/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp32/",
+      "title": "TEAMSPIRIT-JP32 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp32/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp33/",
+      "title": "TEAMSPIRIT-JP33 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp33/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp34/",
+      "title": "TEAMSPIRIT-JP34 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp34/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp35/",
+      "title": "TEAMSPIRIT-JP35 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp35/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp36/",
+      "title": "TEAMSPIRIT-JP36 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp36/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp37/",
+      "title": "TEAMSPIRIT-JP37 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp37/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp38/",
+      "title": "TEAMSPIRIT-JP38 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp38/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp39/",
+      "title": "TEAMSPIRIT-JP39 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp39/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp40/",
+      "title": "TEAMSPIRIT-JP40 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp40/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp41/",
+      "title": "TEAMSPIRIT-JP41 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp41/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp42/",
+      "title": "TEAMSPIRIT-JP42 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp42/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp43/",
+      "title": "TEAMSPIRIT-JP43 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp43/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp44/",
+      "title": "TEAMSPIRIT-JP44 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp44/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp45/",
+      "title": "TEAMSPIRIT-JP45 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp45/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp46/",
+      "title": "TEAMSPIRIT-JP46 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp46/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp47/",
+      "title": "TEAMSPIRIT-JP47 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp47/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp48/",
+      "title": "TEAMSPIRIT-JP48 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp48/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp49/",
+      "title": "TEAMSPIRIT-JP49 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp49/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp50/",
+      "title": "TEAMSPIRIT-JP50 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp50/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp51/",
+      "title": "TEAMSPIRIT-JP51 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp51/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp52/",
+      "title": "TEAMSPIRIT-JP52 | TEAMSPIRIT-JP",
+      "description_length": 68,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp52/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-jp53/",
+      "title": "おまけの数量を確認します。 | TEAMSPIRIT-JP",
+      "description_length": 66,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp53/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr01/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp01/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr02/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp02/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr03/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp03/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr04/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp04/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr05/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp05/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr06/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp06/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr07/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp07/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr08/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp08/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr09/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp09/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr10/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp10/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr11/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp11/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr12/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp12/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr13/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp13/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr14/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp14/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr15/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp15/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr16/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp16/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr17/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp17/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr18/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp18/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr19/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp19/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr20/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp20/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr21/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp21/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr22/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp22/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr23/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp23/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr24/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp24/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr25/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp25/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr26/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp26/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr27/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp27/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr28/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp28/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr29/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp29/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr30/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp30/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/products/teamspirit-kr31/",
+      "title": "?????? | TEAMSPIRIT-JP",
+      "description_length": 0,
+      "canonical": "https://teamspiritsport.jp/products/teamspirit-jp31/",
+      "h1_count": 0,
+      "broken_internal_links": [],
+      "issues": [
+        "missing_meta_description",
+        "canonical_mismatch",
+        "missing_h1",
+        "noindex"
+      ]
+    },
+    {
+      "url": "https://teamspiritsport.jp/returns/",
+      "title": "返品・交換について | TEAMSPIRIT-JP",
+      "description_length": 31,
+      "canonical": "https://teamspiritsport.jp/returns/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    },
+    {
+      "url": "https://teamspiritsport.jp/shipping/",
+      "title": "配送について | TEAMSPIRIT-JP",
+      "description_length": 29,
+      "canonical": "https://teamspiritsport.jp/shipping/",
+      "h1_count": 1,
+      "broken_internal_links": [],
+      "issues": []
+    }
+  ]
+}
