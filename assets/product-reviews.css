@@ -63,6 +63,7 @@
  .head .nav {
   grid-template-columns: minmax(145px, auto) minmax(0, 1fr) !important;
   align-items: center !important;
+  column-gap: 14px !important;
  }
 
  .head .brand {
@@ -86,6 +87,7 @@
   grid-row: 1 !important;
   display: flex !important;
   align-items: center !important;
+  justify-content: flex-end !important;
   align-self: center !important;
   min-width: 0 !important;
   margin: 0 !important;
@@ -95,9 +97,10 @@
  .head .site-search {
   display: flex !important;
   align-items: center !important;
-  width: 100% !important;
+  width: calc(100% - 10px) !important;
+  max-width: 210px !important;
   height: 31px !important;
-  margin: 0 !important;
+  margin: 0 0 0 auto !important;
  }
 
  .head .site-search input {
