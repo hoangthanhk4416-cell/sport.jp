@@ -1,0 +1,46 @@
+name: SEO Auto
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "**/*.html"
+      - "tools/seo_auto.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-auto-main
+  cancel-in-progress: true
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate sitemap and SEO report
+        run: python tools/seo_auto.py
+
+      - name: Commit SEO updates when changed
+        shell: bash
+        run: |
+          if git diff --quiet -- sitemap.xml seo-report.json; then
+            echo "No SEO files changed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- sitemap.xml seo-report.json
+          git commit -m "Auto-update SEO sitemap and report"
+          git push
