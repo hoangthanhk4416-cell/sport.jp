@@ -186,7 +186,6 @@ def audit(pages: list[Path]) -> dict:
         for href in parser.links:
             target = normalize_internal_target(url, href)
             if target and target not in known_paths:
-                # Ignore known non-page endpoints/files.
                 if not target.startswith(("/admin/", "/assets/", "/integrations/")):
                     broken.append(href)
         if broken:
@@ -230,3 +229,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# Workflow trigger marker: initial installation complete.
