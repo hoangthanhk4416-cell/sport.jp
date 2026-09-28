@@ -274,6 +274,24 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  const safeContactLink=value=>{const link=String(value||"").trim();return /^(https?:\/\/|linetalk:\/\/|fb-messenger:\/\/)/i.test(link)?link:""};
  const contactLink=value=>{const link=String(value||"").trim();return /^(https?:\/\/|linetalk:\/\/|\/)/i.test(link)?link:""};
  let data=window.SITE_DATA||await fetch("/api/site").then(r=>r.json());
+ // Enforce the current public pricing by product ID so stale API/runtime data cannot
+ // overwrite the storefront prices after deployment.
+ const normalizePublicPricing=site=>{
+  (site.products||[]).forEach(product=>{
+   const id=String(product.id||"").match(/^teamspirit-jp(\\d+)$/i);
+   if(!id)return;
+   const number=Number(id[1]);
+   if(number>=1&&number<=52){
+    if(number>=27&&number<=31){
+     product.price="¥3,990"; product.oldPrice="¥6,500"; product.sale="39%";
+    }else{
+     product.price="¥2,890"; product.oldPrice="¥6,500"; product.sale="56%";
+    }
+   }
+  });
+  return site;
+ };
+ data=normalizePublicPricing(data);
  (data.products||[]).forEach(product=>{if(String(product.name||"").trim()==="新商品"){product.price="価格はお問い合わせください";product.hidden=true;product.homeFeatured=false}});
  const LINE_LINK=contactLink(data.defaultLINELink)||"https://lin.ee/qE1TJJ5";
  const priceNumber=value=>Number(String(value||"").replace(/\D/g,""))||0;
