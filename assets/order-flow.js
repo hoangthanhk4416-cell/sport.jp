@@ -379,12 +379,13 @@
  const detailProduct = currentProduct();
  const productInfo = document.querySelector(".product-info");
  if (detailProduct && productInfo && !productInfo.querySelector(".ts-order-button")) {
- const button = document.createElement("a");
+ const button = document.createElement("button");
+ button.type = "button";
  button.className = "ts-order-button";
- button.href = DIRECT_LINE_ORDER_URL;
- button.target = "_blank";
- button.rel = "noopener";
  button.textContent = "注文・無料サンプル";
+ button.addEventListener("click", () => {
+ window.open(DIRECT_LINE_ORDER_URL, "_blank", "noopener");
+ });
  const actions = productInfo.querySelector(".contact-order-actions");
  productInfo.insertBefore(button, actions || null);
  }
@@ -392,12 +393,15 @@
  if (card.querySelector(".ts-order-button")) return;
  const product = productFromCard(card);
  if (!product.id) return;
- const button = document.createElement("a");
+ const button = document.createElement("button");
+ button.type = "button";
  button.className = "ts-order-button";
- button.href = DIRECT_LINE_ORDER_URL;
- button.target = "_blank";
- button.rel = "noopener";
  button.textContent = "注文・無料サンプル";
+ button.addEventListener("click", event => {
+ event.preventDefault();
+ event.stopPropagation();
+ window.open(DIRECT_LINE_ORDER_URL, "_blank", "noopener");
+ });
  card.appendChild(button);
  });
  document.querySelectorAll(".seo-cart-panel .contact-order-actions").forEach(actions => {
