@@ -383,9 +383,7 @@
  button.type = "button";
  button.className = "ts-order-button";
  button.textContent = "注文・無料サンプル";
- button.addEventListener("click", () => {
- window.open(DIRECT_LINE_ORDER_URL, "_blank", "noopener");
- });
+ button.addEventListener("click", () => { window.open(DIRECT_LINE_ORDER_URL, "_blank", "noopener"); });
  const actions = productInfo.querySelector(".contact-order-actions");
  productInfo.insertBefore(button, actions || null);
  }
