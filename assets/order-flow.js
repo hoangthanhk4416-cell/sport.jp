@@ -2,6 +2,7 @@
  "use strict";
 
  const config = window.TEAMSPIRIT_ORDER_CONFIG || {};
+ const DIRECT_LINE_ORDER_URL = "https://line.me/R/ti/p/@974nrnvj?ts=08091739&oat_content=urlV";
  const sizes = ["55 (XS)","60 (S)","65 (M)","70 (L)","75 (XL)","80 (2XL)","85 (3XL)","90","95","100","105","110","Khác"];
  const colors = [
  { label: "既存デザインのまま", value: "Giữ nguyên thiết kế" },
@@ -378,11 +379,12 @@
  const detailProduct = currentProduct();
  const productInfo = document.querySelector(".product-info");
  if (detailProduct && productInfo && !productInfo.querySelector(".ts-order-button")) {
- const button = document.createElement("button");
- button.type = "button";
+ const button = document.createElement("a");
  button.className = "ts-order-button";
+ button.href = DIRECT_LINE_ORDER_URL;
+ button.target = "_blank";
+ button.rel = "noopener";
  button.textContent = "注文・無料サンプル";
- button.addEventListener("click", () => openModal(currentProduct()));
  const actions = productInfo.querySelector(".contact-order-actions");
  productInfo.insertBefore(button, actions || null);
  }
@@ -390,15 +392,12 @@
  if (card.querySelector(".ts-order-button")) return;
  const product = productFromCard(card);
  if (!product.id) return;
- const button = document.createElement("button");
- button.type = "button";
+ const button = document.createElement("a");
  button.className = "ts-order-button";
+ button.href = DIRECT_LINE_ORDER_URL;
+ button.target = "_blank";
+ button.rel = "noopener";
  button.textContent = "注文・無料サンプル";
- button.addEventListener("click", event => {
- event.preventDefault();
- event.stopPropagation();
- openModal(productFromCard(card));
- });
  card.appendChild(button);
  });
  document.querySelectorAll(".seo-cart-panel .contact-order-actions").forEach(actions => {
