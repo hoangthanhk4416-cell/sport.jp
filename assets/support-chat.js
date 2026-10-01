@@ -1,4 +1,18 @@
 (() => {
+  if (window.__TEAMSPIRIT_GOOGLE_TAG__) return;
+  window.__TEAMSPIRIT_GOOGLE_TAG__ = true;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=AW-18483055275";
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+  gtag("js", new Date());
+  gtag("config", "AW-18483055275");
+})();
+
+(() => {
   "use strict";
   const cfg = Object.assign({ aiEndpoint: "", aiEnabled: false, maxAiRequestsPerDay: 10, lineUrl: "https://lin.ee/qE1TJJ5", instagramUrl: "https://www.instagram.com/teamspirit.jp/" }, window.TEAMSPIRIT_SUPPORT_CONFIG || {});
   const HISTORY_KEY = "ts-support-history-v2";
