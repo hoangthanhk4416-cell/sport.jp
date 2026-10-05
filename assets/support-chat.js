@@ -10,6 +10,7 @@
   window.gtag = window.gtag || gtag;
   gtag("js", new Date());
   gtag("config", "AW-18483055275");
+  gtag("config", "AW-18368273834");
 })();
 
 (() => {
