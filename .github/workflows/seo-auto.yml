@@ -1,46 +1,59 @@
-name: SEO Auto
+name: SEO Automation
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths:
-      - "**/*.html"
-      - "tools/seo_auto.py"
+      - '**/*.html'
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sunday at midnight
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 concurrency:
-  group: seo-auto-main
+  group: seo-automation-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  seo:
+  seo-tasks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Set up Python
+          fetch-depth: 0 # Need full history for git commit dates
+          
+      - name: Set up Python 3.x
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
-
-      - name: Generate sitemap and SEO report
-        run: python tools/seo_auto.py
-
-      - name: Commit SEO updates when changed
-        shell: bash
+          python-version: '3.10'
+          cache: 'pip'
+          
+      - name: Install dependencies
         run: |
-          if git diff --quiet -- sitemap.xml seo-report.json; then
-            echo "No SEO files changed."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- sitemap.xml seo-report.json
-          git commit -m "Auto-update SEO sitemap and report"
-          git push
+          python -m pip install --upgrade pip
+          pip install -r tools/requirements.txt
+          
+      - name: Run SEO Automation (Sitemap & Audit)
+        run: python tools/seo_auto.py
+        
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml seo-report.json tools/.sitemap-cache.txt || true
+          git diff --staged --quiet || git commit -m "chore(seo): update sitemap and seo report" && git push
+          
+      - name: Submit to Google Indexing API
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: python tools/google_indexing.py
+        
+      - name: Ping Search Engines
+        run: |
+          curl -s "https://www.google.com/ping?sitemap=https://teamspiritsport.jp/sitemap.xml" > /dev/null
+          curl -s "https://www.bing.com/ping?sitemap=https://teamspiritsport.jp/sitemap.xml" > /dev/null
+          echo "Pinged Google and Bing with new sitemap."
