@@ -115,6 +115,80 @@
       const existing = document.getElementById('teamspirit-bg-root');
       if (existing) existing.remove();
 
+      if (!document.getElementById('teamspirit-bg-subpage-fix')) {
+        const styleEl = document.createElement('style');
+        styleEl.id = 'teamspirit-bg-subpage-fix';
+        styleEl.textContent = `
+          html, body {
+            background: transparent !important;
+            background-color: transparent !important;
+          }
+          #teamspirit-bg-root {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: -1 !important;
+            pointer-events: none !important;
+          }
+          #app, main, header:not(.full-head):not(.head), footer, .notice, .page-head,
+          .article-page, .guide-page, .order-guide, .faq-page, .tracking-main, .login-page, .placeholder, .full-footer {
+            position: relative;
+            z-index: 2;
+          }
+          .full-head, .head {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 30 !important;
+          }
+          .article-page, .login-page, .placeholder, .tracking-main {
+            background: transparent !important;
+          }
+          .article-page > .article,
+          main.guide-page,
+          main.order-guide,
+          main.faq-page,
+          .login-page > .login-panel,
+          .placeholder > .card {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.96) !important;
+            color: #111111 !important;
+            border-radius: 18px !important;
+            padding: 36px 28px !important;
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45) !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+          }
+          main.guide-page,
+          main.order-guide,
+          main.faq-page {
+            margin: 36px auto 72px !important;
+            width: min(1120px, calc(100% - 32px)) !important;
+          }
+          .article-page > .article h1, .article-page > .article h2, .article-page > .article p, .article-page > .article strong,
+          main.guide-page h1, main.guide-page h2, main.guide-page p, main.guide-page strong, main.guide-page span,
+          main.order-guide h1, main.order-guide h2, main.order-guide p, main.order-guide strong, main.order-guide figcaption,
+          main.faq-page h1, main.faq-page h2, main.faq-page summary, main.faq-page .guide-links a, main.faq-page .quick-guide a, main.faq-page .quick-guide span {
+            color: #111111 !important;
+            text-shadow: none !important;
+          }
+          main.faq-page .faq-answer, main.faq-page .notice, main.guide-page .guide-meta, main.guide-page .guide-head p,
+          main.order-guide .order-title p, main.order-guide .order-meta small, .article-page > .article .article-lead {
+            color: #334155 !important;
+            text-shadow: none !important;
+          }
+          main.faq-page .faq-contact, main.faq-page .faq-contact strong, main.faq-page .faq-contact span {
+            color: #ffffff !important;
+          }
+          .tracking-intro h1, .tracking-intro p, .privacy-note {
+            color: #ffffff !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
+          }
+        `;
+        document.head.appendChild(styleEl);
+      }
+
       this.root = document.createElement('div');
       this.root.id = 'teamspirit-bg-root';
       Object.assign(this.root.style, {
@@ -123,7 +197,7 @@
         left: '0',
         width: '100vw',
         height: '100vh',
-        zIndex: String(this.options.zIndex),
+        zIndex: '-1',
         pointerEvents: 'none',
         overflow: 'hidden',
         background: '#080d14'
