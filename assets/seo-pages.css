@@ -16,3 +16,24 @@
 .review-rating{color:#f5b301}
 
 .contact-order-actions .line-order,.contact-order-actions .instagram-order{width:100%!important;grid-column:1/-1!important;box-sizing:border-box!important}
+/* TEAMSPIRIT-JP 2K Stadium Background v2.1 Glassmorphic Subpage Integration */
+:root { --ink: #f8fafc !important; --muted: #cbd5e1 !important; --line: rgba(255,255,255,0.18) !important; }
+html, body { background: transparent !important; background-color: transparent !important; color: #f8fafc !important; }
+#teamspirit-bg-root { z-index: 0 !important; pointer-events: none !important; }
+.notice, header, main, footer { position: relative; z-index: 2; }
+header { background: rgba(8, 12, 20, 0.76); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 0 0 14px 14px; border-bottom: 1px solid rgba(250, 204, 21, 0.28) !important; }
+.brand, header nav a, .page-heading h1, .article h1, .content-section h2, .article h2 { color: #ffffff !important; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+.lead, .breadcrumbs, .eyebrow { color: #e2e8f0 !important; }
+.product-card, .article, .content-section, .product-info, .review, .article-grid article {
+  background: rgba(10, 14, 22, 0.74) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 12px;
+  padding: 14px;
+  color: #ffffff !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.42);
+}
+.chip { background: rgba(12, 16, 24, 0.74) !important; color: #e2e8f0 !important; border-color: rgba(255,255,255,0.22) !important; }
+.chip.active { background: linear-gradient(135deg, #de1b32 0%, #f59e0b 100%) !important; color: #fff !important; border-color: rgba(250, 204, 21, 0.75) !important; }
+footer, .footer { background: rgba(5, 7, 12, 0.84) !important; backdrop-filter: blur(12px); }
