@@ -37,3 +37,11 @@ header { background: rgba(8, 12, 20, 0.76); backdrop-filter: blur(14px); -webkit
 .chip { background: rgba(12, 16, 24, 0.74) !important; color: #e2e8f0 !important; border-color: rgba(255,255,255,0.22) !important; }
 .chip.active { background: linear-gradient(135deg, #de1b32 0%, #f59e0b 100%) !important; color: #fff !important; border-color: rgba(250, 204, 21, 0.75) !important; }
 footer, .footer { background: rgba(5, 7, 12, 0.84) !important; backdrop-filter: blur(12px); }
+/* Compact spacing optimization for collection, product, and info pages */
+main { padding: 22px 20px 44px !important; }
+.breadcrumbs { margin-bottom: 14px !important; }
+.page-heading { margin: 8px auto 20px !important; }
+.chips { margin: 12px 0 20px !important; }
+.content-section, .article { margin: 24px auto 0 !important; }
+.content-section h2, .article h2 { margin-top: 26px !important; }
+footer, .footer { margin-top: 16px !important; padding-top: 28px !important; }
