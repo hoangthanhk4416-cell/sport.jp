@@ -262,7 +262,189 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  html[data-theme="night"] .shortcut .shortcut-icon-5,html[data-theme="night"] .shortcut .shortcut-icon-6{background-image:url('/assets/teamspirit-shortcut-icons-dark-outline.png')!important;filter:none!important}
 }
 </style>
-<link rel="stylesheet" href="/assets/order-flow.css?v=20260724-3"><style id="line-standard-style">.contact.line{background:#fff!important;color:transparent!important;border:1px solid #e5e5e5!important;font-size:0!important}.contact.line:before{content:"";width:38px;height:38px;flex:0 0 38px;background:url("/assets/line-logo.svg") center/contain no-repeat}.contact.line{gap:0}.hero-action.line{background:transparent!important;color:transparent!important;font-size:0!important}.hero-action.line:before{content:"";display:block;width:32px;height:32px;background:url("/assets/line-logo.svg") center/contain no-repeat}.cart-order-actions .line,.contact-option.line{background:#fff!important;color:transparent!important;border:1px solid #e5e5e5!important;font-size:0!important}.cart-order-actions .line:before,.contact-option.line:before{content:"";display:block;width:38px;height:38px;background:url("/assets/line-logo.svg") center/contain no-repeat}.floating-tool.line{background:transparent!important;color:transparent!important;box-shadow:none!important}.floating-tool.line .line-mark{display:none}.floating-tool.line:before{content:"";display:block;width:46px;height:46px;background:url("/assets/line-logo.svg") center/contain no-repeat}.sns-icon.line{background:url("/assets/line-logo.svg") center/contain no-repeat!important;color:transparent!important;font-size:0!important;border-radius:0!important}</style><link rel="stylesheet" href="/assets/support-chat.css?v=20260821-r21"></head>
+<link rel="stylesheet" href="/assets/order-flow.css?v=20260724-3"><style id="line-standard-style">.contact.line{background:#fff!important;color:transparent!important;border:1px solid #e5e5e5!important;font-size:0!important}.contact.line:before{content:"";width:38px;height:38px;flex:0 0 38px;background:url("/assets/line-logo.svg") center/contain no-repeat}.contact.line{gap:0}.hero-action.line{background:transparent!important;color:transparent!important;font-size:0!important}.hero-action.line:before{content:"";display:block;width:32px;height:32px;background:url("/assets/line-logo.svg") center/contain no-repeat}.cart-order-actions .line,.contact-option.line{background:#fff!important;color:transparent!important;border:1px solid #e5e5e5!important;font-size:0!important}.cart-order-actions .line:before,.contact-option.line:before{content:"";display:block;width:38px;height:38px;background:url("/assets/line-logo.svg") center/contain no-repeat}.floating-tool.line{background:transparent!important;color:transparent!important;box-shadow:none!important}.floating-tool.line .line-mark{display:none}.floating-tool.line:before{content:"";display:block;width:46px;height:46px;background:url("/assets/line-logo.svg") center/contain no-repeat}.sns-icon.line{background:url("/assets/line-logo.svg") center/contain no-repeat!important;color:transparent!important;font-size:0!important;border-radius:0!important}</style><link rel="stylesheet" href="/assets/support-chat.css?v=20260821-r21"><style id="teamspirit-2k-stadium-theme">
+  html, body, html[data-theme="day"] body, html[data-theme="night"] body {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #f8fafc !important;
+  }
+  #teamspirit-bg-root {
+    z-index: 0 !important;
+    pointer-events: none !important;
+  }
+  #app {
+    position: relative;
+    z-index: 2;
+  }
+  .top {
+    position: relative;
+    z-index: 25;
+    background: rgba(6, 9, 15, 0.86) !important;
+    backdrop-filter: blur(8px);
+  }
+  .head, html[data-theme="day"] .head, html[data-theme="night"] .head {
+    background: rgba(8, 12, 20, 0.76) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(250, 204, 21, 0.28) !important;
+    color: #ffffff !important;
+  }
+  .head .brand, html[data-theme="day"] .brand, html[data-theme="night"] .brand,
+  .head .util a, .head .menu span, .head .menu-trigger,
+  html[data-theme="day"] .head .menu-trigger, html[data-theme="day"] .mobile-menu-button {
+    color: #ffffff !important;
+  }
+  .site-search, html[data-theme="day"] .site-search {
+    background: rgba(15, 23, 42, 0.78) !important;
+    border-color: rgba(255, 255, 255, 0.24) !important;
+    color: #ffffff !important;
+  }
+  .site-search input, html[data-theme="day"] .site-search input {
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+  .site-search input::placeholder {
+    color: #cbd5e1 !important;
+  }
+  .hero {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 16px;
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.52);
+  }
+  .benefit-card, html[data-theme="day"] .benefit-card {
+    background: rgba(10, 14, 22, 0.74) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(250, 204, 21, 0.30) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  }
+  .benefit-copy p, html[data-theme="day"] .benefit-copy p {
+    color: #e2e8f0 !important;
+  }
+  .shortcuts, html[data-theme="day"] .shortcuts {
+    background: rgba(10, 14, 22, 0.64) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(250, 204, 21, 0.24) !important;
+    border-radius: 14px;
+    padding: 16px 12px !important;
+  }
+  .shortcut, html[data-theme="day"] .shortcut {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+  }
+  .shortcut .ico, html[data-theme="day"] .shortcut .ico {
+    filter: grayscale(1) brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.32)) !important;
+  }
+  .shortcut .shortcut-icon-5, .shortcut .shortcut-icon-6,
+  html[data-theme="day"] .shortcut .shortcut-icon-5, html[data-theme="day"] .shortcut .shortcut-icon-6 {
+    background-image: url('/assets/teamspirit-shortcut-icons-dark-outline.png') !important;
+    filter: none !important;
+  }
+  .section h2, .teamkits h2, .video-sec h2, .center-title, .category-heading h1,
+  html[data-theme="day"] .center-title, html[data-theme="day"] .section h2,
+  html[data-theme="day"] .teamkits h2, html[data-theme="day"] .video-sec h2 {
+    color: #ffffff !important;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.88) !important;
+  }
+  .category-heading p, .category-heading span, .car-nav, html[data-theme="day"] .car-nav {
+    color: #e2e8f0 !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  }
+  .car-nav button, html[data-theme="day"] .car-nav button {
+    background: rgba(15, 23, 42, 0.82) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+  }
+  .tab, html[data-theme="day"] .tab {
+    background: rgba(12, 16, 24, 0.74) !important;
+    border-color: rgba(255, 255, 255, 0.22) !important;
+    color: #cbd5e1 !important;
+    backdrop-filter: blur(8px);
+  }
+  .tab.active, html[data-theme="day"] .tab.active {
+    background: linear-gradient(135deg, #de1b32 0%, #f59e0b 100%) !important;
+    border-color: rgba(250, 204, 21, 0.75) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 14px rgba(222, 27, 50, 0.55);
+  }
+  .card, html[data-theme="day"] .card {
+    background: rgba(10, 14, 22, 0.72) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 10px !important;
+    padding: 8px !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45) !important;
+  }
+  .card .name, .name, html[data-theme="day"] .card .name, html[data-theme="day"] .name {
+    color: #f1f5f9 !important;
+  }
+  .card .price .current-price, html[data-theme="day"] .card .price .current-price {
+    color: #ffffff !important;
+  }
+  .card .price .old, html[data-theme="day"] .card .price .old {
+    color: #94a3b8 !important;
+  }
+  .teamkits {
+    background: rgba(8, 12, 20, 0.44) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(250, 204, 21, 0.20);
+    border-bottom: 1px solid rgba(250, 204, 21, 0.20);
+  }
+  .kit-box {
+    background: rgba(12, 16, 24, 0.78) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(12px);
+  }
+  .kit-item {
+    background: transparent !important;
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+  }
+  .kit-item:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+  .detail, .about-panel {
+    background: rgba(10, 14, 22, 0.78) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
+    padding: 24px !important;
+    color: #ffffff !important;
+  }
+  .info h1, .big-price, .total, .notice {
+    color: #ffffff !important;
+  }
+  .meta, .meta div, .qna {
+    color: #cbd5e1 !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+  }
+  .bundle, .purchase-table th {
+    background: rgba(15, 23, 42, 0.78) !important;
+    color: #ffffff !important;
+  }
+  .size-table th, .size-table td, .purchase-table th, .purchase-table td {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    color: #f1f5f9 !important;
+  }
+  .footer {
+    background: rgba(5, 7, 12, 0.84) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 2;
+  }
+  .menu-dropdown, .product-category-dropdown, .search-results, .contact-dialog, .commerce-panel {
+    color: #111111 !important;
+  }
+</style></head>
 <body>
 <noscript><main class="wrap section"><h1>オーダーサッカーユニフォーム・チームウェア | TEAMSPIRIT-jp</h1><p>TEAMSPIRIT-jpは、サッカーユニフォームやチームウェアのオーダーメイド制作を承ります。</p><p>商品一覧とご注文案内をご利用いただくには、ブラウザーのJavaScriptを有効にしてください。</p></main></noscript>
 <div id="app"><section class="benefits-strip" aria-label="TEAMSPIRIT-JPの特徴"><h1 class="visually-hidden">オーダーサッカーユニフォーム・チームウェア | TEAMSPIRIT-jp</h1><p class="visually-hidden">サッカーユニフォームや団体チームウェアを、ご希望のデザインでオーダーメイド制作します。 デザイン・カラー・フォントのご相談からご注文まで、LINEまたはInstagramでお気軽にお問い合わせください。</p><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M16 8 8 12 3 24l8 4 3-6v18h20V22l3 6 8-4-5-12-8-4c-2 4-14 4-16 0Z"/><path d="M18 8c1 5 11 5 12 0M14 20v20M34 20v20"/></svg></span><div class="benefit-copy"><strong>専門メーカー</strong><p>スポーツ用品カスタムのプロフェッショナル</p></div></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 5h25v35H9z"/><path d="M15 13h13M15 20h13M15 27h8M29 33l4 4 8-10"/></svg></span><div class="benefit-copy"><strong>ご注文は1枚から</strong><p>99%以上の商品を1枚からご注文いただけます</p></div></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 24 24 5h15l4 4v15L24 43Z"/><circle cx="34" cy="14" r="3"/><path d="m17 30 13-13M19 19h.1M29 30h.1"/></svg></span><div class="benefit-copy"><strong>業界最安値</strong><p>最高品質の商品を適正価格でご提供します</p></div></article><article class="benefit-card"><span class="benefit-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M3 13h27v22H3zM30 21h8l7 8v6H30z"/><path d="M8 19h13M5 24h13M2 29h13"/><circle cx="13" cy="37" r="4"/><circle cx="38" cy="37" r="4"/></svg></span><div class="benefit-copy"><strong>最短納期</strong><p>業界最速クラスの製造スピード</p></div></article></section></div>
@@ -493,5 +675,19 @@ function home(){
  }
 })();
 </script>
-<script src="/assets/order-config.js"></script><script src="/assets/order-flow.js?v=20260724-8" defer></script><script src="/assets/support-chat-config.js?v=20260821-r21"></script><script src="/assets/support-chat.js?v=20260821-r21" defer></script></body>
+<script src="/assets/order-config.js"></script><script src="/assets/order-flow.js?v=20260724-8" defer></script><script src="/assets/support-chat-config.js?v=20260821-r21"></script><script src="/assets/support-chat.js?v=20260821-r21" defer></script><script src="/assets/teamspirit-background.js?v=2.1.0" defer></script>
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  if (window.TeamSpiritBackground && !window.__teamSpiritBgInstance) {
+    window.__teamSpiritBgInstance = new TeamSpiritBackground({
+      zIndex: 0,
+      logoText: "TEAMSPIRIT-JP",
+      showLogo: true,
+      veilOpacity: 0.10,
+      logoDensity: 1.35,
+      scrollSensitivity: 1.0
+    });
+  }
+});
+</script></body>
 </html>
