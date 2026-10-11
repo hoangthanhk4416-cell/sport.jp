@@ -19,6 +19,11 @@ html, body { background: transparent !important; background-color: transparent !
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
 main.guide-page, main.order-guide, main.faq-page {
-  margin: 36px auto 72px !important;
+  margin: 18px auto 32px !important;
   width: min(1120px, calc(100% - 32px)) !important;
 }
+.article-page { padding: 20px 16px 36px !important; }
+.article-step { padding: 20px 0 !important; }
+.guide-section, .faq-section { padding: 24px 0 !important; }
+.order-steps { padding: 28px 0 !important; gap: 22px !important; }
+.full-footer { padding: 28px 24px 24px !important; }
