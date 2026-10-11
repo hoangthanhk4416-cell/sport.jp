@@ -11,10 +11,8 @@ window.TEAMSPIRIT_SUPPORT_CONFIG = Object.assign({
     if (window.TeamSpiritBackground && !window.__teamSpiritBgInstance) {
       window.__teamSpiritBgInstance = new window.TeamSpiritBackground({
         zIndex: 0,
-        logoText: "TEAMSPIRIT-JP",
-        showLogo: true,
-        veilOpacity: 0.10,
-        logoDensity: 1.35,
+        darkenAmount: 0.42,
+        veilOpacity: 0.42,
         scrollSensitivity: 1.0
       });
     }
@@ -23,7 +21,7 @@ window.TEAMSPIRIT_SUPPORT_CONFIG = Object.assign({
     initTeamSpirit2K();
   } else if (!document.querySelector('script[src*="teamspirit-background.js"]')) {
     var s = document.createElement("script");
-    s.src = "/assets/teamspirit-background.js?v=2.1.0";
+    s.src = "/assets/teamspirit-background.js?v=3.2.0";
     s.defer = true;
     s.onload = initTeamSpirit2K;
     document.head.appendChild(s);
