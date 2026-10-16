@@ -309,25 +309,79 @@ def product_page(product, site):
     gallery_html = f'<div class="product-gallery-main"><img id="productMainImage" src="{escape(main_image, quote=True)}" width="900" height="900" decoding="async" fetchpriority="high" alt="{escape(name, quote=True)} メイン写真 - サッカーユニフォーム"></div><div class="product-thumbnails" aria-label="商品画像を選択">{gallery_thumbs}</div>'
     shirt_sizes = product.get("sizeChart") or []
     pants_sizes = product.get("pantsSizeChart") or []
-    cells = lambda rows, key: "".join(f"<td>{escape(str(row.get(key, '')))}</td>" for row in rows)
-    uniform_size_tables = (
-        '<h3>1. 上着（Tシャツ）サイズ表</h3><div class="table-wrap"><table><thead><tr><th>サイズ</th>'
-        + cells(shirt_sizes, "size") + '</tr></thead><tbody>'
-        + '<tr><th>着丈 (cm)</th>' + cells(shirt_sizes, "length") + '</tr>'
-        + '<tr><th>身幅 (cm)</th>' + cells(shirt_sizes, "bodyWidth") + '</tr>'
-        + '<tr><th>肩幅 (cm)</th>' + cells(shirt_sizes, "shoulder") + '</tr>'
-        + '<tr><th>袖丈 (cm)</th>' + cells(shirt_sizes, "sleeve") + '</tr>'
-        + '<tr><th>身長の目安 (cm)</th>' + cells(shirt_sizes, "height") + '</tr>'
-        + '<tr><th>体重の目安 (kg)</th>' + cells(shirt_sizes, "weight") + '</tr></tbody></table></div>'
-        + '<p class="muted">サイズは測定方法により、1〜2cm程度の誤差が生じる場合があります。</p>'
-        + '<h3>2. パンツ（ハーフパンツ）サイズ表</h3><div class="table-wrap"><table><thead><tr><th>サイズ</th>'
-        + cells(pants_sizes, "size") + '</tr></thead><tbody>'
-        + '<tr><th>総丈 (cm)</th>' + cells(pants_sizes, "length") + '</tr>'
-        + '<tr><th>ウエスト幅 (cm)</th>' + cells(pants_sizes, "waist") + '</tr>'
-        + '<tr><th>ヒップ幅 (cm)</th>' + cells(pants_sizes, "hip") + '</tr></tbody></table></div>'
-        + '<h3>3. ジュニア・キッズ（120〜160cm）目安表</h3><div class="table-wrap"><table><thead><tr><th>サイズ</th><td>120</td><td>130</td><td>140</td><td>150</td><td>160</td></tr></thead><tbody><tr><th>身長の目安 (cm)</th><td>115〜125</td><td>125〜135</td><td>135〜145</td><td>145〜155</td><td>155〜165</td></tr><tr><th>着丈 (cm)</th><td>50</td><td>53</td><td>56</td><td>60</td><td>64</td></tr><tr><th>身幅 (cm)</th><td>36</td><td>39</td><td>42</td><td>45</td><td>48</td></tr></tbody></table></div>'
-        + '<p class="muted">サイズは測定方法により、1〜2cm程度の誤差が生じる場合があります。体型や着用スタイルにより、個人差が生じる場合があります。</p>'
+    cells_th = lambda rows, key: "".join(f"<th>{escape(str(row.get(key, '')))}</th>" for row in rows)
+    cells_td = lambda rows, key: "".join(f"<td>{escape(str(row.get(key, '')))}</td>" for row in rows)
+
+    shirt_headers = cells_th(shirt_sizes, "size")
+    shirt_table = (
+        '<table class="size-table"><thead><tr><th>サイズ</th>' + shirt_headers + '</tr></thead><tbody>'
+        + '<tr><th>着丈 (cm)</th>' + cells_td(shirt_sizes, "length") + '</tr>'
+        + '<tr><th>身幅 (cm)</th>' + cells_td(shirt_sizes, "bodyWidth") + '</tr>'
+        + '<tr><th>肩幅 (cm)</th>' + cells_td(shirt_sizes, "shoulder") + '</tr>'
+        + '<tr><th>袖丈 (cm)</th>' + cells_td(shirt_sizes, "sleeve") + '</tr>'
+        + '<tr><th>身長の目安 (cm)</th>' + cells_td(shirt_sizes, "height") + '</tr>'
+        + '<tr><th>体重の目安 (kg)</th>' + cells_td(shirt_sizes, "weight") + '</tr></tbody></table>'
     )
+
+    pants_headers = cells_th(pants_sizes, "size")
+    pants_table = (
+        '<table class="size-table"><thead><tr><th>サイズ</th>' + pants_headers + '</tr></thead><tbody>'
+        + '<tr><th>総丈 (cm)</th>' + cells_td(pants_sizes, "length") + '</tr>'
+        + '<tr><th>ウエスト幅 (cm)</th>' + cells_td(pants_sizes, "waist") + '</tr>'
+        + '<tr><th>ヒップ幅 (cm)</th>' + cells_td(pants_sizes, "hip") + '</tr></tbody></table>'
+    )
+
+    kids_table = (
+        '<table class="size-table"><thead><tr><th>サイズ</th><th>120</th><th>130</th><th>140</th><th>150</th><th>160</th></tr></thead><tbody>'
+        + '<tr><th>身長の目安 (cm)</th><td>115〜125</td><td>125〜135</td><td>135〜145</td><td>145〜155</td><td>155〜165</td></tr>'
+        + '<tr><th>着丈 (cm)</th><td>50</td><td>53</td><td>56</td><td>60</td><td>64</td></tr>'
+        + '<tr><th>身幅 (cm)</th><td>36</td><td>39</td><td>42</td><td>45</td><td>48</td></tr></tbody></table>'
+    )
+
+    size_guide_html = f'''<div class="product-size-guide-card" id="sizeGuideCard">
+  <div class="size-guide-header">
+    <div class="size-guide-title">
+      <span class="size-guide-icon">📏</span>
+      <strong>サイズ表・寸法ガイド（実寸）</strong>
+    </div>
+    <span class="size-guide-badge">男女兼用・キッズ対応（昇華プリント込）</span>
+  </div>
+  <div class="size-guide-tabs" role="tablist" aria-label="サイズ寸法表タブ">
+    <button type="button" class="size-tab-btn active" data-tab="tab-shirt" role="tab" aria-selected="true"><span class="tab-emoji">🎽</span> 上着（シャツ）</button>
+    <button type="button" class="size-tab-btn" data-tab="tab-pants" role="tab" aria-selected="false"><span class="tab-emoji">🩳</span> ハーフパンツ</button>
+    <button type="button" class="size-tab-btn" data-tab="tab-kids" role="tab" aria-selected="false"><span class="tab-emoji">🧒</span> ジュニア・キッズ</button>
+    <button type="button" class="size-tab-btn" data-tab="tab-all" role="tab" aria-selected="false"><span class="tab-emoji">📋</span> 全て表示</button>
+  </div>
+  <div class="size-guide-panels">
+    <div class="size-panel active" id="tab-shirt" role="tabpanel">
+      <div class="size-panel-caption"><span>【上着（シャツ）大人用 実寸寸法表】</span><span class="size-scroll-hint">👉 左右スワイプで全サイズ表示</span></div>
+      <div class="size-guide-table-wrap">{shirt_table}</div>
+      <p class="size-note">※ 伸縮性マイクロメッシュ素材。測定方法により1〜2cm程度の誤差が生じる場合があります。</p>
+    </div>
+    <div class="size-panel" id="tab-pants" role="tabpanel" style="display:none;">
+      <div class="size-panel-caption"><span>【パンツ（ハーフパンツ）大人用 実寸寸法表】</span><span class="size-scroll-hint">👉 左右スワイプで全サイズ表示</span></div>
+      <div class="size-guide-table-wrap">{pants_table}</div>
+      <p class="size-note">※ ウエストは平置き採寸です。ゴム＋内側調整紐付きで柔軟に伸縮します。</p>
+    </div>
+    <div class="size-panel" id="tab-kids" role="tabpanel" style="display:none;">
+      <div class="size-panel-caption"><span>【ジュニア・キッズ（120〜160cm）実寸目安表】</span><span class="size-scroll-hint">👉 左右スワイプで全サイズ表示</span></div>
+      <div class="size-guide-table-wrap">{kids_table}</div>
+      <p class="size-note">※ お子様の成長期を考慮し、ややゆとりのある1サイズ大きめのご注文もおすすめです。</p>
+    </div>
+    <div class="size-panel" id="tab-all" role="tabpanel" style="display:none;">
+      <div class="size-panel-caption"><span>【1. 上着（シャツ）実寸寸法表】</span></div>
+      <div class="size-guide-table-wrap">{shirt_table}</div>
+      <div class="size-panel-caption" style="margin-top:10px;"><span>【2. パンツ（ハーフパンツ）実寸寸法表】</span></div>
+      <div class="size-guide-table-wrap">{pants_table}</div>
+      <div class="size-panel-caption" style="margin-top:10px;"><span>【3. ジュニア・キッズ（120〜160cm）目安表】</span></div>
+      <div class="size-guide-table-wrap">{kids_table}</div>
+      <p class="size-note">※ 全サイズ共通：測定方法により1〜2cm程度の誤差が生じる場合があります。</p>
+    </div>
+  </div>
+  <div class="size-guide-footer">
+    <span>💡 <strong>サイズ選びでお悩みですか？</strong> 公式LINEにて着用者の身長・体重をご相談いただければ、専任スタッフが最適な推奨サイズをご案内いたします。</span>
+  </div>
+</div>'''
     default_reviews = [
         {
             "author": "FCクラッキ様（社会人サッカーチーム代表）",
@@ -507,6 +561,27 @@ document.querySelectorAll(".set-option-btn").forEach(btn=>{
     if(icon)icon.textContent="●";
     selectedSet=btn.dataset.setType;
     unitPrice=Number(btn.dataset.priceNum);
+    if(selectedSet === "pants") {
+      const pTab = document.querySelector('.size-tab-btn[data-tab="tab-pants"]');
+      if(pTab && !pTab.classList.contains("active")) pTab.click();
+    } else if(selectedSet === "shirt" || selectedSet === "set") {
+      const sTab = document.querySelector('.size-tab-btn[data-tab="tab-shirt"]');
+      if(sTab && !sTab.classList.contains("active")) sTab.click();
+    }
+    if(selectedSet === "pants") {
+      const pTab = document.querySelector('.size-tab-btn[data-tab="tab-pants"]');
+      if(pTab && !pTab.classList.contains("active")) pTab.click();
+    } else if(selectedSet === "shirt" || selectedSet === "set") {
+      const sTab = document.querySelector('.size-tab-btn[data-tab="tab-shirt"]');
+      if(sTab && !sTab.classList.contains("active")) sTab.click();
+    }
+    if(selectedSet === "pants") {
+      const pTab = document.querySelector('.size-tab-btn[data-tab="tab-pants"]');
+      if(pTab && !pTab.classList.contains("active")) pTab.click();
+    } else if(selectedSet === "shirt" || selectedSet === "set") {
+      const sTab = document.querySelector('.size-tab-btn[data-tab="tab-shirt"]');
+      if(sTab && !sTab.classList.contains("active")) sTab.click();
+    }
     if(curPriceEl)curPriceEl.textContent=btn.dataset.price;
     if(origPriceEl)origPriceEl.textContent=btn.dataset.old;
     if(discRateEl)discRateEl.textContent=btn.dataset.rate;
@@ -518,6 +593,10 @@ document.querySelectorAll(".set-option-btn").forEach(btn=>{
 document.querySelectorAll(".product-size").forEach(button=>{
   button.addEventListener("click",()=>{
     selectedSize=button.dataset.size;
+    if(selectedSize && (selectedSize.includes("キッズ") || ["120","130","140","150","160"].includes(selectedSize))) {
+      const kTab = document.querySelector('.size-tab-btn[data-tab="tab-kids"]');
+      if(kTab && !kTab.classList.contains("active")) kTab.click();
+    }
     document.querySelectorAll(".product-size").forEach(item=>item.classList.remove("active"));
     button.classList.add("active");
     updateSummary();
@@ -545,6 +624,26 @@ document.querySelectorAll(".product-thumbnail").forEach(button=>{
     button.classList.add("active");
   });
 });
+const sizeCard = document.getElementById("sizeGuideCard");
+if(sizeCard){
+  const tabBtns = sizeCard.querySelectorAll(".size-tab-btn");
+  const panels = sizeCard.querySelectorAll(".size-panel");
+  tabBtns.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const targetId = btn.getAttribute("data-tab");
+      tabBtns.forEach(b=>{
+        const isActive = (b === btn);
+        b.classList.toggle("active", isActive);
+        b.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      panels.forEach(p=>{
+        const isTarget = (p.id === targetId);
+        p.classList.toggle("active", isTarget);
+        p.style.display = isTarget ? "block" : "none";
+      });
+    });
+  });
+}
 })();</script>'''
     all_pub = public_products(site)
     curr_id = str(product.get("id"))
@@ -617,7 +716,7 @@ document.querySelectorAll(".product-thumbnail").forEach(button=>{
     </section>
     '''
 
-    body = f"""<nav class=\"breadcrumbs\" aria-label=\"現在位置\"><a href=\"/\">ホーム</a> / <a href=\"/collections/football/\">サッカーウェア</a> / {escape(name)}</nav><article class=\"product-detail\"><section class=\"product-gallery\">{gallery_html}</section><section class=\"product-info\"><p class=\"eyebrow\">TEAMSPIRIT-JP COLLECTION</p><h1>{escape(name)}</h1><p class=\"lead\">{escape(description)}</p>{pricing}<p>チームロゴ、背番号、カラー、団体数量はご相談後に製作します。</p>{commerce}</section></article><section class=\"content-section\"><h2>{escape(name)} 詳細情報</h2><p>{escape(description)}</p>{uniform_size_tables}<h2>注文・配送について</h2><p>送料は全国一律600円、10,000円以上のご注文で送料無料です。デザイン確定後の製作・処理・配送を含む目安は約14〜21日（特急仕上げ相談可）です。</p><h2>商品レビュー</h2>{review_html}{faq_section_html}{related_section_html}</section>{commerce_script}"""
+    body = f"""<nav class=\"breadcrumbs\" aria-label=\"現在位置\"><a href=\"/\">ホーム</a> / <a href=\"/collections/football/\">サッカーウェア</a> / {escape(name)}</nav><article class=\"product-detail\"><div class=\"product-left-col\"><section class=\"product-gallery\">{gallery_html}</section>{size_guide_html}</div><section class=\"product-info\"><p class=\"eyebrow\">TEAMSPIRIT-JP COLLECTION</p><h1>{escape(name)}</h1><p class=\"lead\">{escape(description)}</p>{pricing}<p>チームロゴ、背番号、カラー、団体数量はご相談後に製作します。</p>{commerce}</section></article><section class=\"content-section\"><h2>{escape(name)} 詳細情報</h2><p>{escape(description)}</p><h2>注文・配送について</h2><p>送料は全国一律600円、10,000円以上のご注文で送料無料です。デザイン確定後の製作・処理・配送を含む目安は約14〜21日（特急仕上げ相談可）です。</p><h2>商品レビュー</h2>{review_html}{faq_section_html}{related_section_html}</section>{commerce_script}"""
     body = (body
         .replace("개", "点")
         .replace("삭제", "削除")
