@@ -382,6 +382,30 @@ def product_page(product, site):
     <span>💡 <strong>サイズ選びでお悩みですか？</strong> 公式LINEにて着用者の身長・体重をご相談いただければ、専任スタッフが最適な推奨サイズをご案内いたします。</span>
   </div>
 </div>'''
+    delivery_specs_html = f'''<div class="product-delivery-specs-card">
+  <div class="specs-card-header">
+    <span class="specs-icon">🚚</span>
+    <strong>お届け・納期・製品仕様・安心保証</strong>
+  </div>
+  <div class="specs-grid">
+    <div class="specs-item">
+      <span class="specs-item-title">📦 配送料・お届け目安</span>
+      <p>全国一律 <strong>600円</strong>（10,000円以上で<strong>送料無料</strong>）。デザイン確定後、通常約14〜21日でお手元へ納品（特急仕上げも公式LINEにてご相談可能）。</p>
+    </div>
+    <div class="specs-item">
+      <span class="specs-item-title">🎨 フル昇華プリント無料</span>
+      <p>チーム名・背番号・胸番号・チームロゴ・エンブレムまで<strong>何箇所入れても追加プリント料金0円</strong>。生地と一体化し剥がれ・色落ち永久ゼロ。</p>
+    </div>
+    <div class="specs-item">
+      <span class="specs-item-title">✨ プロ仕様高機能マイクロメッシュ</span>
+      <p>超軽量ポリエステル100%吸汗速乾メッシュ生地。耐久性の高いダブルステッチ補強二重縫製で、激しい運動や洗濯でも型崩れしません。</p>
+    </div>
+    <div class="specs-item">
+      <span class="specs-item-title">🛡️ 1枚からの追加注文OK & サポート</span>
+      <p>新メンバー加入時も初回と同じ割引価格（上下セット¥4,800 / 単品）で<strong>1枚からいつでも追加注文可能</strong>。サイズ相談は公式LINEで24h受付。</p>
+    </div>
+  </div>
+</div>'''
     default_reviews = [
         {
             "author": "FCクラッキ様（社会人サッカーチーム代表）",
@@ -716,7 +740,7 @@ if(sizeCard){
     </section>
     '''
 
-    body = f"""<nav class=\"breadcrumbs\" aria-label=\"現在位置\"><a href=\"/\">ホーム</a> / <a href=\"/collections/football/\">サッカーウェア</a> / {escape(name)}</nav><article class=\"product-detail\"><div class=\"product-left-col\"><section class=\"product-gallery\">{gallery_html}</section>{size_guide_html}</div><section class=\"product-info\"><p class=\"eyebrow\">TEAMSPIRIT-JP COLLECTION</p><h1>{escape(name)}</h1><p class=\"lead\">{escape(description)}</p>{pricing}<p>チームロゴ、背番号、カラー、団体数量はご相談後に製作します。</p>{commerce}</section></article><section class=\"content-section\"><h2>{escape(name)} 詳細情報</h2><p>{escape(description)}</p><h2>注文・配送について</h2><p>送料は全国一律600円、10,000円以上のご注文で送料無料です。デザイン確定後の製作・処理・配送を含む目安は約14〜21日（特急仕上げ相談可）です。</p><h2>商品レビュー</h2>{review_html}{faq_section_html}{related_section_html}</section>{commerce_script}"""
+    body = f"""<nav class=\"breadcrumbs\" aria-label=\"現在位置\"><a href=\"/\">ホーム</a> / <a href=\"/collections/football/\">サッカーウェア</a> / {escape(name)}</nav><article class=\"product-detail\"><div class=\"product-left-col\"><section class=\"product-gallery\">{gallery_html}</section>{size_guide_html}{delivery_specs_html}</div><section class=\"product-info\"><p class=\"eyebrow\">TEAMSPIRIT-JP COLLECTION</p><h1>{escape(name)}</h1><p class=\"lead\">{escape(description)}</p>{pricing}<p>チームロゴ、背番号、カラー、団体数量はご相談後に製作します。</p>{commerce}</section></article><section class="content-section">{review_html}{faq_section_html}{related_section_html}</section>{commerce_script}"""
     body = (body
         .replace("개", "点")
         .replace("삭제", "削除")

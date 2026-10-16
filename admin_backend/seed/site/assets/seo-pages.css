@@ -1061,3 +1061,136 @@ footer, .footer { margin-top: 16px !important; padding-top: 28px !important; }
     font-size: 10.5px !important;
   }
 }
+
+/* ==========================================================================
+   PERFECT BALANCE & ZERO DEAD SPACE OPTIMIZATION (DESKTOP & MOBILE)
+   ========================================================================== */
+
+/* Equalized 2-column layout on Desktop */
+.product-detail {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr) !important;
+  gap: 28px !important;
+  align-items: start !important;
+  margin-bottom: 0 !important;
+}
+
+.product-left-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.product-info {
+  position: sticky !important;
+  top: 16px !important;
+}
+
+/* Delivery & Specs Guarantee Card */
+.product-delivery-specs-card {
+  background: rgba(10, 14, 22, 0.78) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.32) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+.specs-card-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  color: #f8fafc !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  margin-bottom: 12px !important;
+}
+
+.specs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px !important;
+}
+
+.specs-item {
+  background: rgba(2, 6, 23, 0.55) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 8px !important;
+  padding: 10px 12px !important;
+}
+
+.specs-item-title {
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #38bdf8 !important;
+  margin-bottom: 4px !important;
+}
+
+.specs-item p {
+  margin: 0 !important;
+  font-size: 11.5px !important;
+  line-height: 1.55 !important;
+  color: #cbd5e1 !important;
+}
+
+.specs-item strong {
+  color: #ffffff !important;
+}
+
+/* Content section full width & seamless gap */
+.content-section, .article {
+  max-width: var(--max) !important;
+  margin: 20px auto 0 !important;
+  padding: 20px !important;
+}
+
+.content-section h2, .article h2 {
+  margin-top: 16px !important;
+  font-size: 20px !important;
+}
+
+/* Mobile & Tablet responsiveness (<= 899px) */
+@media (max-width: 899px) {
+  .product-detail {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .product-left-col {
+    display: contents !important;
+  }
+  .product-gallery {
+    order: 1 !important;
+    width: 100% !important;
+  }
+  .product-info {
+    order: 2 !important;
+    position: static !important;
+    width: 100% !important;
+  }
+  .product-size-guide-card {
+    order: 3 !important;
+    width: 100% !important;
+    margin-top: 6px !important;
+    padding: 12px !important;
+  }
+  .product-delivery-specs-card {
+    order: 4 !important;
+    width: 100% !important;
+    margin-top: 6px !important;
+    padding: 12px !important;
+  }
+  .specs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .content-section, .article {
+    margin: 14px auto 0 !important;
+    padding: 14px !important;
+  }
+}
