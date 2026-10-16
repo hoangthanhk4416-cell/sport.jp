@@ -420,7 +420,8 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
 .star-combo-banner{background:radial-gradient(circle at top left,rgba(56,189,248,.15),transparent 70%),rgba(2,6,23,.75);border:2px solid #38bdf8;border-radius:14px;padding:22px;display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;margin-bottom:28px}
 @media(max-width:768px){.star-combo-banner{grid-template-columns:1fr;gap:18px}}
 .star-combo-images{display:flex;align-items:center;justify-content:center;gap:10px}
-.star-combo-img-wrap{width:46%;aspect-ratio:1/1;background:#000;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.2);position:relative}
+.star-combo-img-wrap{width:46%;aspect-ratio:1/1;background:#000;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.2);position:relative;display:block;text-decoration:none;transition:transform .2s ease,border-color .2s ease;cursor:pointer}
+.star-combo-img-wrap:hover{border-color:#38bdf8;transform:scale(1.02)}
 .star-combo-img-wrap img{width:100%;height:100%;object-fit:cover}
 .star-combo-img-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.8);font-size:10px;color:#f8fafc;text-align:center;padding:3px 0;font-weight:800}
 .star-combo-plus{font-size:22px;font-weight:900;color:#38bdf8}
@@ -7887,21 +7888,21 @@ function home(){
   <!-- Hero Spotlight Combo Product -->
   <div class="star-combo-banner">
     <div class="star-combo-images">
-      <div class="star-combo-img-wrap">
-        <img src="/uploads/teamspirit-jp-products/teamspirit-jp-new37.webp" alt="ホーム用ユニフォーム">
-        <span class="star-combo-img-label">HOME（ホーム）</span>
-      </div>
+      <a class="star-combo-img-wrap" href="/products/teamspirit-jp37/" title="TEAMSPIRIT サッカーユニフォーム 37 [スカイシアン・ストリーム] を見る">
+        <img src="/uploads/teamspirit-jp-products/teamspirit-jp-new37.webp" alt="TEAMSPIRIT サッカーユニフォーム 37 [スカイシアン・ストリーム] ホーム用ユニフォーム">
+        <span class="star-combo-img-label">HOME（ホーム 37）</span>
+      </a>
       <span class="star-combo-plus">＋</span>
-      <div class="star-combo-img-wrap">
-        <img src="/uploads/teamspirit-jp-products/teamspirit-kr-products/teamspirit-kr01.webp" alt="アウェイ用ユニフォーム">
-        <span class="star-combo-img-label">AWAY（アウェイ）</span>
-      </div>
+      <a class="star-combo-img-wrap" href="/products/teamspirit-jp38/" title="TEAMSPIRIT サッカーユニフォーム 38 [グラファイト・ピンドット] を見る">
+        <img src="/uploads/teamspirit-jp-products/teamspirit-jp-new38.webp" alt="TEAMSPIRIT サッカーユニフォーム 38 [グラファイト・ピンドット] アウェイ用ユニフォーム">
+        <span class="star-combo-img-label">AWAY（アウェイ 38）</span>
+      </a>
     </div>
     <div class="star-combo-details">
       <span class="star-combo-tag">⭐ 今月の超目玉コンボ No.1</span>
       <h3>TEAMSPIRIT ホーム＆アウェイ豪華3点セット (2シャツ＋1パンツ)</h3>
       <div class="star-combo-breakdown">
-        <b>【セット内容】</b> ホーム用シャツ ＋ アウェイ用シャツ ＋ 試合用パンツ（計3点）<br>
+        <b>【セット内容】</b> ホーム用シャツ (037) ＋ アウェイ用シャツ (038) ＋ 試合用パンツ（計3点）<br>
         ※ 2枚のシャツ＋パンツすべてにチーム名・背番号・ロゴの昇華プリント代込み！追加料金一切なし！
       </div>
       <div class="star-combo-pricing">
@@ -7930,6 +7931,14 @@ function home(){
         <a class="combo-card" href="/products/teamspirit-jp37/">
           <div class="combo-card-pic"><img src="/uploads/teamspirit-jp-products/teamspirit-jp-new37.webp" alt="TEAMSPIRIT サッカーユニフォーム 37 [スカイシアン・ストリーム]" loading="lazy"></div>
           <div class="combo-card-name">TEAMSPIRIT サッカーユニフォーム 37 [スカイシアン・ストリーム]</div>
+          <div class="combo-card-price-box">
+            <div class="combo-card-set-price"><strong>¥4,800</strong><del>¥9,600</del></div>
+            <div class="combo-card-tag">★ 2着＋パンツコンボ対象（¥6,000）</div>
+          </div>
+        </a>
+        <a class="combo-card" href="/products/teamspirit-jp38/">
+          <div class="combo-card-pic"><img src="/uploads/teamspirit-jp-products/teamspirit-jp-new38.webp" alt="TEAMSPIRIT サッカーユニフォーム 38 [グラファイト・ピンドット]" loading="lazy"></div>
+          <div class="combo-card-name">TEAMSPIRIT サッカーユニフォーム 38 [グラファイト・ピンドット]</div>
           <div class="combo-card-price-box">
             <div class="combo-card-set-price"><strong>¥4,800</strong><del>¥9,600</del></div>
             <div class="combo-card-tag">★ 2着＋パンツコンボ対象（¥6,000）</div>
