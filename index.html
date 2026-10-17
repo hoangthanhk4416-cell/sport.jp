@@ -1142,334 +1142,219 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
     }
   }
 
-  /* TEAMSPIRIT-JP MODERN PROFESSIONAL FOOTER STYLES */
+  /* ==========================================================================
+   MINIMALIST PROFESSIONAL FOOTER (PC & MOBILE)
+   ========================================================================== */
+.footer {
+  background: #070b14 !important;
+  background: linear-gradient(180deg, #0a0f1d 0%, #04060b 100%) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #94a3b8 !important;
+  margin-top: 36px !important;
+  padding: 36px 0 24px !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  box-sizing: border-box !important;
+}
+.footer-wrap,
+.footer .wrap {
+  width: min(var(--max, 1200px), calc(100% - 32px)) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+.foot-main-row {
+  display: grid !important;
+  grid-template-columns: minmax(320px, 1.25fr) minmax(280px, 1fr) !important;
+  gap: 40px !important;
+  align-items: start !important;
+}
+.foot-brand-title {
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.5px !important;
+  color: #ffffff !important;
+  margin: 0 0 12px 0 !important;
+}
+.foot-company-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  margin-bottom: 20px !important;
+}
+.foot-info-item {
+  margin: 0 !important;
+  font-size: 12.5px !important;
+  color: #cbd5e1 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 8px !important;
+  line-height: 1.5 !important;
+}
+.foot-info-item .info-label {
+  color: #64748b !important;
+  font-weight: 600 !important;
+  min-width: 52px !important;
+  flex-shrink: 0 !important;
+}
+.foot-info-item .phone-text {
+  color: #ffd400 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  user-select: all !important;
+  cursor: text !important;
+}
+.foot-info-item .email-link {
+  color: #38bdf8 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+.foot-info-item .email-link:hover {
+  text-decoration: underline !important;
+  color: #7dd3fc !important;
+}
+/* 3 SNS BUTTONS WITH OFFICIAL IMAGE LOGOS */
+.foot-sns-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+.sns-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #f1f5f9 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+.sns-btn:hover {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  color: #ffffff !important;
+}
+.sns-btn img {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+.sns-btn.sns-instagram:hover {
+  border-color: rgba(225, 48, 108, 0.6) !important;
+}
+.sns-btn.sns-line:hover {
+  border-color: rgba(6, 199, 85, 0.6) !important;
+}
+.sns-btn.sns-youtube:hover {
+  border-color: rgba(255, 0, 0, 0.6) !important;
+}
+/* POLICIES & GUIDELINES */
+.foot-links-title {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  margin: 0 0 14px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.foot-links-title::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 3px !important;
+  height: 13px !important;
+  background: #ffd400 !important;
+  border-radius: 2px !important;
+}
+.foot-policy-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px 18px !important;
+}
+.foot-policy-grid a {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  text-decoration: none !important;
+  padding: 4px 0 !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1.4 !important;
+}
+.foot-policy-grid a::before {
+  content: "›" !important;
+  color: #ffd400 !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  margin-right: 6px !important;
+}
+.foot-policy-grid a:hover {
+  color: #ffd400 !important;
+  transform: translateX(2px) !important;
+}
+/* BOTTOM COPYRIGHT */
+.foot-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-top: 26px !important;
+  padding-top: 16px !important;
+  text-align: center !important;
+}
+.foot-copyright {
+  margin: 0 !important;
+  color: #64748b !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* MOBILE RESPONSIVE OPTIMIZATION */
+@media (max-width: 768px) {
   .footer {
-    background: #070b14 !important;
-    background: linear-gradient(180deg, #0a0f1d 0%, #04060b 100%) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    color: #94a3b8 !important;
-    margin-top: 36px !important;
-    padding: 38px 0 28px !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    position: relative !important;
-    z-index: 10 !important;
+    padding: 24px 16px 85px !important;
+    margin-top: 24px !important;
   }
-  .foot {
+  .foot-main-row {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+  .foot-sns-row {
     display: grid !important;
-    grid-template-columns: minmax(0, 2.3fr) minmax(240px, 0.95fr) minmax(180px, 0.75fr) !important;
-    gap: 36px !important;
-    font-size: 13px !important;
-    color: #94a3b8 !important;
-  }
-  .foot-brand-sec {
-    margin-bottom: 18px;
-  }
-  .foot-brand-name {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    color: #ffffff !important;
-    margin: 0 0 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .foot-brand-slogan {
-    font-size: 12px;
-    color: #94a3b8 !important;
-    margin: 0;
-    line-height: 1.5;
-  }
-  .foot h3 {
-    font-size: 22px !important;
-    font-weight: 900 !important;
-    color: #ffffff !important;
-    margin: 0 0 16px !important;
-  }
-  .foot h4 {
-    font-size: 13.5px !important;
-    font-weight: 700 !important;
-    color: #f1f5f9 !important;
-    margin: 0 0 14px !important;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .foot h4::before {
-    content: "";
-    display: inline-block;
-    width: 3px;
-    height: 13px;
-    background: #ffd400;
-    border-radius: 2px;
-  }
-  .foot-links {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 7px 10px !important;
-    margin-bottom: 20px !important;
-  }
-  .foot-links a {
-    display: flex !important;
-    align-items: center !important;
-    gap: 5px !important;
-    padding: 7px 10px !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 6px !important;
-    color: #cbd5e1 !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    text-decoration: none !important;
-    box-sizing: border-box !important;
-    min-height: 36px !important;
-    transition: all 0.2s ease !important;
-  }
-  .foot-links a:hover {
-    background: rgba(255, 212, 0, 0.08) !important;
-    border-color: rgba(255, 212, 0, 0.25) !important;
-    color: #ffffff !important;
-    transform: translateX(2px);
-  }
-  .foot-links a .link-arrow {
-    color: #ffd400 !important;
-    font-weight: 800 !important;
-    font-size: 14px !important;
-    line-height: 1 !important;
-    margin-right: 2px !important;
-    flex-shrink: 0 !important;
-  }
-  .foot-details {
-    line-height: 1.65 !important;
-    font-size: 12px !important;
-    color: #94a3b8 !important;
-  }
-  .foot-details-card {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .foot-detail-row {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 3px 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
-    font-size: 12px;
-  }
-  .foot-detail-row:last-of-type {
-    border-bottom: 0;
-  }
-  .foot-detail-label {
-    flex-shrink: 0;
-    min-width: 68px;
-    color: #94a3b8;
-    font-weight: 700;
-    font-size: 11.5px;
-  }
-  .foot-detail-val {
-    color: #e2e8f0;
-    word-break: break-all;
-  }
-  .foot-detail-val a {
-    color: #38bdf8 !important;
-    text-decoration: none;
-  }
-  .foot-detail-val a:hover {
-    text-decoration: underline;
-  }
-  .foot-invoice-badge {
-    margin-top: 6px;
-    padding: 6px 10px;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.22);
-    border-radius: 6px;
-    color: #34d399;
-    font-size: 11px;
-    font-weight: 600;
-    text-align: center;
-    line-height: 1.35;
-  }
-  .foot-service-card {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    padding: 14px;
-  }
-  .foot-support-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-  .foot-support-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .foot-support-btn.phone {
-    background: rgba(255, 212, 0, 0.1);
-    border: 1px solid rgba(255, 212, 0, 0.25);
-    color: #ffd400 !important;
-  }
-  .foot-support-btn.email {
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid rgba(56, 189, 248, 0.22);
-    color: #38bdf8 !important;
-    word-break: break-all;
-  }
-  .foot-support-hours {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    padding: 8px 10px;
-    font-size: 11.5px;
-  }
-  .hours-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .hours-item .h-label {
-    color: #94a3b8;
-  }
-  .hours-item .h-time {
-    font-weight: 600;
-    color: #f1f5f9;
-  }
-  .hours-item .h-closed {
-    color: #f87171;
-    font-weight: 600;
-  }
-  .foot-support-subnote {
-    margin-top: 8px;
-    font-size: 11px;
-    color: #06c755;
-    text-align: center;
-    font-weight: 600;
-  }
-  .foot-sns {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 8px !important;
   }
-  .foot-sns a {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
+  .sns-btn {
     padding: 8px 6px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 8px !important;
-    color: #f1f5f9 !important;
-    font-size: 11.5px !important;
-    font-weight: 600 !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-  }
-  .foot-sns a:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    transform: translateY(-2px);
-  }
-  .foot-sns .sns-icon {
-    width: 22px !important;
-    height: 22px !important;
-    border-radius: 6px !important;
-    display: flex !important;
-    align-items: center !important;
     justify-content: center !important;
-    flex: 0 0 22px !important;
+    font-size: 11px !important;
+    gap: 6px !important;
+  }
+  .sns-btn img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .foot-policy-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px 12px !important;
+  }
+  .foot-policy-grid a {
+    font-size: 11.5px !important;
   }
   .foot-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    margin-top: 28px !important;
-    padding: 16px 0 10px !important;
-    color: #94a3b8 !important;
-    text-align: center !important;
-    font-size: 12px !important;
-    line-height: 1.6 !important;
+    margin-top: 20px !important;
+    padding-top: 14px !important;
   }
-  .foot-guarantee {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 12px;
-    color: #cbd5e1;
-    margin-bottom: 8px;
-  }
-  .foot-copyright {
-    text-align: center !important;
-    color: #64748b !important;
-    font-size: 11.5px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.5px !important;
-    padding: 2px 0 0 !important;
-  }
+}
 
-  @media (max-width: 768px) {
-    .footer {
-      margin-top: 0 !important;
-      padding-top: 24px !important;
-      padding-bottom: 95px !important;
-    }
-    .foot {
-      display: flex !important;
-      flex-direction: column !important;
-      gap: 22px !important;
-      padding-right: 50px !important;
-      padding-left: 12px !important;
-      box-sizing: border-box !important;
-    }
-    .foot-bottom {
-      padding-right: 50px !important;
-      padding-left: 12px !important;
-      box-sizing: border-box !important;
-    }
-    .foot-links {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 6px 8px !important;
-    }
-    .foot-links a {
-      font-size: 11px !important;
-      padding: 6px 8px !important;
-      min-height: 34px !important;
-    }
-    .foot-sns {
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      gap: 6px !important;
-    }
-    .foot-sns a {
-      font-size: 10px !important;
-      padding: 7px 4px !important;
-      gap: 4px !important;
-    }
-    .foot-guarantee {
-      font-size: 11px !important;
-      flex-direction: column !important;
-      gap: 3px !important;
-    }
-    .foot-detail-label {
-      min-width: 62px !important;
-      font-size: 11px !important;
-    }
-    .foot-detail-val {
-      font-size: 11.5px !important;
-    }
-  }
 </style></head>
 <body>
 <noscript><main class="wrap section"><h1>オーダーサッカーユニフォーム・チームウェア | TEAMSPIRIT-jp</h1><p>TEAMSPIRIT-jpは、サッカーユニフォームやチームウェアのオーダーメイド制作を承ります。</p><p>商品一覧とご注文案内をご利用いただくには、ブラウザーのJavaScriptを有効にしてください。</p></main></noscript>
@@ -8904,119 +8789,51 @@ function home(){
   const instagram = safeContactLink(data.defaultInstagramLink) || "https://www.instagram.com/teamspirit_jp/";
   const youtube = safeContactLink(data.youtubeUrl) || "https://www.youtube.com/@teamspirit-jp";
   return `<footer class="footer">
-  <div class="wrap foot">
-    <!-- Col 1: Brand, Navigation, Company Info -->
-    <section class="foot-col foot-col-brand">
-      <div class="foot-brand-header">
+  <div class="footer-wrap wrap foot">
+    <div class="foot-main-row">
+      <!-- Col 1: Company Info, Contact & SNS -->
+      <div class="foot-col-info">
         <h3 class="foot-brand-title">TEAMSPIRIT-JP</h3>
-        <p class="foot-brand-tagline">オーダーメイド サッカーユニフォーム・チームウェア専門店</p>
-      </div>
-
-      <div class="foot-nav-groups">
-        <div class="foot-nav-block">
-          <h4 class="foot-nav-heading">ショッピング・ガイド</h4>
-          <nav class="foot-nav-links" aria-label="ショッピング・ガイド">
-            <a href="/collections/all-products/"><span class="bullet">›</span>全商品一覧</a>
-            <a href="/pages/custom-uniform-order/"><span class="bullet">›</span>注文手順ガイド</a>
-            <a href="/pages/order-form-guide/"><span class="bullet">›</span>注文書の書き方</a>
-            <a href="/pages/color-font-guide/"><span class="bullet">›</span>カラー・フォント</a>
-            <a href="/pages/team-custom-faq/"><span class="bullet">›</span>よくある質問（FAQ）</a>
-            <a href="/blog/"><span class="bullet">›</span>制作ガイド・ブログ</a>
-          </nav>
+        <div class="foot-company-details">
+          <p class="foot-info-item"><span class="info-label">所在地:</span> 〒150-0002 東京都渋谷区渋谷2-19-15</p>
+          <p class="foot-info-item"><span class="info-label">TEL:</span> <span class="phone-text">050-5806-5388</span></p>
+          <p class="foot-info-item"><span class="info-label">メール:</span> <a href="mailto:shop@teamspiritsport.jp" class="email-link">shop@teamspiritsport.jp</a></p>
         </div>
-
-        <div class="foot-nav-block">
-          <h4 class="foot-nav-heading">企業情報・規約</h4>
-          <nav class="foot-nav-links" aria-label="企業情報・規約">
-            <a href="/about/"><span class="bullet">›</span>私たちについて</a>
-            <a href="/contact/"><span class="bullet">›</span>お問い合わせ</a>
-            <a href="/shipping/"><span class="bullet">›</span>配送について</a>
-            <a href="/returns/"><span class="bullet">›</span>交換・返品ポリシー</a>
-            <a href="/privacy/"><span class="bullet">›</span>プライバシー規約</a>
-            <a href="/tokushoho/"><span class="bullet">›</span>特定商取引法表記</a>
-          </nav>
-        </div>
-      </div>
-
-      <div class="foot-corp-card">
-        <div class="foot-corp-row"><span class="corp-label">屋号</span><span class="corp-val">TEAMSPIRIT-JP</span></div>
-        <div class="foot-corp-row"><span class="corp-label">運営責任者</span><span class="corp-val">田中 健一（代表責任者）</span></div>
-        <div class="foot-corp-row"><span class="corp-label">所在地</span><span class="corp-val">〒150-0002 東京都渋谷区渋谷2-19-15</span></div>
-        <div class="foot-corp-row"><span class="corp-label">TEL</span><span class="corp-val"><a href="tel:05058065388" class="foot-tel-link">050-5806-5388</a></span></div>
-        <div class="foot-corp-row"><span class="corp-label">メール</span><span class="corp-val"><a href="mailto:shop@teamspiritsport.jp">shop@teamspiritsport.jp</a></span></div>
-        <div class="foot-invoice-pill">適格請求書（インボイス）発行対応</div>
-      </div>
-    </section>
-
-    <!-- Col 2: Customer Support -->
-    <section class="foot-col foot-col-support">
-      <h4 class="foot-sec-title">カスタマーサポート</h4>
-      <div class="foot-support-box">
-        <div class="support-contact-list">
-          <a class="support-btn phone-btn" href="tel:05058065388" aria-label="お電話でのお問い合わせ">
-            <span class="btn-icon">📞</span>
-            <div class="btn-text">
-              <span class="btn-sub">お電話相談</span>
-              <strong class="btn-main">050-5806-5388</strong>
-            </div>
+        <div class="foot-sns-row" aria-label="公式ソーシャルメディア">
+          <a class="sns-btn sns-instagram" href="${attr(instagram)}" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="/assets/instagram-logo.svg" alt="Instagram" width="20" height="20" loading="lazy">
+            <span>Instagram</span>
           </a>
-
-          <a class="support-btn line-btn" href="${attr(LINE_LINK)}" target="_blank" rel="noopener" aria-label="LINE公式相談（24時間受付）">
-            <span class="btn-icon">💬</span>
-            <div class="btn-text">
-              <span class="btn-sub">無料デザイン相談・お見積り</span>
-              <strong class="btn-main">LINE公式：@teamspirit-jp</strong>
-            </div>
+          <a class="sns-btn sns-line" href="${attr(LINE_LINK)}" target="_blank" rel="noopener" aria-label="LINE公式">
+            <img src="/assets/line-logo.svg" alt="LINE" width="20" height="20" loading="lazy">
+            <span>LINE公式</span>
           </a>
-
-          <a class="support-btn email-btn" href="mailto:shop@teamspiritsport.jp" aria-label="メールでのお問い合わせ">
-            <span class="btn-icon">✉️</span>
-            <div class="btn-text">
-              <span class="btn-sub">メールでのお問い合わせ</span>
-              <span class="btn-email">shop@teamspiritsport.jp</span>
-            </div>
+          <a class="sns-btn sns-youtube" href="${attr(youtube)}" target="_blank" rel="noopener" aria-label="YouTube">
+            <img src="/assets/youtube-logo.svg" alt="YouTube" width="20" height="20" loading="lazy">
+            <span>YouTube</span>
           </a>
         </div>
-
-        <div class="support-hours-card">
-          <div class="hours-row"><span class="lbl">営業時間</span><span class="val">平日 10:00〜17:00</span></div>
-          <div class="hours-row"><span class="lbl">定休日</span><span class="val closed">土日・祝日（LINE相談は受付中）</span></div>
-        </div>
       </div>
-    </section>
 
-    <!-- Col 3: SNS & Highlights -->
-    <section class="foot-col foot-col-sns">
-      <h4 class="foot-sec-title">公式SNS</h4>
-      <nav class="foot-sns-pills" aria-label="公式ソーシャルメディア">
-        <a class="sns-pill instagram" href="${attr(instagram)}" target="_blank" rel="noopener">
-          <span class="sns-icon">📷</span>
-          <span>Instagram</span>
-        </a>
-        <a class="sns-pill line" href="${attr(LINE_LINK)}" target="_blank" rel="noopener">
-          <span class="sns-icon">LINE</span>
-          <span>LINE公式</span>
-        </a>
-        <a class="sns-pill youtube" href="${attr(youtube)}" target="_blank" rel="noopener">
-          <span class="sns-icon">▶</span>
-          <span>YouTube</span>
-        </a>
-      </nav>
-
-      <div class="foot-trust-card">
-        <div class="trust-item"><span class="trust-icon">✨</span><span>デザイン作成・修正 完全無料</span></div>
-        <div class="trust-item"><span class="trust-icon">🎽</span><span>1枚から追加注文OK（同一割引）</span></div>
-        <div class="trust-item"><span class="trust-icon">🚚</span><span>全国配送 / 10,000円以上送料無料</span></div>
+      <!-- Col 2: Policies & Quick Links -->
+      <div class="foot-col-links">
+        <h4 class="foot-links-title">ポリシー・ご利用規約</h4>
+        <nav class="foot-policy-grid" aria-label="ポリシー・規約リンク">
+          <a href="/collections/all-products/">全商品一覧</a>
+          <a href="/tokushoho/">特定商取引法に基づく表記</a>
+          <a href="/privacy/">プライバシーポリシー</a>
+          <a href="/shipping/">配送・送料について</a>
+          <a href="/returns/">交換・返品について</a>
+          <a href="/about/">会社概要・私たちについて</a>
+          <a href="/contact/">お問い合わせ</a>
+          <a href="/pages/team-custom-faq/">よくある質問（FAQ）</a>
+        </nav>
       </div>
-    </section>
-  </div>
-
-  <div class="wrap foot-bottom">
-    <div class="foot-guarantee-note">
-      <span>🛡️ オーダーメイド サッカーユニフォーム専門店 | 専任スタッフが安心のワンストップサポートをご提供します。</span>
     </div>
-    <div class="foot-copyright-line">
-      © 2026 TEAMSPIRIT-JP. All rights reserved.
+
+    <!-- Bottom Copyright -->
+    <div class="foot-bottom">
+      <p class="foot-copyright">© 2026 TEAMSPIRIT-JP. All rights reserved.</p>
     </div>
   </div>
 </footer>`;
