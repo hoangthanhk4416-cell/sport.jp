@@ -107,7 +107,7 @@
     if (order) return { orderId: order };
     const trackingIntent = /注文|配送|状況|追跡|伝票|電話|運送|order|tracking|mã|ma don|vận đơn|van don|số điện thoại|so dien thoai/i.test(question);
     let phone = String(question || "").replace(/\D/g, "");
-    if (/^82\d{9,10}$/.test(phone)) phone = `0${phone.slice(2)}`;
+    if (/^(?:81|82)\d{9,10}$/.test(phone)) phone = `0${phone.slice(2)}`;
     if (!phone.startsWith("0") && /^\d{9,10}$/.test(phone)) phone = `0${phone}`;
     return trackingIntent && /^0\d{8,10}$/.test(phone) ? { phone } : {};
   }

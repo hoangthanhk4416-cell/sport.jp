@@ -31,7 +31,7 @@
  const text = String(value || "").trim();
  if (/^TS-/i.test(text)) return { orderId: text.toUpperCase() };
  let phone = text.replace(/\D/g, "");
- if (/^82\d{9,10}$/.test(phone)) phone = `0${phone.slice(2)}`;
+ if (/^(?:81|82)\d{9,10}$/.test(phone)) phone = `0${phone.slice(2)}`;
  if (!phone.startsWith("0") && /^\d{9,10}$/.test(phone)) phone = `0${phone}`;
  return phone ? { phone } : {};
  }
@@ -93,7 +93,7 @@
  }
 
  function formatPrice(value) {
- return `${new Intl.NumberFormat("ja-JP").format(Number(value || 0))}ウォン`;
+ return `¥${new Intl.NumberFormat("ja-JP").format(Number(value || 0))}`;
  }
 
  function normalizeSize(value) {

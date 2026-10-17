@@ -12,7 +12,7 @@
  <header class="page-head"><span class="brand">TEAMSPIRIT-jp</span><a class="back" href="../../">← ホームへ</a></header>
  <main class="login-page">
  <section class="login-panel" aria-labelledby="login-title">
- <h1 id="login-title"> ログイン</h1>
+ <h1 id="login-title">会員ログイン</h1>
  <form class="login-form" id="login-form">
  <div class="login-fields">
  <label><span hidden>ID</span><input name="username" autocomplete="username" placeholder="ID" required></label>
@@ -21,18 +21,18 @@
  <button class="primary-login" type="submit">ログイン</button>
  </form>
  <div class="login-links">
- <label class="remember"><input type="checkbox" name="remember"> ID 保存</label>
- <nav aria-label="ウォン "><a href="../signup/">新規登録</a><a href="#">ID検索</a><a href="#">パスワード検索</a></nav>
+ <label class="remember"><input type="checkbox" name="remember"> ログイン情報を保持</label>
+ <nav aria-label="会員メニュー"><a href="../signup/">新規登録</a><a href="#">ID検索</a><a href="#">パスワード再設定</a></nav>
  </div>
 
- <h2> ログイン</h2>
+ <h2>ソーシャルログイン</h2>
  <div class="social-logins">
  <button class="social-login line" type="button" data-provider="LINE"><span class="social-mark" aria-hidden="true"></span><span>LINE ログイン</span></button>
  <button class="social-login google" type="button" data-provider="Google"><span class="social-mark" aria-hidden="true">G</span><span>Google ログイン</span></button>
- <button class="social-login naver" type="button" data-provider="Naver"><span class="social-mark" aria-hidden="true">N</span><span> ログイン</span></button>
+ <button class="social-login naver" type="button" data-provider="Naver"><span class="social-mark" aria-hidden="true">N</span><span>Naver ログイン</span></button>
  </div>
- <a class="guest-order" href="../orders/">ウォン 注文配送照会 &gt;</a>
- <p class="auth-note"> ログイン OAuth 接続 . ブラウザー ストレージ 保存 .</p>
+ <a class="guest-order" href="../orders/">注文・配送状況の確認 &gt;</a>
+ <p class="auth-note">SNSアカウントでかんたんにログインできます。セッション情報は安全に管理されます。</p>
  <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
  </section>
  </main>
@@ -40,11 +40,11 @@
  const status = document.getElementById('auth-status');
  document.getElementById('login-form').addEventListener('submit', event => {
  event.preventDefault();
- status.textContent = ' ログイン サーバー 接続 準備 あります.';
+ status.textContent = 'ログインサーバーに接続中です...';
  });
  document.querySelectorAll('[data-provider]').forEach(button => {
  button.addEventListener('click', () => {
- status.textContent = `${button.dataset.provider} OAuth 接続 準備 あります.`;
+ status.textContent = `${button.dataset.provider} 認証の準備中です...`;
  });
  });
  </script>

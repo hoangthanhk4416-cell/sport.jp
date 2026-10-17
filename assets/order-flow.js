@@ -8,7 +8,7 @@
  { label: "既存デザインのまま", value: "Giữ nguyên thiết kế" },
  { label: "カラー変更を希望", value: "Màu sắc tùy chỉnh" },
  ];
- const contacts = ["Instagram","LINE","Điện thoại"];
+ const contacts = ["LINE","Instagram","お電話（TEL）"];
  let selectedProduct = null;
  let cartOrderItems = [];
  let orderMode = "single";
@@ -208,7 +208,7 @@
  ${productSummary}
  <div class="ts-order-grid">
  <div class="ts-order-field"><label for="tsCustomerName">お名前 *</label><input id="tsCustomerName" autocomplete="name" maxlength="80" required></div>
- <div class="ts-order-field"><label for="tsPhone">電話番号 *</label><input id="tsPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="010-0000-0000" required></div>
+ <div class="ts-order-field"><label for="tsPhone">電話番号 *</label><input id="tsPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="050-5806-5388" required></div>
  <div class="ts-order-field full"><label for="tsAddress">配送先住所</label><textarea id="tsAddress" autocomplete="street-address" maxlength="300"></textarea></div>
  <div class="ts-order-field full"><label for="tsContactChannel">希望する連絡方法（任意）</label><select id="tsContactChannel"><option value="">連絡を希望しない</option>${contacts.map(channel => `<option>${escapeHtml(channel)}</option>`).join("")}</select></div>
  </div>
