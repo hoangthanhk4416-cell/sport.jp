@@ -270,10 +270,11 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  .shortcut-icon-1{background-position:-28px -15px}.shortcut-icon-2{background-position:-90px -15px}.shortcut-icon-3{background-position:-151px -15px}.shortcut-icon-4{background-position:-211px -15px}.shortcut-icon-5{background-position:-271px -15px;filter:none!important}.shortcut-icon-6{background-position:-332px -15px;filter:none!important}.shortcut-icon-7{background-position:-392px -15px}.shortcut-icon-8{background-position:-453px -15px}
  .section{padding:14px 0}
  .center-title{font-size:17px;margin:0 0 10px;color:#fff;letter-spacing:-.4px}
- .carousel-row.popular{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow:visible}
- .section .grid,.custom-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow:visible}
+ .carousel-row.popular,.section .grid,.custom-row,.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow:visible}
  .custom-row .card{min-width:0}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ @media(min-width:640px){.carousel-row.popular,.section .grid,.custom-row,.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}}
+ @media(min-width:960px){.carousel-row.popular,.section .grid,.custom-row,.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+ @media(min-width:1240px){.carousel-row.popular,.section .grid,.custom-row,.grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}}
  .card{background:#0f172a;color:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);padding:8px 8px 10px;display:flex;flex-direction:column}
  .pic{aspect-ratio:1/1;background:#000;border-radius:8px;position:relative;overflow:hidden;width:100%}
  .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -775,7 +776,336 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
     }
     .footer {
       margin-top: 0 !important;
-      padding: 20px 0 90px !important;
+      padding: 24px 0 95px !important;
+    }
+  }
+
+  /* TEAMSPIRIT-JP MODERN PROFESSIONAL FOOTER STYLES */
+  .footer {
+    background: #070b14 !important;
+    background: linear-gradient(180deg, #0a0f1d 0%, #04060b 100%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #94a3b8 !important;
+    margin-top: 36px !important;
+    padding: 38px 0 28px !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+  .foot {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2.3fr) minmax(240px, 0.95fr) minmax(180px, 0.75fr) !important;
+    gap: 36px !important;
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+  }
+  .foot-brand-sec {
+    margin-bottom: 18px;
+  }
+  .foot-brand-name {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #ffffff !important;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .foot-brand-slogan {
+    font-size: 12px;
+    color: #94a3b8 !important;
+    margin: 0;
+    line-height: 1.5;
+  }
+  .foot h3 {
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    color: #ffffff !important;
+    margin: 0 0 16px !important;
+  }
+  .foot h4 {
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    color: #f1f5f9 !important;
+    margin: 0 0 14px !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .foot h4::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 13px;
+    background: #ffd400;
+    border-radius: 2px;
+  }
+  .foot-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 7px 10px !important;
+    margin-bottom: 20px !important;
+  }
+  .foot-links a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 7px 10px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 6px !important;
+    color: #cbd5e1 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+    min-height: 36px !important;
+    transition: all 0.2s ease !important;
+  }
+  .foot-links a:hover {
+    background: rgba(255, 212, 0, 0.08) !important;
+    border-color: rgba(255, 212, 0, 0.25) !important;
+    color: #ffffff !important;
+    transform: translateX(2px);
+  }
+  .foot-links a .link-arrow {
+    color: #ffd400 !important;
+    font-weight: 800 !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    margin-right: 2px !important;
+    flex-shrink: 0 !important;
+  }
+  .foot-details {
+    line-height: 1.65 !important;
+    font-size: 12px !important;
+    color: #94a3b8 !important;
+  }
+  .foot-details-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foot-detail-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 3px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+    font-size: 12px;
+  }
+  .foot-detail-row:last-of-type {
+    border-bottom: 0;
+  }
+  .foot-detail-label {
+    flex-shrink: 0;
+    min-width: 68px;
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 11.5px;
+  }
+  .foot-detail-val {
+    color: #e2e8f0;
+    word-break: break-all;
+  }
+  .foot-detail-val a {
+    color: #38bdf8 !important;
+    text-decoration: none;
+  }
+  .foot-detail-val a:hover {
+    text-decoration: underline;
+  }
+  .foot-invoice-badge {
+    margin-top: 6px;
+    padding: 6px 10px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.22);
+    border-radius: 6px;
+    color: #34d399;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.35;
+  }
+  .foot-service-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .foot-support-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .foot-support-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .foot-support-btn.phone {
+    background: rgba(255, 212, 0, 0.1);
+    border: 1px solid rgba(255, 212, 0, 0.25);
+    color: #ffd400 !important;
+  }
+  .foot-support-btn.email {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    color: #38bdf8 !important;
+    word-break: break-all;
+  }
+  .foot-support-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11.5px;
+  }
+  .hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hours-item .h-label {
+    color: #94a3b8;
+  }
+  .hours-item .h-time {
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  .hours-item .h-closed {
+    color: #f87171;
+    font-weight: 600;
+  }
+  .foot-support-subnote {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #06c755;
+    text-align: center;
+    font-weight: 600;
+  }
+  .foot-sns {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .foot-sns a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 6px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 8px !important;
+    color: #f1f5f9 !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+  }
+  .foot-sns a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: translateY(-2px);
+  }
+  .foot-sns .sns-icon {
+    width: 22px !important;
+    height: 22px !important;
+    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 22px !important;
+  }
+  .foot-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-top: 28px !important;
+    padding: 16px 0 10px !important;
+    color: #94a3b8 !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+  .foot-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+  }
+  .foot-copyright {
+    text-align: center !important;
+    color: #64748b !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    padding: 2px 0 0 !important;
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      margin-top: 0 !important;
+      padding-top: 24px !important;
+      padding-bottom: 95px !important;
+    }
+    .foot {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 22px !important;
+      padding-right: 50px !important;
+      padding-left: 12px !important;
+      box-sizing: border-box !important;
+    }
+    .foot-bottom {
+      padding-right: 50px !important;
+      padding-left: 12px !important;
+      box-sizing: border-box !important;
+    }
+    .foot-links {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 6px 8px !important;
+    }
+    .foot-links a {
+      font-size: 11px !important;
+      padding: 6px 8px !important;
+      min-height: 34px !important;
+    }
+    .foot-sns {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 6px !important;
+    }
+    .foot-sns a {
+      font-size: 10px !important;
+      padding: 7px 4px !important;
+      gap: 4px !important;
+    }
+    .foot-guarantee {
+      font-size: 11px !important;
+      flex-direction: column !important;
+      gap: 3px !important;
+    }
+    .foot-detail-label {
+      min-width: 62px !important;
+      font-size: 11px !important;
+    }
+    .foot-detail-val {
+      font-size: 11.5px !important;
     }
   }
 </style></head>
@@ -7815,7 +8145,7 @@ html[data-theme="night"] .shortcut{color:#fff}html[data-theme="night"] .shortcut
  const collectionProductIds={uniform:["GZ-009","away-white","custom-orange"],halfzip:["black-tee","training-top"],trackjacket:["training-top","GZ-009"],windbreaker:["away-white","black-tee"],paddedvest:["custom-orange","black-tee"]};
  const productSectionPages={popular:0,professional:0,custom:0};
  const productSectionCache={};
- const productSectionPageSize=()=>window.matchMedia&&window.matchMedia("(max-width:720px)").matches?2:5;
+ const productSectionPageSize=()=>{const w=window.innerWidth||document.documentElement.clientWidth||1200;if(w<=640)return 6;if(w<=960)return 6;if(w<=1240)return 8;return 10;};
  const productSectionTotal=products=>Math.max(1,Math.ceil((products||[]).length/productSectionPageSize()));
  function productSectionSlice(key,products){productSectionCache[key]=products;const size=productSectionPageSize(),total=productSectionTotal(products);productSectionPages[key]=Math.min(productSectionPages[key]||0,total-1);const start=productSectionPages[key]*size,items=products.slice(start,start+size);if(items.length&&items.length<size){for(let offset=0;items.length<size&&offset<products.length*2;offset++){const candidate=products[offset%products.length];if(!items.some(item=>item.id===candidate.id)||products.length<size)items.push(candidate)}}return items}
  function productSectionPager(key){const total=productSectionTotal(productSectionCache[key]||[]);return `<div class="car-nav" data-product-pager="${key}"><button type="button" onclick="moveProductSection('${key}',-1)">&#8249;</button><b>${(productSectionPages[key]||0)+1} / ${total}</b><button type="button" onclick="moveProductSection('${key}',1)">&#8250;</button></div>`}
@@ -8208,8 +8538,91 @@ function home(){
 <div class="meta"><div><b>国内・海外配送</b><span>日本全国配送対応</span></div><div><b>配送方法</b><span>宅配便</span></div><div><b>送料</b><span>送料：全国一律600円（10,000円以上で無料）</span></div></div><b>サイズ</b><div class="sizes">${sizes.map(row=>`<button class="size">${row.size}</button>`).join("")}</div><div class="upsell"><b>この商品を見た方はこちらもチェックしています</b><p>10,000円以上のご購入で送料無料</p><div class="progress"><span></span></div><div class="mini-row">${related.map(item=>`<div class="mini"><img src="${item.image}"><p>${item.name}</p><b>${item.price}</b></div>`).join("")}</div></div><div class="total"><span>商品合計</span><span>${p.price}</span></div>${contactButtons(p,true)}</aside></section>
  ${extraImages.length?`<section class="detail-extra-gallery"><h2>商品 画像</h2>${extraImages.map((image,index)=>`<img src="${image}" alt="${p.name} 画像 ${index+1}">`).join("")}</section>`:""}
  <nav class="tabs-bar"><button class="active">商品</button><button>ご購入案内</button><button>レビュー</button><button>Q&A</button></nav><section class="detail-section"><div class="bundle"><h2>ご覧の${p.name}とセット商品もあわせてご検討ください。</h2></div><div class="coupon">LINE友だち追加で1,000円OFFクーポン！</div><p class="notice">この商品は受注制作商品です。<br>ご注文後、約3〜4週間かかります。</p>${renderSizeTable(sizes)}<h2>ご購入案内</h2><table class="purchase-table"><tr><th>お支払いについて</th><td>お支払い完了後に受注制作を開始します。</td></tr><tr><th>配送について</th><td>全国配送 / 平均3〜7日、オーダーメイド商品は別途制作期間（約2〜3週間）がかかります。</td></tr><tr><th>交換・返品について</th><td>受注制作商品は制作開始後のキャンセルが制限される場合があります。</td></tr></table><h2>商品レビュー</h2><div class="review-card"><div class="stars">★★★★★</div><p>${data.reviewText}</p><img class="review-photo" src="${p.hoverImage||p.image}"></div><h2>商品Q&A</h2><div class="qna">${data.qnaText}</div></section></main>${footer()}`;
- }
- function footer(){const instagram=safeContactLink(data.defaultInstagramLink)||"#";const youtube=safeContactLink(data.youtubeUrl)||"#";return `<footer class="footer"><div class="wrap foot"><section><h3>TEAMSPIRIT</h3><nav class="foot-links" aria-label="会社案内"><a href="/about/">ブランド紹介</a><a href="/contact/">お問い合わせ</a><a href="/shipping/">配送について</a><a href="/returns/">交換・返品</a><a href="/privacy/">プライバシーポリシー</a><a href="/tokushoho/">特定商取引法に基づく表記</a><a href="/blog/">制作ガイド</a><a href="/pages/custom-uniform-order/">ユニフォーム注文ガイド</a><a href="/pages/color-font-guide/">カラー・フォントガイド</a><a href="/pages/order-form-guide/">注文書の書き方</a><a href="/pages/team-custom-faq/">FAQ</a></nav><div class="foot-details"><b>運営会社</b> TEAMSPIRIT-JP &nbsp; | &nbsp; <b>運営統括責任者</b> 田中 健一（代表責任者）<br><b>所在地</b> 〒150-0002 東京都渋谷区渋谷2-19-15 &nbsp; | &nbsp; <b>TEL</b> 050-5806-5388<br><b>お問い合わせ</b> shop@teamspiritsport.jp &nbsp; | &nbsp; <b>公式LINE</b> <a href="https://lin.ee/qE1TJJ5" target="_blank" rel="noopener">@teamspirit-jp</a><br>オーダーメイドのサッカーユニフォーム・チームウェア専門店（適格請求書・領収書発行対応）</div></section><section class="foot-service"><h4>カスタマーサポート</h4><strong>${data.footerPhone}</strong><p>平日：10:00〜17:00<br>休憩時間：13:00〜14:00<br>土日・祝日：休業</p></section><section><h4>SNS</h4><nav class="foot-sns" aria-label="ソーシャルメディア"><a href="${attr(instagram)}" target="_blank" rel="noopener"><span class="sns-icon instagram">◎</span><span>Instagram</span></a><a href="${attr(LINE_LINK)}" target="_blank" rel="noopener"><span class="sns-icon line">LINE</span><span>LINE</span></a><a href="${attr(youtube)}" target="_blank" rel="noopener"><span class="sns-icon youtube"><svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31 31 0 0 0 0 8.5a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8ZM9.6 12.1V4.9l6.3 3.6-6.3 3.6Z"/></svg></span><span>YouTube</span></a></nav></section></div><div class="wrap foot-bottom">安心してご注文いただけるよう、事前相談サービスを提供しています。<br>Copyright © TEAMSPIRIT. All rights reserved.<div class="foot-copyright">COPYRIGHT © 2026 BY TEAMSPIRIT SPORT</div></div></footer>`}
+ } function footer(){
+  const instagram = safeContactLink(data.defaultInstagramLink) || "https://www.instagram.com/teamspirit_jp/";
+  const youtube = safeContactLink(data.youtubeUrl) || "https://www.youtube.com/@teamspirit-jp";
+  return `<footer class="footer">
+    <div class="wrap foot">
+      <section class="foot-main-sec">
+        <div class="foot-brand-sec">
+          <h3 class="foot-brand-name">TEAMSPIRIT-JP</h3>
+          <p class="foot-brand-slogan">オーダーメイド サッカーユニフォーム・チームウェア専門店</p>
+        </div>
+        <nav class="foot-links" aria-label="会社案内・ご利用ガイド">
+          <a href="/about/"><span class="link-arrow">›</span>ブランド紹介</a>
+          <a href="/contact/"><span class="link-arrow">›</span>お問い合わせ</a>
+          <a href="/shipping/"><span class="link-arrow">›</span>配送について</a>
+          <a href="/returns/"><span class="link-arrow">›</span>交換・返品</a>
+          <a href="/privacy/"><span class="link-arrow">›</span>プライバシー規約</a>
+          <a href="/tokushoho/"><span class="link-arrow">›</span>特定商取引法表記</a>
+          <a href="/blog/"><span class="link-arrow">›</span>制作ガイド</a>
+          <a href="/pages/custom-uniform-order/"><span class="link-arrow">›</span>注文手順ガイド</a>
+          <a href="/pages/color-font-guide/"><span class="link-arrow">›</span>カラー・フォント</a>
+          <a href="/pages/order-form-guide/"><span class="link-arrow">›</span>注文書の書き方</a>
+          <a href="/pages/team-custom-faq/"><span class="link-arrow">›</span>よくある質問（FAQ）</a>
+          <a href="/collections/all-products/"><span class="link-arrow">›</span>全商品一覧</a>
+        </nav>
+        <div class="foot-details">
+          <div class="foot-details-card">
+            <div class="foot-detail-row"><span class="foot-detail-label">運営会社</span><span class="foot-detail-val">TEAMSPIRIT-JP</span></div>
+            <div class="foot-detail-row"><span class="foot-detail-label">運営統括</span><span class="foot-detail-val">田中 健一（代表責任者）</span></div>
+            <div class="foot-detail-row"><span class="foot-detail-label">所在地</span><span class="foot-detail-val">〒150-0002 東京都渋谷区渋谷2-19-15</span></div>
+            <div class="foot-detail-row"><span class="foot-detail-label">TEL</span><span class="foot-detail-val"><a href="tel:05058065388">050-5806-5388</a></span></div>
+            <div class="foot-detail-row"><span class="foot-detail-label">メール</span><span class="foot-detail-val"><a href="mailto:shop@teamspiritsport.jp">shop@teamspiritsport.jp</a></span></div>
+            <div class="foot-detail-row"><span class="foot-detail-label">公式LINE</span><span class="foot-detail-val"><a href="https://lin.ee/qE1TJJ5" target="_blank" rel="noopener">@teamspirit-jp</a></span></div>
+            <div class="foot-invoice-badge">オーダーメイドサッカーユニフォーム専門店（適格請求書・領収書発行対応）</div>
+          </div>
+        </div>
+      </section>
+      <section class="foot-service">
+        <h4>カスタマーサポート</h4>
+        <div class="foot-service-card">
+          <div class="foot-support-actions">
+            <a class="foot-support-btn phone" href="tel:05058065388">
+              <span>📞 050-5806-5388</span>
+            </a>
+            <a class="foot-support-btn email" href="mailto:shop@teamspiritsport.jp">
+              <span>✉️ shop@teamspiritsport.jp</span>
+            </a>
+          </div>
+          <div class="foot-support-hours">
+            <div class="hours-item"><span class="h-label">平日（月〜金）</span><span class="h-time">10:00〜17:00</span></div>
+            <div class="hours-item"><span class="h-label">お昼休憩</span><span class="h-time">13:00〜14:00</span></div>
+            <div class="hours-item"><span class="h-label">土日・祝日</span><span class="h-closed">休業</span></div>
+          </div>
+          <div class="foot-support-subnote">※ LINE相談は24時間受付中</div>
+        </div>
+      </section>
+      <section class="foot-sns-section">
+        <h4>公式SNS</h4>
+        <nav class="foot-sns" aria-label="ソーシャルメディア">
+          <a href="${attr(instagram)}" target="_blank" rel="noopener">
+            <span class="sns-icon instagram">◎</span>
+            <span>Instagram</span>
+          </a>
+          <a href="${attr(LINE_LINK)}" target="_blank" rel="noopener">
+            <span class="sns-icon line">LINE</span>
+            <span>LINE公式</span>
+          </a>
+          <a href="${attr(youtube)}" target="_blank" rel="noopener">
+            <span class="sns-icon youtube">
+              <svg viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31 31 0 0 0 0 8.5a31 31 0 0 0 .5-5.8 31 31 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0-.5-5.8ZM9.6 12.1V4.9l6.3 3.6-6.3 3.6Z"/></svg>
+            </span>
+            <span>YouTube</span>
+          </a>
+        </nav>
+      </section>
+    </div>
+    <div class="wrap foot-bottom">
+      <div class="foot-guarantee">
+        <span>🛡️ 安心してご注文いただけるよう、専任スタッフによる無料事前相談サービスを提供しています。</span>
+      </div>
+      <div class="foot-copyright">
+        © 2026 TEAMSPIRIT-JP. All rights reserved.
+      </div>
+    </div>
+  </footer>`;
+}
  function renderProductReviews(product){const container=document.querySelector(".review-card");if(!container)return;const reviews=Array.isArray(product.reviews)?product.reviews.filter(review=>review&&(review.text||(Array.isArray(review.images)&&review.images.length))):[];container.className="product-reviews";container.innerHTML=reviews.map(review=>{const stars=Math.max(0,Math.min(5,Number(review.stars)||0));const images=Array.isArray(review.images)?review.images.filter(Boolean):[];const author=review.author?`<small class="product-review-author">${attr(review.author)}${review.date?` - ${attr(review.date)}`:""}</small>`:"";const rating=stars?`${"\u2605".repeat(stars)}${"\u2606".repeat(5-stars)}`:"Review note";const label=stars?`${stars} of 5 rating`:"Review note without rating";return `<article class="product-review"><div class="product-review-stars" aria-label="${label}">${rating}</div>${review.text?`<p class="product-review-text">${attr(review.text)}</p>`:""}${author}${images.length?`<div class="product-review-images">${images.map((image,index)=>`<img src="${attr(image)}" alt="${attr(product.name||product.id)} feedback image ${index+1}" loading="lazy">`).join("")}</div>`:""}</article>`}).join("")||`<div class="product-review-empty">No real customer feedback has been added yet.</div>`}
  function render(){
  clearInterval(heroTimer);
