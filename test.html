@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TEAMSPIRIT 3D - 360°リアルフィット プロ仕様サッカーユニフォーム シミュレーター</title>
+<!-- Three.js + OrbitControls + GLTFLoader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<!-- Realistic 3D Garment Model Base64 Helper -->
+<script src="/models/shirt_model.js"></script>
+<script>
+  if (!window.SHIRT_GLB_BASE64) {
+    document.write('<script src="models/shirt_model.js"><\/script>');
+  }
+</script>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    background: #0b1120;
+    color: #f8fafc;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+  }
+
+  /* 3D Viewport */
+  #viewport-container {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background: radial-gradient(circle at 50% 35%, #1e293b 0%, #0b1120 85%);
+  }
+  #webgl-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+  }
+
+  /* Brand Header Badge */
+  .brand-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(15, 23, 42, 0.90);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 12px 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .brand-badge h1 {
+    font-size: 17px;
+    color: #38bdf8;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .brand-badge p {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 4px;
+    letter-spacing: 0.2px;
+  }
+
+  /* Camera Quick Toolbar */
+  .camera-toolbar {
+    position: absolute;
+    bottom: 24px;
+    left: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .cam-btn {
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    padding: 8px 16px;
+    font-size: 11.5px;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cam-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+  }
+  .cam-btn.active {
+    background: #0284c7;
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(2, 132, 199, 0.5);
+  }
+
+  /* 360 Hint */
+  .hint-360 {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    color: #cbd5e1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  /* Sidebar Controls */
+  #sidebar {
+    width: 430px;
+    height: 100%;
+    background: #0f172a;
+    border-left: 1px solid rgba(56, 189, 248, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    box-shadow: -8px 0 30px rgba(0,0,0,0.6);
+  }
+
+  .tabs-nav {
+    display: flex;
+    background: #090d16;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 14px 4px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .tab-btn:hover {
+    color: #e2e8f0;
+  }
+  .tab-btn.active {
+    color: #38bdf8;
+    border-bottom-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  .tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .tab-pane {
+    display: none;
+  }
+  .tab-pane.active {
+    display: block;
+  }
+
+  .control-group {
+    margin-bottom: 20px;
+    background: #1e293b;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .control-group-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #38bdf8;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.5px;
+  }
+  .control-group-title span.val {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 500;
+    font-family: monospace;
+  }
+
+  /* Color grids */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+    margin-top: 8px;
+  }
+  .color-swatch {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  }
+  .color-swatch:hover {
+    transform: scale(1.12);
+  }
+  .color-swatch.active {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+    transform: scale(1.08);
+  }
+
+  .custom-color-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+  }
+  .custom-color-row label {
+    font-size: 11px;
+    color: #94a3b8;
+    flex: 1;
+  }
+  .custom-color-input {
+    width: 38px;
+    height: 28px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  /* Pattern Grid */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .pattern-card {
+    background: #141f33;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 11px;
+    color: #cbd5e1;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .pattern-card:hover {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.08);
+  }
+  .pattern-card.active {
+    border-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.16);
+    color: #38bdf8;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+  }
+  .pattern-tag {
+    font-size: 9.5px;
+    color: #38bdf8;
+    font-weight: 800;
+  }
+  .pattern-name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #f1f5f9;
+    line-height: 1.35;
+  }
+  .pattern-card.active .pattern-name {
+    color: #38bdf8;
+  }
+
+  /* Inputs */
+  .text-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: #141f33;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 10px;
+  }
+  .text-input:focus {
+    border-color: #38bdf8;
+  }
+
+  .toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+  }
+  .toggle-row label {
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+  .toggle-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #0284c7;
+  }
+
+  /* Preset Grid */
+  .preset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .preset-card {
+    background: #1e293b;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .preset-card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+  }
+  .preset-preview-colors {
+    display: flex;
+    height: 14px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .preset-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+  .preset-sub {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+
+  /* Bottom Actions */
+  .bottom-actions {
+    padding: 16px 20px;
+    background: #090d16;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 10px;
+  }
+  .action-btn {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #0284c7, #38bdf8);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+  }
+  .btn-secondary {
+    background: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-secondary:hover {
+    background: #334155;
+    color: #fff;
+  }
+
+  #texture-canvas {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    body { flex-direction: column; }
+    #sidebar { width: 100%; height: 50vh; }
+    #viewport-container { height: 50vh; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 3D Viewport -->
+  <div id="viewport-container">
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Brand Header Badge -->
+    <div class="brand-badge">
+      <h1>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        TEAMSPIRIT 3D REAL-FIT PRO
+      </h1>
+      <p>公式プロ仕様ユニフォーム | 襟元・袖口内部中空3D立体設計 | 360°自由回転</p>
+    </div>
+
+    <!-- Camera Quick Toolbar -->
+    <div class="camera-toolbar">
+      <button class="cam-btn active" onclick="setCameraView('front', this)">👕 正面</button>
+      <button class="cam-btn" onclick="setCameraView('back', this)">🔄 背面</button>
+      <button class="cam-btn" onclick="setCameraView('top_hollow', this)" title="襟口を上部から見下ろし、内部中空構造を確認">🔍 襟・内部確認</button>
+      <button class="cam-btn" onclick="setCameraView('persp', this)">📐 斜め45°</button>
+      <button class="cam-btn" id="btn-auto-rotate" onclick="toggleAutoRotate(this)">🔁 自動回転</button>
+    </div>
+
+    <!-- 360 Interaction hint -->
+    <div class="hint-360">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+      <span>ドラッグで360°回転 | スクロールで拡大縮小 | 右ドラッグで位置調整</span>
+    </div>
+  </div>
+
+  <!-- Sidebar Customizer -->
+  <div id="sidebar">
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="switchTab('colors', this)">🎨 カラー設定</button>
+      <button class="tab-btn" onclick="switchTab('patterns', this)">✨ 10種パターン</button>
+      <button class="tab-btn" onclick="switchTab('printing', this)">🔢 ネーム＆番号</button>
+      <button class="tab-btn" onclick="switchTab('presets', this)">⭐ 人気配色</button>
+    </div>
+
+    <div class="tab-content">
+      <!-- TAB 1: COLORS -->
+      <div id="tab-colors" class="tab-pane active">
+        <!-- Body Color -->
+        <div class="control-group">
+          <div class="control-group-title">
+            <span>メインボディカラー (BODY)</span>
+            <span class="val" id="val-body-color">#1d4ed8</span>
+          </div>
+          <div class="color-grid" id="grid-body-color"></div>
+          <div class="custom-color-row">
+            <label>カスタムカラー選択 (Color Picker):</label>
+            <input type="color" id="custom-body-color" class="custom-color-input" value="#1d4ed8">
+          </div>
+        </div>
+
+        <!-- Sleeves Color -->
+        <div class="control-group">
+          <div class="control-group-title">
+            <span>スリーブ・袖カラー (SLEEVES)</span>
+            <span class="val" id="val-sleeve-color">#1e3a8a</span>
+          </div>
+          <div class="color-grid" id="grid-sleeve-color"></div>
+          <div class="custom-color-row">
+            <label>カスタムカラー選択 (Color Picker):</label>
+            <input type="color" id="custom-sleeve-color" class="custom-color-input" value="#1e3a8a">
+          </div>
+        </div>
+
+        <!-- Side Flanks -->
+        <div class="control-group">
+          <div class="control-group-title">
+            <span>サイドパネル・脇身頃 (SIDE FLANKS)</span>
+            <span class="val" id="val-sides-color">#0f172a</span>
+          </div>
+          <div class="color-grid" id="grid-sides-color"></div>
+          <div class="custom-color-row">
+            <label>カスタムカラー選択 (Color Picker):</label>
+            <input type="color" id="custom-sides-color" class="custom-color-input" value="#0f172a">
+          </div>
+        </div>
+
+        <!-- Collar & Sleeve Cuffs -->
+        <div class="control-group">
+          <div class="control-group-title">
+            <span>襟元・袖口リブアクセント (COLLAR & CUFFS)</span>
+            <span class="val" id="val-collar-color">#fbbf24</span>
+          </div>
+          <div class="color-grid" id="grid-collar-color"></div>
+          <div class="custom-color-row">
+            <label>カスタムカラー選択 (Color Picker):</label>
+            <input type="color" id="custom-collar-color" class="custom-color-input" value="#fbbf24">
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: 10 PATTERNS -->
+      <div id="tab-patterns" class="tab-pane">
+        <div style="font-size:11.5px; color:#94a3b8; margin-bottom:14px; line-height:1.5;">
+          <strong>TEAMSPIRIT 2025</strong> カタログ公式・高解像度昇華プリントパターン（全10種＋無地）:
+        </div>
+        <div class="pattern-grid" id="pattern-container"></div>
+      </div>
+
+      <!-- TAB 3: PRINTING & TEXT -->
+      <div id="tab-printing" class="tab-pane">
+        <div class="control-group">
+          <div class="control-group-title">チーム名 / スポンサーロゴ (胸中央)</div>
+          <input type="text" id="input-team-name" class="text-input" value="TEAMSPIRIT" maxlength="18" placeholder="例: TEAMSPIRIT">
+
+          <div class="control-group-title" style="margin-top:10px;">サブテキスト / スローガン (胸下部)</div>
+          <input type="text" id="input-slogan" class="text-input" value="SHOOT FOR THE STARS" maxlength="26" placeholder="例: SHOOT FOR THE STARS">
+        </div>
+
+        <div class="control-group">
+          <div class="control-group-title">選手ネーム (背面上部)</div>
+          <input type="text" id="input-player-name" class="text-input" value="TEAMSPIRIT" maxlength="16" placeholder="例: YAMADA">
+
+          <div class="control-group-title" style="margin-top:10px;">背番号 / 胸番号 (SQUAD NUMBER)</div>
+          <input type="text" id="input-number" class="text-input" value="10" maxlength="3" placeholder="例: 10">
+        </div>
+
+        <div class="control-group">
+          <div class="control-group-title">マーキング・フォントカラー</div>
+          <div class="color-grid" id="grid-text-color"></div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-group-title">公式エンブレム・ロゴ表示設定</div>
+          <div class="toggle-row">
+            <label>Teamspirit 公式ブランドロゴ (右胸):</label>
+            <input type="checkbox" id="check-logo-ts" checked onchange="updateCustomizer()">
+          </div>
+          <div class="toggle-row">
+            <label>クラブエンブレム DBFC (左胸):</label>
+            <input type="checkbox" id="check-crest" checked onchange="updateCustomizer()">
+          </div>
+          <div class="toggle-row">
+            <label>公式Authentic認証ラベル (裾):</label>
+            <input type="checkbox" id="check-tag" checked onchange="updateCustomizer()">
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: PRESETS -->
+      <div id="tab-presets" class="tab-pane">
+        <div style="font-size:11.5px; color:#94a3b8; margin-bottom:14px; line-height:1.5;">
+          Teamspirit 2025 シリーズ人気カラーコレクションから一括適用:
+        </div>
+        <div class="preset-grid" id="preset-container"></div>
+      </div>
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="bottom-actions">
+      <button class="action-btn btn-secondary" onclick="resetDefaults()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16M3 21v-5h5"/></svg>
+        リセット
+      </button>
+      <button class="action-btn btn-primary" onclick="snapshotDesign()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        3D画像を保存
+      </button>
+    </div>
+  </div>
+
+  <!-- Offscreen High-Res 2048x2048 Dynamic Canvas -->
+  <canvas id="texture-canvas" width="2048" height="2048"></canvas>
+
+  <script>
+    // --- 1. State ---
+    const state = {
+      bodyColor: '#1d4ed8',        // Blue Samurai
+      sleeveColor: '#1e3a8a',      // Darker Navy Sleeve
+      sidesColor: '#0f172a',       // Deep Dark Flanks
+      collarColor: '#fbbf24',      // Gold Trim
+      textColor: '#ffffff',        // White Text
+      pattern: 'speed_shards',     // Default 01: Speed Shards
+      teamName: 'TEAMSPIRIT',
+      slogan: 'SHOOT FOR THE STARS',
+      playerName: 'TEAMSPIRIT',
+      number: '10',
+      showLogoTs: true,
+      showCrest: true,
+      showTag: true,
+      autoRotate: false
+    };
+
+    const palette = [
+      '#1d4ed8', '#2563eb', '#38bdf8', '#0284c7', '#0f766e', '#10b981', '#16a34a',
+      '#dc2626', '#b91c1c', '#ea580c', '#f59e0b', '#eab308', '#7c3aed', '#9333ea',
+      '#db2777', '#f43f5e', '#ffffff', '#e2e8f0', '#94a3b8', '#334155', '#0f172a'
+    ];
+
+    const patternsList = [
+      { id: 'speed_shards', tag: 'SET 01', name: 'Speed Shards\n(幾何学スピード破片)' },
+      { id: 'chevron_zigzag', tag: 'SET 02', name: 'Chevron Zig-Zag\n(シェブロンVストライプ)' },
+      { id: 'tech_grid', tag: 'SET 03', name: 'Tech Grid\n(サイバーテックグリッド)' },
+      { id: 'polygon_facets', tag: 'SET 04', name: 'Polygon Facets\n(ダイヤ立体ファセット)' },
+      { id: 'speed_lines', tag: 'SET 05', name: 'Diagonal Lines\n(ダイナミック斜線)' },
+      { id: 'wave_camo', tag: 'SET 06', name: 'Wave Camo\n(流線ウェーブカモ)' },
+      { id: 'angled_waves', tag: 'SET 07', name: 'Angled Waves\n(アングルド・波紋)' },
+      { id: 'glitch_freq', tag: 'SET 08', name: 'Glitch Frequency\n(グリッチ音波周波数)' },
+      { id: 'pindot_matrix', tag: 'SET 09', name: 'Pindot Matrix\n(ドットグラデーション)' },
+      { id: 'thunder_slashes', tag: 'SET 10', name: 'Thunder Slashes\n(サンダースラッシュ)' },
+      { id: 'solid_clean', tag: 'BASIC', name: 'Solid Clean\n(ソリッド無地・シンプル)' },
+    ];
+
+    const presetsList = [
+      {
+        id: '01',
+        name: 'TS-SET-01 サムライブルー',
+        sub: '侍ブルー & ゴールドアクセント',
+        body: '#2563eb', sleeve: '#1d4ed8', sides: '#0f172a', collar: '#fbbf24', text: '#ffffff',
+        pattern: 'speed_shards'
+      },
+      {
+        id: '02',
+        name: 'TS-SET-02 クリムゾンスカーレット',
+        sub: '深紅スカーレット & クールブラック',
+        body: '#dc2626', sleeve: '#111827', sides: '#090d16', collar: '#ffffff', text: '#ffffff',
+        pattern: 'chevron_zigzag'
+      },
+      {
+        id: '03',
+        name: 'TS-SET-03 エメラルドシルバー',
+        sub: 'エメラルドグリーン & メタリックシルバー',
+        body: '#059669', sleeve: '#047857', sides: '#022c22', collar: '#cbd5e1', text: '#ffffff',
+        pattern: 'tech_grid'
+      },
+      {
+        id: '04',
+        name: 'TS-SET-04 サイバーマゼンタ',
+        sub: 'ネオンマゼンタ & スカイシアン',
+        body: '#db2777', sleeve: '#0284c7', sides: '#1e1b4b', collar: '#38bdf8', text: '#ffffff',
+        pattern: 'polygon_facets'
+      },
+      {
+        id: '05',
+        name: 'TS-SET-05 ソーラーボルト',
+        sub: 'ボルトイエロー & チャコールブラック',
+        body: '#eab308', sleeve: '#1f2937', sides: '#111827', collar: '#111827', text: '#111827',
+        pattern: 'speed_lines'
+      },
+      {
+        id: '06',
+        name: 'TS-SET-06 ロイヤルバイオレット',
+        sub: 'ロイヤルパープル & シャンパンゴールド',
+        body: '#7c3aed', sleeve: '#6d28d9', sides: '#2e1065', collar: '#fde047', text: '#ffffff',
+        pattern: 'wave_camo'
+      },
+      {
+        id: '07',
+        name: 'TS-SET-07 サンセットコーラル',
+        sub: 'サンセットコーラル & ガンメタル',
+        body: '#ea580c', sleeve: '#334155', sides: '#1e293b', collar: '#ffffff', text: '#ffffff',
+        pattern: 'angled_waves'
+      },
+      {
+        id: '08',
+        name: 'TS-SET-08 アクアマリンティール',
+        sub: 'オーシャンティール & ダークネイビー',
+        body: '#0d9488', sleeve: '#0f766e', sides: '#042f2e', collar: '#38bdf8', text: '#ffffff',
+        pattern: 'glitch_freq'
+      },
+      {
+        id: '09',
+        name: 'TS-SET-09 ボルドーワイン',
+        sub: 'ボルドーワイン & ローズゴールド',
+        body: '#881337', sleeve: '#4c0519', sides: '#1f1315', collar: '#fbcfe8', text: '#ffffff',
+        pattern: 'pindot_matrix'
+      },
+      {
+        id: '10',
+        name: 'TS-SET-10 エレクトリックライム',
+        sub: 'ネオンライム & カーボンブラック',
+        body: '#84cc16', sleeve: '#18181b', sides: '#09090b', collar: '#18181b', text: '#18181b',
+        pattern: 'thunder_slashes'
+      }
+    ];
+
+    // --- 2. Build UI Controls ---
+    function buildColorGrid(containerId, activeColor, onSelect) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      palette.forEach(c => {
+        const d = document.createElement('div');
+        d.className = 'color-swatch' + (c.toLowerCase() === activeColor.toLowerCase() ? ' active' : '');
+        d.style.backgroundColor = c;
+        d.onclick = () => {
+          container.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+          d.classList.add('active');
+          onSelect(c);
+        };
+        container.appendChild(d);
+      });
+    }
+
+    function initUI() {
+      // Body color
+      buildColorGrid('grid-body-color', state.bodyColor, c => {
+        state.bodyColor = c;
+        document.getElementById('val-body-color').innerText = c;
+        document.getElementById('custom-body-color').value = c;
+        updateCustomizer();
+      });
+      document.getElementById('custom-body-color').oninput = e => {
+        state.bodyColor = e.target.value;
+        document.getElementById('val-body-color').innerText = e.target.value;
+        updateCustomizer();
+      };
+
+      // Sleeve color
+      buildColorGrid('grid-sleeve-color', state.sleeveColor, c => {
+        state.sleeveColor = c;
+        document.getElementById('val-sleeve-color').innerText = c;
+        document.getElementById('custom-sleeve-color').value = c;
+        updateCustomizer();
+      });
+      document.getElementById('custom-sleeve-color').oninput = e => {
+        state.sleeveColor = e.target.value;
+        document.getElementById('val-sleeve-color').innerText = e.target.value;
+        updateCustomizer();
+      };
+
+      // Flank side color
+      buildColorGrid('grid-sides-color', state.sidesColor, c => {
+        state.sidesColor = c;
+        document.getElementById('val-sides-color').innerText = c;
+        document.getElementById('custom-sides-color').value = c;
+        updateCustomizer();
+      });
+      document.getElementById('custom-sides-color').oninput = e => {
+        state.sidesColor = e.target.value;
+        document.getElementById('val-sides-color').innerText = e.target.value;
+        updateCustomizer();
+      };
+
+      // Collar color
+      buildColorGrid('grid-collar-color', state.collarColor, c => {
+        state.collarColor = c;
+        document.getElementById('val-collar-color').innerText = c;
+        document.getElementById('custom-collar-color').value = c;
+        updateCustomizer();
+      });
+      document.getElementById('custom-collar-color').oninput = e => {
+        state.collarColor = e.target.value;
+        document.getElementById('val-collar-color').innerText = e.target.value;
+        updateCustomizer();
+      };
+
+      // Text color
+      buildColorGrid('grid-text-color', state.textColor, c => {
+        state.textColor = c;
+        updateCustomizer();
+      });
+
+      // Patterns list
+      const patContainer = document.getElementById('pattern-container');
+      patContainer.innerHTML = '';
+      patternsList.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'pattern-card' + (p.id === state.pattern ? ' active' : '');
+        card.innerHTML = `
+          <div class="pattern-tag">${p.tag}</div>
+          <div class="pattern-name">${p.name.replace('\n', '<br>')}</div>
+        `;
+        card.onclick = () => {
+          patContainer.querySelectorAll('.pattern-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          state.pattern = p.id;
+          updateCustomizer();
+        };
+        patContainer.appendChild(card);
+      });
+
+      // Presets list
+      const presetContainer = document.getElementById('preset-container');
+      presetContainer.innerHTML = '';
+      presetsList.forEach(pre => {
+        const card = document.createElement('div');
+        card.className = 'preset-card';
+        card.innerHTML = `
+          <div class="preset-preview-colors">
+            <div style="flex:2; background:${pre.body};"></div>
+            <div style="flex:1; background:${pre.sleeve};"></div>
+            <div style="flex:1; background:${pre.collar};"></div>
+          </div>
+          <div class="preset-name">${pre.name}</div>
+          <div class="preset-sub">${pre.sub}</div>
+        `;
+        card.onclick = () => {
+          state.bodyColor = pre.body;
+          state.sleeveColor = pre.sleeve;
+          state.sidesColor = pre.sides;
+          state.collarColor = pre.collar;
+          state.textColor = pre.text;
+          state.pattern = pre.pattern;
+
+          initUI();
+          updateCustomizer();
+        };
+        presetContainer.appendChild(card);
+      });
+
+      // Input events
+      document.getElementById('input-team-name').oninput = updateCustomizer;
+      document.getElementById('input-slogan').oninput = updateCustomizer;
+      document.getElementById('input-player-name').oninput = updateCustomizer;
+      document.getElementById('input-number').oninput = updateCustomizer;
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    // --- 3. Dynamic Texture Generator (2048x2048) ---
+    const texCanvas = document.getElementById('texture-canvas');
+    const ctx = texCanvas.getContext('2d');
+    let jerseyTexture = null;
+
+    function drawPatternOverlay(targetCtx, w, h, patId) {
+      targetCtx.save();
+      if (patId === 'speed_shards') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+        for (let i = 0; i < 42; i++) {
+          targetCtx.beginPath();
+          const sx = (i * 139) % w;
+          const sy = (i * 179) % 1500;
+          targetCtx.moveTo(sx, sy);
+          targetCtx.lineTo(sx + 180, sy - 90);
+          targetCtx.lineTo(sx + 240, sy + 70);
+          targetCtx.closePath();
+          targetCtx.fill();
+        }
+        targetCtx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+        for (let i = 0; i < 24; i++) {
+          targetCtx.beginPath();
+          const sx = (i * 193 + 60) % w;
+          const sy = (i * 223 + 40) % 1500;
+          targetCtx.moveTo(sx + 80, sy + 40);
+          targetCtx.lineTo(sx + 260, sy + 130);
+          targetCtx.lineTo(sx + 110, sy + 210);
+          targetCtx.closePath();
+          targetCtx.fill();
+        }
+      } else if (patId === 'chevron_zigzag') {
+        targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
+        targetCtx.lineWidth = 36;
+        for (let y = -100; y < 1500; y += 160) {
+          targetCtx.beginPath();
+          targetCtx.moveTo(30, y);
+          targetCtx.lineTo(515, y + 130);
+          targetCtx.lineTo(1000, y);
+          targetCtx.stroke();
+          targetCtx.beginPath();
+          targetCtx.moveTo(1045, y);
+          targetCtx.lineTo(1530, y + 130);
+          targetCtx.lineTo(2015, y);
+          targetCtx.stroke();
+        }
+      } else if (patId === 'tech_grid') {
+        targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        targetCtx.lineWidth = 2.5;
+        for (let x = 30; x < 2015; x += 60) {
+          targetCtx.beginPath(); targetCtx.moveTo(x, 40); targetCtx.lineTo(x, 1475); targetCtx.stroke();
+        }
+        for (let y = 40; y < 1475; y += 60) {
+          targetCtx.beginPath(); targetCtx.moveTo(30, y); targetCtx.lineTo(2015, y); targetCtx.stroke();
+        }
+      } else if (patId === 'polygon_facets') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.10)';
+        for (let r = 0; r < 12; r++) {
+          for (let c = 0; c < 18; c++) {
+            const px = 30 + c * 110;
+            const py = 40 + r * 120;
+            targetCtx.beginPath();
+            targetCtx.moveTo(px, py);
+            targetCtx.lineTo(px + 110, py);
+            targetCtx.lineTo(px + 55, py + 120);
+            targetCtx.closePath();
+            targetCtx.fill();
+          }
+        }
+      } else if (patId === 'speed_lines') {
+        targetCtx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        for (let x = -h; x < w + h; x += 85) {
+          targetCtx.lineWidth = (Math.sin(x * 0.05) + 1.2) * 15;
+          targetCtx.beginPath();
+          targetCtx.moveTo(x, 0);
+          targetCtx.lineTo(x + 1500, 1500);
+          targetCtx.stroke();
+        }
+      } else if (patId === 'wave_camo') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+        for (let i = 0; i < 28; i++) {
+          targetCtx.beginPath();
+          const bx = (i * 211) % w;
+          const by = (i * 179) % 1500;
+          targetCtx.ellipse(bx, by, 180, 70, Math.PI / 4, 0, Math.PI * 2);
+          targetCtx.fill();
+        }
+      } else if (patId === 'angled_waves') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.14)';
+        for (let y = 0; y < 1500; y += 140) {
+          targetCtx.beginPath();
+          targetCtx.moveTo(0, y); targetCtx.lineTo(w * 0.5, y + 90); targetCtx.lineTo(w, y);
+          targetCtx.lineTo(w, y + 45); targetCtx.lineTo(w * 0.5, y + 135); targetCtx.lineTo(0, y + 45);
+          targetCtx.closePath();
+          targetCtx.fill();
+        }
+      } else if (patId === 'glitch_freq') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.16)';
+        for (let y = 40; y < 1500; y += 32) {
+          const barW = (Math.sin(y * 0.08) * 0.5 + 0.5) * (w * 0.7);
+          const offset = ((y * 47) % 180) - 90;
+          targetCtx.fillRect(w * 0.5 - barW / 2 + offset, y, barW, 14);
+        }
+      } else if (patId === 'pindot_matrix') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.20)';
+        for (let y = 40; y < 1500; y += 36) {
+          const r = Math.max(1, (1.0 - y / 1500) * 11);
+          for (let x = 30; x < w - 30; x += 36) {
+            targetCtx.beginPath(); targetCtx.arc(x, y, r, 0, Math.PI * 2); targetCtx.fill();
+          }
+        }
+      } else if (patId === 'thunder_slashes') {
+        targetCtx.fillStyle = 'rgba(255, 255, 255, 0.20)';
+        for (let i = 0; i < 16; i++) {
+          const tx = (i * 240 + 80) % w;
+          const ty = (i * 280) % 1500;
+          targetCtx.beginPath();
+          targetCtx.moveTo(tx, ty);
+          targetCtx.lineTo(tx + 80, ty + 120);
+          targetCtx.lineTo(tx + 30, ty + 140);
+          targetCtx.lineTo(tx + 120, ty + 280);
+          targetCtx.lineTo(tx + 20, ty + 160);
+          targetCtx.lineTo(tx + 70, ty + 140);
+          targetCtx.closePath();
+          targetCtx.fill();
+        }
+      }
+      targetCtx.restore();
+    }
+
+    // Official Teamspirit Geometric Monogram Brand Logo
+    function drawTeamspiritBrandLogo(targetCtx, cx, cy, w, color) {
+      targetCtx.save();
+      targetCtx.fillStyle = color;
+
+      const h = w * (88.0 / 122.0);
+      const ox = cx - w * 0.5;
+      const oy = cy - h * 0.5;
+      const sx = w / 122.0;
+      const sy = h / 88.0;
+
+      function drawPoly(pts) {
+        targetCtx.beginPath();
+        targetCtx.moveTo(ox + pts[0][0] * sx, oy + pts[0][1] * sy);
+        for (let i = 1; i < pts.length; i++) {
+          targetCtx.lineTo(ox + pts[i][0] * sx, oy + pts[i][1] * sy);
+        }
+        targetCtx.closePath();
+        targetCtx.fill();
+      }
+
+      // 4 Exact Official Teamspirit Geometric Polygons (100% matched to brand assets)
+      drawPoly([[0, 0], [49, 0], [43, 10], [6, 10]]); // Top-left wing
+      drawPoly([[11, 19], [38, 19], [33, 28], [16, 28]]); // Lower-left wing
+      drawPoly([[59, 0], [114, 0], [120, 10], [65, 10], [42, 59], [34, 67], [29, 58]]); // Outer chevron
+      drawPoly([[71, 19], [115, 19], [121, 28], [77, 28], [53, 78], [46, 87], [39, 78]]); // Inner chevron
+
+      targetCtx.restore();
+    }
+
+    function generateJerseyTextures() {
+      const W = texCanvas.width;
+      const H = texCanvas.height;
+
+      // 1. Base Body Color
+      ctx.fillStyle = state.bodyColor;
+      ctx.fillRect(0, 0, W, H);
+
+      // 2. Sleeves Zone (Y: 1450 - 1920)
+      ctx.fillStyle = state.sleeveColor;
+      ctx.fillRect(0, 1450, W, 470);
+
+      // 3. Sleeve Cuffs (Y: 1840 - 1920)
+      ctx.fillStyle = state.collarColor;
+      ctx.fillRect(0, 1840, W, 80);
+
+      // 4. Collar Strip (Y: 1925 - 2048)
+      ctx.fillStyle = state.collarColor;
+      ctx.fillRect(0, 1925, W, 123);
+
+      // 5. Flanks (Side Panels)
+      ctx.fillStyle = state.sidesColor;
+      const flankW = 110;
+      ctx.fillRect(30, 480, flankW, 970);
+      ctx.fillRect(1022 - flankW, 480, flankW, 970);
+      ctx.fillRect(1032, 480, flankW, 970);
+      ctx.fillRect(2022 - flankW, 480, flankW, 970);
+
+      // 6. Draw Selected Pattern
+      drawPatternOverlay(ctx, W, H, state.pattern);
+
+      // -------------------------------------------------------------
+      // FRONT BODY PRINTING (Center X = 526)
+      // -------------------------------------------------------------
+      const frontCx = 526;
+
+      // Official Teamspirit Brand Logo on Right Chest (X = 350, Y = 425)
+      if (state.showLogoTs) {
+        drawTeamspiritBrandLogo(ctx, 350, 425, 115, state.textColor);
+      }
+
+      // Left Chest Club Crest (X = 702, Y = 430)
+      if (state.showCrest) {
+        const cx = 702, cy = 430;
+        ctx.fillStyle = '#0f172a';
+        ctx.strokeStyle = state.textColor;
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(cx - 45, cy - 55); ctx.lineTo(cx + 45, cy - 55); ctx.lineTo(cx + 45, cy + 10); ctx.lineTo(cx, cy + 55); ctx.lineTo(cx - 45, cy + 10);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = state.textColor;
+        ctx.font = 'bold 24px -apple-system, Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('DBFC', cx, cy - 20);
+        ctx.strokeStyle = state.collarColor;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(cx, cy + 24, 14, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Small Front Number (Centered between Logo & Crest: X = 526, Y = 430)
+      if (state.number) {
+        ctx.fillStyle = state.textColor;
+        ctx.font = 'bold 64px "Arial Black", -apple-system, Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(state.number, frontCx, 430);
+      }
+
+      // Center Sponsor / Team Name (Y = 590)
+      if (state.teamName) {
+        ctx.fillStyle = state.textColor;
+        ctx.font = 'bold 88px "Arial Black", -apple-system, Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(state.teamName.toUpperCase(), frontCx, 590);
+
+        // Sparkling Star beside sponsor
+        const sx = frontCx + (state.teamName.length * 28) + 22;
+        const sy = 568;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy - 18); ctx.lineTo(sx + 14, sy); ctx.lineTo(sx, sy + 18); ctx.lineTo(sx - 14, sy);
+        ctx.closePath(); ctx.fill();
+      }
+
+      // Slogan under Sponsor (Y = 660)
+      if (state.slogan) {
+        ctx.fillStyle = state.textColor;
+        ctx.font = 'bold 28px -apple-system, Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(state.slogan.toUpperCase(), frontCx, 660);
+      }
+
+      // Authentic Hem Label (X = 340, Y = 1380)
+      if (state.showTag) {
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(285, 1345, 110, 60);
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(285, 1345, 110, 60);
+        drawTeamspiritBrandLogo(ctx, 312, 1375, 30, '#38bdf8');
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('AUTHENTIC', 332, 1365);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 10px sans-serif';
+        ctx.fillText('TEAMSPIRIT', 332, 1385);
+      }
+
+      // -------------------------------------------------------------
+      // BACK BODY PRINTING (Center X = 1528)
+      // -------------------------------------------------------------
+      const backCx = 1528;
+
+      // Player Name across shoulders (Y = 350)
+      if (state.playerName) {
+        ctx.fillStyle = state.textColor;
+        ctx.font = 'bold 80px "Arial Black", -apple-system, Roboto, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(state.playerName.toUpperCase(), backCx, 350);
+      }
+
+      // Big Player Number (Y = 690)
+      if (state.number) {
+        ctx.font = 'bold 320px "Arial Black", Impact, -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        // Athletic 3D shadow
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+        ctx.fillText(state.number, backCx + 6, 696);
+        // Main number
+        ctx.fillStyle = state.textColor;
+        ctx.fillText(state.number, backCx, 690);
+      }
+
+      if (jerseyTexture) {
+        jerseyTexture.needsUpdate = true;
+      }
+    }
+
+    // --- 4. Three.js Scene Setup ---
+    const container = document.getElementById('viewport-container');
+    const canvas = document.getElementById('webgl-canvas');
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 100);
+    camera.position.set(0, 0.02, 1.22);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true,
+      preserveDrawingBuffer: true,
+      alpha: true
+    });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+
+    const controls = new THREE.OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 0.6;
+    controls.maxDistance = 2.8;
+    controls.target.set(0, -0.05, 0);
+
+    // Balanced 3-Point Garment Studio Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+
+    const keyFront = new THREE.DirectionalLight(0xffffff, 0.95);
+    keyFront.position.set(1.5, 2.5, 3.0);
+    scene.add(keyFront);
+
+    const fillFront = new THREE.DirectionalLight(0xbae6fd, 0.6);
+    fillFront.position.set(-2.0, 1.0, 2.0);
+    scene.add(fillFront);
+
+    const backRim = new THREE.DirectionalLight(0xffffff, 0.85);
+    backRim.position.set(0, 2.5, -3.5);
+    scene.add(backRim);
+
+    const fillUnder = new THREE.DirectionalLight(0xffffff, 0.4);
+    fillUnder.position.set(0, -2.5, 0);
+    scene.add(fillUnder);
+
+    // Floor Soft Shadow
+    const shadowGeo = new THREE.PlaneGeometry(1.6, 1.6);
+    const shadowMat = new THREE.MeshBasicMaterial({
+      color: 0x000000,
+      transparent: true,
+      opacity: 0.4,
+      depthWrite: false
+    });
+    const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
+    shadowMesh.rotation.x = -Math.PI / 2;
+    shadowMesh.position.y = -0.42;
+    scene.add(shadowMesh);
+
+    // Build initial texture
+    generateJerseyTextures();
+    jerseyTexture = new THREE.CanvasTexture(texCanvas);
+    jerseyTexture.flipY = false; // CRITICAL: Matches glTF 2.0 top-down UV orientation!
+    jerseyTexture.wrapS = THREE.RepeatWrapping;
+    jerseyTexture.wrapT = THREE.RepeatWrapping;
+
+    const jerseyMaterial = new THREE.MeshStandardMaterial({
+      map: jerseyTexture,
+      roughness: 0.42,
+      metalness: 0.04,
+      side: THREE.DoubleSide // 100% Hollow Garment interior view
+    });
+
+    const rootModel = new THREE.Group();
+    scene.add(rootModel);
+
+    // Load Realistic 3D Garment Mesh from Base64
+    function loadRealisticShirt() {
+      if (!window.SHIRT_GLB_BASE64) {
+        console.error("SHIRT_GLB_BASE64 not found!");
+        return;
+      }
+      const binaryStr = atob(window.SHIRT_GLB_BASE64);
+      const bytes = new Uint8Array(binaryStr.length);
+      for (let i = 0; i < binaryStr.length; i++) {
+        bytes[i] = binaryStr.charCodeAt(i);
+      }
+
+      const loader = new THREE.GLTFLoader();
+      loader.parse(bytes.buffer, '', function(gltf) {
+        const shirt = gltf.scene;
+        shirt.traverse(child => {
+          if (child.isMesh) {
+            child.material = jerseyMaterial;
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        shirt.position.set(0, 0, 0);
+        rootModel.add(shirt);
+        console.log("Realistic Pro Shirt loaded successfully!");
+      }, err => {
+        console.error("Error parsing realistic shirt:", err);
+      });
+    }
+
+    loadRealisticShirt();
+
+    // --- 5. Customizer Update Routine ---
+    function updateCustomizer() {
+      state.teamName = document.getElementById('input-team-name').value;
+      state.slogan = document.getElementById('input-slogan').value;
+      state.playerName = document.getElementById('input-player-name').value;
+      state.number = document.getElementById('input-number').value;
+
+      state.showLogoTs = document.getElementById('check-logo-ts').checked;
+      state.showCrest = document.getElementById('check-crest').checked;
+      state.showTag = document.getElementById('check-tag').checked;
+
+      generateJerseyTextures();
+    }
+
+    // Camera Views
+    let camTargetPos = new THREE.Vector3(0, 0.02, 1.22);
+    let camLookTarget = new THREE.Vector3(0, -0.05, 0);
+    let isTransitioning = false;
+
+    function setCameraView(view, btn) {
+      if (btn) {
+        document.querySelectorAll('.cam-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      rootModel.rotation.y = 0;
+      state.autoRotate = false;
+      const autoBtn = document.getElementById('btn-auto-rotate');
+      if (autoBtn) autoBtn.classList.remove('active');
+
+      if (view === 'front') {
+        camTargetPos.set(0, 0.02, 1.22);
+        camLookTarget.set(0, -0.05, 0);
+      } else if (view === 'back') {
+        camTargetPos.set(0, 0.02, -1.22);
+        camLookTarget.set(0, -0.05, 0);
+      } else if (view === 'top_hollow') {
+        camTargetPos.set(0, 0.85, 0.35);
+        camLookTarget.set(0, 0.10, 0);
+      } else if (view === 'persp') {
+        camTargetPos.set(0.95, 0.35, 0.95);
+        camLookTarget.set(0, -0.05, 0);
+      }
+      isTransitioning = true;
+    }
+
+    function toggleAutoRotate(btn) {
+      state.autoRotate = !state.autoRotate;
+      if (state.autoRotate) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+
+    function resetDefaults() {
+      state.bodyColor = '#1d4ed8';
+      state.sleeveColor = '#1e3a8a';
+      state.sidesColor = '#0f172a';
+      state.collarColor = '#fbbf24';
+      state.textColor = '#ffffff';
+      state.pattern = 'speed_shards';
+      state.teamName = 'TEAMSPIRIT';
+      state.slogan = 'SHOOT FOR THE STARS';
+      state.playerName = 'TEAMSPIRIT';
+      state.number = '10';
+      initUI();
+      updateCustomizer();
+      setCameraView('front', document.querySelector('.cam-btn'));
+    }
+
+    function snapshotDesign() {
+      renderer.render(scene, camera);
+      const dataUrl = renderer.domElement.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `TEAMSPIRIT-${state.teamName || 'KIT'}-${state.number || '00'}.png`;
+      link.href = dataUrl;
+      link.click();
+      alert(`3Dデザイン画像を保存しました！\nチーム名: ${state.teamName} / 背番号: ${state.number}`);
+    }
+
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (state.autoRotate) {
+        rootModel.rotation.y += 0.005;
+      }
+
+      if (isTransitioning) {
+        camera.position.lerp(camTargetPos, 0.08);
+        controls.target.lerp(camLookTarget, 0.08);
+        if (camera.position.distanceTo(camTargetPos) < 0.01) {
+          isTransitioning = false;
+        }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    initUI();
+    animate();
+  </script>
+</body>
+</html>
