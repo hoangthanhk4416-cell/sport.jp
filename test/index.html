@@ -69,7 +69,7 @@
     padding: 8px 16px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    pointer-events: none;
+    pointer-events: auto;
   }
   .brand-badge h1 {
     font-size: 15px;
@@ -476,6 +476,19 @@
   .btn-secondary:active {
     background: #334155;
   }
+  .btn-line {
+    background: #06c755;
+    color: #ffffff;
+    border: none;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(6, 199, 85, 0.35);
+  }
+  .btn-line:hover {
+    background: #05a847;
+  }
+  .btn-line:active {
+    transform: scale(0.98);
+  }
 
   #texture-canvas {
     display: none;
@@ -605,10 +618,18 @@
 
     <!-- Brand Header Badge -->
     <div class="brand-badge">
-      <h1>
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        TEAMSPIRIT 3D <span class="badge-long">REAL-FIT PRO</span>
-      </h1>
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:4px;">
+        <a href="/" target="_top" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:7px;" title="TEAMSPIRIT 公式トップへ戻る">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <h1 style="margin:0; font-size:15px; color:#38bdf8; font-weight:800; letter-spacing:0.6px; display:inline-flex; align-items:center;">
+            TEAMSPIRIT 3D <span class="badge-long" style="margin-left:4px;">REAL-FIT PRO</span>
+          </h1>
+        </a>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <a href="/" target="_top" style="font-size:11px; color:#cbd5e1; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); padding:3px 9px; border-radius:6px; text-decoration:none; font-weight:700; white-space:nowrap; transition:0.2s;">🏠 トップ</a>
+          <a href="/collections/all-products/" target="_top" style="font-size:11px; color:#38bdf8; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); padding:3px 9px; border-radius:6px; text-decoration:none; font-weight:700; white-space:nowrap; transition:0.2s;">👕 全商品</a>
+        </div>
+      </div>
       <p>公式プロ仕様ユニフォーム | 襟元・袖口内部中空3D設計 | 360°自由回転</p>
     </div>
 
@@ -766,6 +787,10 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         3D画像を保存
       </button>
+      <a class="action-btn btn-line" href="https://lin.ee/qE1TJJ5" target="_blank" rel="noopener">
+        <img src="/assets/line-logo.svg" width="16" height="16" alt="LINE" style="display:block;">
+        LINE相談
+      </a>
     </div>
   </div>
 
