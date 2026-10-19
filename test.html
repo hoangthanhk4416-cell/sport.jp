@@ -25,7 +25,7 @@
     height: 100%;
     height: 100dvh;
     overflow: hidden;
-    background: #0b1120;
+    background: #090e1a;
     color: #f8fafc;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -43,7 +43,7 @@
     flex: 1;
     height: 100%;
     position: relative;
-    background: radial-gradient(circle at 50% 38%, #1e293b 0%, #090e1a 85%);
+    background: radial-gradient(circle at 50% 40%, #1e293b 0%, #090e1a 85%);
     overflow: hidden;
     transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -53,20 +53,20 @@
     height: 100%;
     display: block;
     outline: none;
-    touch-action: none; /* Crucial for Three.js orbit gestures */
+    touch-action: none; /* Crucial for Three.js touch drag / pinch zoom */
   }
 
   /* Brand Header Badge */
   .brand-badge {
     position: absolute;
-    top: 18px;
-    left: 20px;
+    top: 16px;
+    left: 18px;
     z-index: 10;
     background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(56, 189, 248, 0.35);
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     pointer-events: none;
@@ -90,43 +90,42 @@
   /* 360 Interaction Hint Pill */
   .hint-360 {
     position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 16px;
+    right: 18px;
     background: rgba(15, 23, 42, 0.82);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 7px 16px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 11px;
     color: #cbd5e1;
     pointer-events: none;
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
-    transition: opacity 0.3s;
+    transition: opacity 0.5s;
     z-index: 10;
   }
 
   /* Camera Quick Toolbar */
   .camera-toolbar {
     position: absolute;
-    bottom: 20px;
-    left: 20px;
+    bottom: 16px;
+    left: 16px;
     z-index: 10;
     display: flex;
     gap: 6px;
     background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     padding: 5px;
     border-radius: 30px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    max-width: calc(100% - 40px);
+    max-width: calc(100% - 32px);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -178,23 +177,23 @@
   .mobile-sheet-handle {
     display: none;
     width: 100%;
-    padding: 9px 0 6px;
+    padding: 8px 0 6px;
     background: #090d16;
-    border-top: 1px solid rgba(56, 189, 248, 0.3);
+    border-top: 1px solid rgba(56, 189, 248, 0.35);
     cursor: pointer;
     text-align: center;
     user-select: none;
   }
   .handle-bar {
     display: block;
-    width: 40px;
+    width: 38px;
     height: 4px;
     background: #475569;
     border-radius: 4px;
     margin: 0 auto 4px;
   }
   .handle-text {
-    font-size: 10px;
+    font-size: 10.5px;
     color: #38bdf8;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -490,16 +489,16 @@
       flex-direction: column;
     }
 
-    /* 3D Viewport on Mobile */
+    /* 3D Viewport on Mobile - 54% height for spacious jersey display */
     #viewport-container {
       width: 100%;
-      height: 52%;
-      height: 52dvh;
+      height: 54%;
+      height: 54dvh;
     }
 
     body.view-expanded #viewport-container {
-      height: 76%;
-      height: 76dvh;
+      height: 77%;
+      height: 77dvh;
     }
 
     /* Compact Brand Badge on Mobile */
@@ -510,20 +509,29 @@
       border-radius: 10px;
     }
     .brand-badge h1 {
-      font-size: 13px;
+      font-size: 12.5px;
     }
     .brand-badge p {
-      display: none; /* Keep top clean on small mobile */
+      display: none; /* Hide subtitle to keep top clean */
     }
 
-    /* Camera Toolbar on Mobile */
+    /* Subtle 360 Hint on Mobile */
+    .hint-360 {
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      font-size: 10.5px;
+      gap: 4px;
+    }
+
+    /* Camera Toolbar on Mobile: Horizontal Scrollable Pills */
     .camera-toolbar {
       bottom: 10px;
       left: 10px;
       right: 10px;
       max-width: none;
       padding: 4px;
-      gap: 4px;
+      gap: 5px;
       justify-content: flex-start;
       border-radius: 24px;
     }
@@ -533,34 +541,19 @@
       gap: 4px;
     }
 
-    /* 360 Hint on Mobile */
-    .hint-360 {
-      top: 10px;
-      bottom: auto;
-      right: 10px;
-      left: auto;
-      transform: none;
-      padding: 5px 10px;
-      font-size: 10.5px;
-      gap: 5px;
-    }
-    .hint-360 span {
-      display: inline-block;
-    }
-
-    /* Sidebar Sheet on Mobile */
+    /* Sidebar Sheet on Mobile - 46% height */
     #sidebar {
       width: 100%;
-      height: 48%;
-      height: 48dvh;
+      height: 46%;
+      height: 46dvh;
       border-left: none;
       border-radius: 16px 16px 0 0;
       box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.7);
     }
 
     body.view-expanded #sidebar {
-      height: 24%;
-      height: 24dvh;
+      height: 23%;
+      height: 23dvh;
     }
 
     .mobile-sheet-handle {
@@ -613,7 +606,7 @@
     <!-- Brand Header Badge -->
     <div class="brand-badge">
       <h1>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
         TEAMSPIRIT 3D <span class="badge-long">REAL-FIT PRO</span>
       </h1>
       <p>公式プロ仕様ユニフォーム | 襟元・袖口内部中空3D設計 | 360°自由回転</p>
@@ -621,7 +614,7 @@
 
     <!-- 360 Interaction hint -->
     <div class="hint-360" id="hint-360-pill">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
       <span>360°回転・拡大縮小対応</span>
     </div>
 
@@ -629,7 +622,7 @@
     <div class="camera-toolbar">
       <button class="cam-btn active" onclick="setCameraView('front', this)">👕 正面</button>
       <button class="cam-btn" onclick="setCameraView('back', this)">🔄 背面</button>
-      <button class="cam-btn" onclick="setCameraView('top_hollow', this)" title="襟口を上部から見下ろし、内部中空構造を確認">🔍 襟・内部確認</button>
+      <button class="cam-btn" onclick="setCameraView('top_hollow', this)" title="襟口を上部から見下ろし、内部中空構造を確認">🔍 襟・内部</button>
       <button class="cam-btn" onclick="setCameraView('persp', this)">📐 斜め45°</button>
       <button class="cam-btn" id="btn-auto-rotate" onclick="toggleAutoRotate(this)">🔁 自動回転</button>
     </div>
@@ -1349,6 +1342,9 @@
     const container = document.getElementById('viewport-container');
     const canvas = document.getElementById('webgl-canvas');
 
+    // Shirt center is at Y = -0.045
+    const MODEL_CENTER_Y = -0.045;
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
 
@@ -1367,22 +1363,30 @@
     const controls = new THREE.OrbitControls(camera, canvas);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.minDistance = 0.55;
-    controls.maxDistance = 3.0;
-    controls.target.set(0, -0.05, 0);
+    controls.minDistance = 0.70;
+    controls.maxDistance = 3.5;
+    controls.target.set(0, MODEL_CENTER_Y, 0);
 
     // Responsive Camera Positioning
-    let camTargetPos = new THREE.Vector3(0, 0.02, 1.25);
-    let camLookTarget = new THREE.Vector3(0, -0.05, 0);
+    let camTargetPos = new THREE.Vector3(0, MODEL_CENTER_Y, 1.50);
+    let camLookTarget = new THREE.Vector3(0, MODEL_CENTER_Y, 0);
     let isTransitioning = false;
     let currentView = 'front';
 
+    // Calculate exact distance to fit 100% of the shirt on any screen size
     function getFitDistance() {
-      const aspect = container.clientWidth / container.clientHeight;
-      // On narrow mobile screens (aspect < 1.0), push camera back so wide sleeves never clip
-      if (aspect < 0.75) return 1.55;
-      if (aspect < 1.0) return 1.42;
-      return 1.22;
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+      if (!w || !h) return 1.50;
+      const aspect = w / h;
+      
+      // On narrow mobile screens (aspect < 1.0), adjust distance so full sleeves and hem fit perfectly
+      if (aspect < 0.65) return 1.68;
+      if (aspect < 0.80) return 1.58;
+      if (aspect < 0.95) return 1.50;
+      if (aspect < 1.15) return 1.40;
+      // Tablet landscape & Desktop
+      return 1.25;
     }
 
     function onResize() {
@@ -1392,19 +1396,25 @@
 
       const aspect = w / h;
       camera.aspect = aspect;
-
-      // Adjust camera distance for current view
-      const dist = getFitDistance();
-      if (currentView === 'front') {
-        camTargetPos.set(0, 0.02, dist);
-      } else if (currentView === 'back') {
-        camTargetPos.set(0, 0.02, -dist);
-      } else if (currentView === 'persp') {
-        camTargetPos.set(dist * 0.78, 0.35, dist * 0.78);
-      }
-
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
+
+      const dist = getFitDistance();
+      if (currentView === 'front') {
+        camTargetPos.set(0, MODEL_CENTER_Y, dist);
+      } else if (currentView === 'back') {
+        camTargetPos.set(0, MODEL_CENTER_Y, -dist);
+      } else if (currentView === 'persp') {
+        camTargetPos.set(dist * 0.75, MODEL_CENTER_Y + 0.32, dist * 0.75);
+      }
+      camLookTarget.set(0, MODEL_CENTER_Y, 0);
+
+      // If not animating a camera preset view, update immediately
+      if (!isTransitioning) {
+        camera.position.copy(camTargetPos);
+        controls.target.copy(camLookTarget);
+        controls.update();
+      }
     }
 
     window.addEventListener('resize', onResize);
@@ -1460,6 +1470,12 @@
     const rootModel = new THREE.Group();
     scene.add(rootModel);
 
+    // Initialize Camera Position and Controls Target PROMPTLY
+    const startDist = getFitDistance();
+    camera.position.set(0, MODEL_CENTER_Y, startDist);
+    controls.target.set(0, MODEL_CENTER_Y, 0);
+    controls.update();
+
     // Load Realistic 3D Garment Mesh from Base64
     function loadRealisticShirt() {
       if (!window.SHIRT_GLB_BASE64) {
@@ -1485,6 +1501,7 @@
         shirt.position.set(0, 0, 0);
         rootModel.add(shirt);
         console.log("Realistic Pro Shirt loaded successfully!");
+        onResize(); // Ensure frame is updated when model arrives
       }, err => {
         console.error("Error parsing realistic shirt:", err);
       });
@@ -1521,17 +1538,17 @@
 
       const dist = getFitDistance();
       if (view === 'front') {
-        camTargetPos.set(0, 0.02, dist);
-        camLookTarget.set(0, -0.05, 0);
+        camTargetPos.set(0, MODEL_CENTER_Y, dist);
+        camLookTarget.set(0, MODEL_CENTER_Y, 0);
       } else if (view === 'back') {
-        camTargetPos.set(0, 0.02, -dist);
-        camLookTarget.set(0, -0.05, 0);
+        camTargetPos.set(0, MODEL_CENTER_Y, -dist);
+        camLookTarget.set(0, MODEL_CENTER_Y, 0);
       } else if (view === 'top_hollow') {
-        camTargetPos.set(0, 0.88, 0.38);
-        camLookTarget.set(0, 0.10, 0);
+        camTargetPos.set(0, 0.75, 0.35);
+        camLookTarget.set(0, 0.08, 0);
       } else if (view === 'persp') {
-        camTargetPos.set(dist * 0.78, 0.35, dist * 0.78);
-        camLookTarget.set(0, -0.05, 0);
+        camTargetPos.set(dist * 0.75, MODEL_CENTER_Y + 0.32, dist * 0.75);
+        camLookTarget.set(0, MODEL_CENTER_Y, 0);
       }
       isTransitioning = true;
     }
@@ -1571,13 +1588,13 @@
       alert(`3Dデザイン画像を保存しました！\nチーム名: ${state.teamName} / 背番号: ${state.number}`);
     }
 
-    // Auto-fade 360 hint after 5 seconds on mobile
+    // Auto-fade 360 hint after 4 seconds
     setTimeout(() => {
       const hint = document.getElementById('hint-360-pill');
       if (hint) {
-        hint.style.opacity = '0.4';
+        hint.style.opacity = '0.3';
       }
-    }, 5000);
+    }, 4000);
 
     function animate() {
       requestAnimationFrame(animate);
